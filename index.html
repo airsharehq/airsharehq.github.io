@@ -41,25 +41,17 @@
   </script>
   <style>
     .glass{backdrop-filter:saturate(120%) blur(18px);background:rgba(255,255,255,.72)}
-    .badge {
-      border-radius: 18px;
-      padding: 12px;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.5), 0 8px 20px rgba(0,0,0,.06);
-    }
-    .badge-grad { background: linear-gradient(135deg, #eaf2ff 0%, #d9e7ff 100%); }
-    .badge-grad-2 { background: linear-gradient(135deg, #e9fced 0%, #d3f6e0 100%); }
-    .badge-grad-3 { background: linear-gradient(135deg, #fff1e0 0%, #ffe3c4 100%); }
-    .badge-grad-4 { background: linear-gradient(135deg, #f9e8ff 0%, #ecd8ff 100%); }
-
-    .highlight{ box-shadow:0 0 0 10px rgba(10,132,255,.14), 0 10px 30px rgba(10,132,255,.25); transform:translateY(-2px); }
-
+    .badge{border-radius:18px;padding:12px;box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 8px 20px rgba(0,0,0,.06)}
+    .badge-grad{background:linear-gradient(135deg,#eaf2ff 0%,#d9e7ff 100%)}
+    .badge-grad-2{background:linear-gradient(135deg,#e9fced 0%,#d3f6e0 100%)}
+    .badge-grad-3{background:linear-gradient(135deg,#fff1e0 0%,#ffe3c4 100%)}
+    .badge-grad-4{background:linear-gradient(135deg,#f9e8ff 0%,#ecd8ff 100%)}
+    .highlight{box-shadow:0 0 0 10px rgba(10,132,255,.14),0 10px 30px rgba(10,132,255,.25);transform:translateY(-2px)}
     .text-gradient-strong{
-      background-image: linear-gradient(90deg,#0A84FF 0%, #5856D6 55%, #111827 100%);
-      -webkit-background-clip: text; background-clip: text;
-      -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 1px 0 rgba(255,255,255,.35));
+      background-image:linear-gradient(90deg,#0A84FF 0%,#5856D6 55%,#111827 100%);
+      -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+      filter:drop-shadow(0 1px 0 rgba(255,255,255,.35))
     }
-
     @media (prefers-color-scheme: dark){
       html{color-scheme:dark}
       body{background:#0B0B0D}
@@ -90,9 +82,7 @@
           <a href="#features" class="opacity-80 hover:opacity-100 transition">Features</a>
           <a href="#pricing" class="opacity-80 hover:opacity-100 transition">Pricing</a>
           <a href="#download" class="opacity-80 hover:opacity-100 transition">Download</a>
-          <a href="https://github.com/jaksatomovic/airshare" class="inline-flex items-center gap-2 rounded-full border border-black/10 dark:border-white/15 px-4 py-1.5 hover:bg-black/5 dark:hover:bg-white/5 transition">
-            GitHub
-          </a>
+          <a href="https://github.com/jaksatomovic/airshare" class="inline-flex items-center gap-2 rounded-full border border-black/10 dark:border-white/15 px-4 py-1.5 hover:bg-black/5 dark:hover:bg-white/5 transition">GitHub</a>
         </div>
       </div>
     </nav>
@@ -110,6 +100,7 @@
           <p class="mt-6 text-xl opacity-80 max-w-prose animate-fadeUp" style="animation-delay:.1s">
             AirDrop-style transfers over your LAN using QUIC + mDNS. No accounts. No cloud. <strong>Unlimited file size</strong>.
           </p>
+
           <div class="mt-10 flex flex-wrap gap-4 animate-fadeUp" style="animation-delay:.2s">
             <a id="btn-mac" href="#mac" class="download-btn inline-flex items-center gap-3 rounded-2xl bg-white text-apple-blue px-6 py-3 shadow-glass hover:shadow-glow transition">
               <span> Download for macOS</span>
@@ -122,12 +113,10 @@
             </a>
           </div>
 
-          <!-- bullet features -->
-          <ul class="mt-8 flex flex-wrap items-center gap-4 text-sm text-black/70 dark:text-white/70 animate-fadeUp" style="animation-delay:.3s">
+          <!-- bullets (bez srednjih točkica) -->
+          <ul class="mt-8 flex flex-wrap items-center gap-5 text-sm text-black/70 dark:text-white/70 animate-fadeUp" style="animation-delay:.3s">
             <li class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-apple-blue"></span>E2E encrypted</li>
-            <li>•</li>
             <li class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-ios-purple"></span>Automatic discovery</li>
-            <li>•</li>
             <li class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-ios-green"></span>No size limits on LAN</li>
           </ul>
 
@@ -157,7 +146,7 @@
               <div class="device absolute bottom-[18%] left-[35%] w-9 h-9 rounded-2xl text-white text-[11px] font-bold grid place-items-center badge badge-grad-2 shadow animate-floaty" style="animation-delay:.8s">DI</div>
             </div>
           </div>
-          <p class="mt-4 text-center text-sm opacity-60">AirDrop-inspired radar UI • demo</p>
+          <p class="mt-4 text-center text-sm opacity-60">AirDrop-inspired radar UI</p>
         </div>
       </div>
     </div>
@@ -223,7 +212,7 @@
     </div>
   </section>
 
-  <!-- PRICING (Free bez device limita) -->
+  <!-- PRICING: Free & Pro (nema speed limita nigdje) -->
   <section id="pricing" class="py-24 bg-gradient-to-b from-white to-apple-gray/60 dark:from-[#0B0B0D] dark:to-[#0E0E11]">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-3xl mx-auto">
@@ -231,7 +220,7 @@
         <p class="mt-3 opacity-70">Start free. Upgrade when you need more.</p>
       </div>
 
-      <div class="mt-12 grid gap-6 md:grid-cols-3">
+      <div class="mt-12 grid gap-6 md:grid-cols-2">
         <!-- Free -->
         <div class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-8 shadow">
           <h3 class="text-xl font-bold">Free</h3>
@@ -240,7 +229,6 @@
           <ul class="mt-6 space-y-2 text-sm">
             <li>✅ <strong>No device limit</strong></li>
             <li>✅ Max file size <strong>100 MB</strong></li>
-            <li>✅ Speed cap <strong>8 MB/s</strong></li>
             <li>✅ Transfer history <strong>7 days</strong></li>
             <li>— No relay/out-of-LAN</li>
           </ul>
@@ -254,28 +242,12 @@
           <p class="mt-1 text-sm opacity-70">For power users & indie teams</p>
           <div class="mt-6 text-3xl font-extrabold">€6<span class="text-base font-medium opacity-70">/mo</span></div>
           <ul class="mt-6 space-y-2 text-sm">
-            <li>✅ Up to <strong>10 paired devices</strong> in workspace</li>
-            <li>✅ Max file size <strong>10 GB</strong></li>
-            <li>✅ <strong>No LAN speed cap</strong></li>
-            <li>✅ Transfer history <strong>90 days</strong></li>
+            <li>✅ <strong>Unlimited file size</strong></li>
+            <li>✅ Transfer history <strong>180 days</strong></li>
             <li>✅ Basic relay (beta) <strong>5 GB/mo</strong></li>
+            <li>✅ Priority support</li>
           </ul>
           <a href="#download" class="mt-6 inline-flex items-center justify-center w-full rounded-2xl bg-apple-blue text-white px-4 py-2 shadow hover:shadow-lg transition">Upgrade</a>
-        </div>
-
-        <!-- Teams -->
-        <div class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-8 shadow">
-          <h3 class="text-xl font-bold">Teams</h3>
-          <p class="mt-1 text-sm opacity-70">For offices & organizations</p>
-          <div class="mt-6 text-3xl font-extrabold">€12<span class="text-base font-medium opacity-70">/user/mo</span></div>
-          <ul class="mt-6 space-y-2 text-sm">
-            <li>✅ <strong>Unlimited devices</strong> per workspace</li>
-            <li>✅ <strong>Unlimited file size</strong></li>
-            <li>✅ <strong>No speed cap</strong></li>
-            <li>✅ Transfer history <strong>1 year</strong></li>
-            <li>✅ Full relay with SSO & audit</li>
-          </ul>
-          <a href="#download" class="mt-6 inline-flex items-center justify-center w-full rounded-2xl border px-4 py-2 hover:bg-black/5 dark:hover:bg-white/5 transition">Contact sales</a>
         </div>
       </div>
     </div>
@@ -339,6 +311,7 @@
 
       // In CTA section always show all three (but highlight detected)
       ['dl-mac','dl-win','dl-linux'].forEach(id => document.getElementById(id)?.classList.remove('hidden'));
+      const cta = map[os]?.[1]; if (cta) document.getElementById(cta)?.classList.add('highlight');
     })();
   </script>
 </body>
