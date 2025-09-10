@@ -82,7 +82,7 @@
           <a href="#features" class="opacity-80 hover:opacity-100 transition">Features</a>
           <a href="#pricing" class="opacity-80 hover:opacity-100 transition">Pricing</a>
           <a href="#download" class="opacity-80 hover:opacity-100 transition">Download</a>
-          <a href="https://github.com/jaksatomovic/airshare" class="inline-flex items-center gap-2 rounded-full border border-black/10 dark:border-white/15 px-4 py-1.5 hover:bg-black/5 dark:hover:bg-white/5 transition">GitHub</a>
+          <a href="https://github.com/jaksatomovic/airshare" class="inline-flex items-center gap-2 rounded-full border border-black/10 dark:border-white/15 px-4 py-1.5 hover:bg-black/5 dark:hover:bg.white/5 transition">GitHub</a>
         </div>
       </div>
     </nav>
@@ -113,7 +113,7 @@
             </a>
           </div>
 
-          <!-- bullets (bez srednjih točkica) -->
+          <!-- bullets -->
           <ul class="mt-8 flex flex-wrap items-center gap-5 text-sm text-black/70 dark:text-white/70 animate-fadeUp" style="animation-delay:.3s">
             <li class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-apple-blue"></span>E2E encrypted</li>
             <li class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-ios-purple"></span>Automatic discovery</li>
@@ -212,7 +212,7 @@
     </div>
   </section>
 
-  <!-- PRICING: Free & Pro (nema speed limita nigdje) -->
+  <!-- PRICING: Free, Pro, Teams (coming soon) -->
   <section id="pricing" class="py-24 bg-gradient-to-b from-white to-apple-gray/60 dark:from-[#0B0B0D] dark:to-[#0E0E11]">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-3xl mx-auto">
@@ -220,34 +220,55 @@
         <p class="mt-3 opacity-70">Start free. Upgrade when you need more.</p>
       </div>
 
-      <div class="mt-12 grid gap-6 md:grid-cols-2">
+      <div class="mt-12 grid gap-6 md:grid-cols-3 items-stretch">
         <!-- Free -->
-        <div class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-8 shadow">
-          <h3 class="text-xl font-bold">Free</h3>
-          <p class="mt-1 text-sm opacity-70">For personal use on LAN</p>
-          <div class="mt-6 text-3xl font-extrabold">€0</div>
-          <ul class="mt-6 space-y-2 text-sm">
-            <li>✅ <strong>No device limit</strong></li>
-            <li>✅ Max file size <strong>100 MB</strong></li>
-            <li>✅ Transfer history <strong>7 days</strong></li>
-            <li>— No relay/out-of-LAN</li>
-          </ul>
-          <a href="#download" class="mt-6 inline-flex items-center justify-center w-full rounded-2xl border px-4 py-2 hover:bg-black/5 dark:hover:bg-white/5 transition">Get started</a>
+        <div class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-8 shadow flex flex-col">
+          <div class="flex-1">
+            <h3 class="text-xl font-bold">Free</h3>
+            <p class="mt-1 text-sm opacity-70">For personal use on LAN</p>
+            <div class="mt-6 text-4xl font-extrabold tracking-tight">€0</div>
+            <ul class="mt-6 space-y-2 text-sm">
+              <li>✅ <strong>No device limit</strong></li>
+              <li>✅ Max file size <strong>100 MB</strong></li>
+              <li>✅ Transfer history <strong>7 days</strong></li>
+              <li>— No relay/out-of-LAN</li>
+            </ul>
+          </div>
+          <a href="#download" class="mt-8 inline-flex items-center justify-center w-full rounded-2xl border px-4 py-3 hover:bg-black/5 dark:hover:bg-white/5 transition">Get started</a>
         </div>
 
         <!-- Pro -->
-        <div class="rounded-3xl bg-white shadow-glass border border-black/5 p-8 ring-1 ring-apple-blue/10">
-          <div class="inline-block rounded-full bg-apple-blue/10 text-apple-blue text-xs px-2 py-1 mb-3">Most popular</div>
-          <h3 class="text-xl font-bold">Pro</h3>
-          <p class="mt-1 text-sm opacity-70">For power users & indie teams</p>
-          <div class="mt-6 text-3xl font-extrabold">€6<span class="text-base font-medium opacity-70">/mo</span></div>
-          <ul class="mt-6 space-y-2 text-sm">
-            <li>✅ <strong>Unlimited file size</strong></li>
-            <li>✅ Transfer history <strong>180 days</strong></li>
-            <li>✅ Basic relay (beta) <strong>5 GB/mo</strong></li>
-            <li>✅ Priority support</li>
-          </ul>
-          <a href="#download" class="mt-6 inline-flex items-center justify-center w-full rounded-2xl bg-apple-blue text-white px-4 py-2 shadow hover:shadow-lg transition">Upgrade</a>
+        <div class="rounded-3xl bg-white shadow-glass border border-black/5 p-8 ring-1 ring-apple-blue/10 flex flex-col">
+          <div class="inline-block self-start rounded-full bg-apple-blue/10 text-apple-blue text-xs px-2 py-1 mb-3">Most popular</div>
+          <div class="flex-1">
+            <h3 class="text-xl font-bold">Pro</h3>
+            <p class="mt-1 text-sm opacity-70">For power users & indie teams</p>
+            <div class="mt-6 text-4xl font-extrabold tracking-tight">€6<span class="text-base font-medium opacity-70">/mo</span></div>
+            <ul class="mt-6 space-y-2 text-sm">
+              <li>✅ <strong>Unlimited file size</strong></li>
+              <li>✅ Transfer history <strong>Unlimited</strong></li>
+              <li>✅ Relay/out-of-LAN <strong>Unlimited</strong></li>
+              <li>✅ Priority support</li>
+            </ul>
+          </div>
+          <a href="#download" class="mt-8 inline-flex items-center justify-center w-full rounded-2xl bg-apple-blue text-white px-4 py-3 shadow hover:shadow-lg transition">Upgrade</a>
+        </div>
+
+        <!-- Teams (coming soon) -->
+        <div class="rounded-3xl bg-white/70 dark:bg-white/[.07] border border-dashed border-black/10 dark:border-white/20 p-8 flex flex-col">
+          <div class="inline-block self-start rounded-full bg-black/5 dark:bg-white/10 text-xs px-2 py-1 mb-3">Coming soon</div>
+          <div class="flex-1">
+            <h3 class="text-xl font-bold">Teams</h3>
+            <p class="mt-1 text-sm opacity-70">For offices & organizations</p>
+            <div class="mt-6 text-4xl font-extrabold tracking-tight">—</div>
+            <ul class="mt-6 space-y-2 text-sm opacity-70">
+              <li>• Workspaces & SSO</li>
+              <li>• Admin controls & audit logs</li>
+              <li>• Dedicated relays</li>
+              <li>• SLA support</li>
+            </ul>
+          </div>
+          <button disabled class="mt-8 inline-flex items-center justify-center w-full rounded-2xl border px-4 py-3 opacity-60 cursor-not-allowed">Notify me</button>
         </div>
       </div>
     </div>
@@ -280,7 +301,7 @@
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // OS detection → show only primary button + provide "Show all" link
+    // OS detection → show only primary button in hero; CTA shows all (highlight detected)
     (function(){
       const ua = navigator.userAgent;
       let os = 'linux';
@@ -288,28 +309,27 @@
       else if (/Windows/.test(ua)) os = 'win';
 
       const map = { mac:['btn-mac','dl-mac'], win:['btn-win','dl-win'], linux:['btn-linux','dl-linux'] };
-      const all = ['btn-mac','btn-win','btn-linux','dl-mac','dl-win','dl-linux'];
+      const heroAll = ['btn-mac','btn-win','btn-linux'];
 
-      // hide all
-      all.forEach(id => document.getElementById(id)?.classList.add('hidden'));
-      // show only detected
-      (map[os]||[]).forEach(id => {
+      // hide all hero buttons then show detected
+      heroAll.forEach(id => document.getElementById(id)?.classList.add('hidden'));
+      (map[os]||[]).slice(0,1).forEach(id => {
         const el = document.getElementById(id);
         if (el){ el.classList.remove('hidden'); el.classList.add('highlight'); }
       });
 
-      // “Show all downloads” link (only in hero)
+      // “Show all downloads” link in hero
       const showAll = document.getElementById('show-all-downloads');
       if (showAll) {
         showAll.classList.remove('hidden');
         showAll.addEventListener('click', (e) => {
           e.preventDefault();
-          ['btn-mac','btn-win','btn-linux'].forEach(id => document.getElementById(id)?.classList.remove('hidden','highlight'));
+          heroAll.forEach(id => document.getElementById(id)?.classList.remove('hidden','highlight'));
           showAll.classList.add('hidden');
         });
       }
 
-      // In CTA section always show all three (but highlight detected)
+      // CTA: always show all, just highlight detected
       ['dl-mac','dl-win','dl-linux'].forEach(id => document.getElementById(id)?.classList.remove('hidden'));
       const cta = map[os]?.[1]; if (cta) document.getElementById(cta)?.classList.add('highlight');
     })();
