@@ -1,581 +1,329 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AirShare - Instant File Sharing</title>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0A84FF" />
+    <title>AirShare — Instant Local File Sharing</title>
+    <meta name="description" content="AirShare: beautiful, private, lightning‑fast file sharing over your local network. QUIC + mDNS. No accounts. No cloud."/>
+    <meta property="og:title" content="AirShare — Instant Local File Sharing"/>
+    <meta property="og:description" content="Beautiful AirDrop‑style radar. Unlimited file sizes over LAN. Private by default."/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content="https://placehold.co/1200x630/png?text=AirShare"/>
+
+    <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'apple-blue': '#007AFF',
-                        'apple-gray': '#F2F2F7',
-                        'apple-dark': '#1C1C1E',
-                        'apple-light': '#FFFFFF',
-                        'ios-purple': '#5856D6',
-                        'ios-pink': '#FF2D92',
-                        'ios-orange': '#FF9500',
-                        'ios-green': '#34C759'
-                    },
-                    fontFamily: {
-                        'sf': ['-apple-system', 'BlinkMacSystemFont', 'SF Pro Display', 'system-ui', 'sans-serif']
-                    },
-                    animation: {
-                        'fade-in-up': 'fadeInUp 0.6s ease-out',
-                        'fade-in-left': 'fadeInLeft 0.6s ease-out',
-                        'fade-in-right': 'fadeInRight 0.6s ease-out',
-                        'scale-in': 'scaleIn 0.5s ease-out',
-                        'bounce-slow': 'bounce 2s infinite',
-                        'float': 'float 3s ease-in-out infinite',
-                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'radar-sweep': 'radarSweep 4s linear infinite'
-                    }
-                }
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              apple: {
+                blue: '#0A84FF',
+                gray: '#F2F2F7',
+                ink: '#1C1C1E',
+                frost: '#FFFFFF',
+              },
+              ios: {
+                purple: '#5856D6',
+                pink: '#FF2D55',
+                orange: '#FF9500',
+                green: '#34C759',
+              }
+            },
+            fontFamily: {
+              sf: ['-apple-system','BlinkMacSystemFont','SF Pro Display','SF Pro Text','Inter','system-ui','Segoe UI','Roboto','Helvetica Neue','Arial','sans-serif']
+            },
+            boxShadow: {
+              glass: '0 10px 30px rgba(0,0,0,.08)',
+            },
+            keyframes: {
+              sweep: { '0%': { transform: 'rotate(0deg)' }, '100%': { transform: 'rotate(360deg)' } },
+              floaty: {
+                '0%,100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-8px)' }
+              },
+              fadeUp: { '0%': { opacity: 0, transform: 'translateY(24px)' }, '100%': { opacity: 1, transform: 'translateY(0)' } },
+              ring: { '0%': { opacity:.35, transform: 'scale(.85)' }, '70%': { opacity:0, transform: 'scale(1.2)' }, '100%': { opacity:0, transform: 'scale(1.25)' } }
+            },
+            animation: {
+              sweep: 'sweep 4s linear infinite',
+              floaty: 'floaty 3s ease-in-out infinite',
+              fadeUp: 'fadeUp .7s ease-out both',
+              ring: 'ring 2.4s ease-out infinite',
             }
+          }
         }
+      };
     </script>
+
     <style>
-        .gradient-bg {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-        .ios-gradient {
-            background: linear-gradient(135deg, #007AFF 0%, #5856D6 50%, #FF2D92 100%);
-        }
-        .glass-effect {
-            backdrop-filter: blur(20px);
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        .device-dot {
-            animation: float 3s ease-in-out infinite;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeInLeft {
-            from { opacity: 0; transform: translateX(-30px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        @keyframes fadeInRight {
-            from { opacity: 0; transform: translateX(30px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        @keyframes scaleIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
-        }
-        @keyframes radarSweep {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        .parallax {
-            transform: translateZ(0);
-            will-change: transform;
-        }
-        .scroll-reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease-out;
-        }
-        .scroll-reveal.revealed {
-            opacity: 1;
-            transform: translateY(0);
-        }
+      .glass { backdrop-filter: saturate(120%) blur(18px); background: rgba(255,255,255,.72); }
+      @media (prefers-color-scheme: dark){
+        html { color-scheme: dark; }
+        body { background: #0B0B0D; }
+        .glass { background: rgba(28,28,30,.48); }
+      }
+      @media (prefers-reduced-motion: reduce){
+        .animate-sweep, .animate-floaty, .animate-ring, .animate-fadeUp { animation: none !important; }
+      }
     </style>
-</head>
-<body class="font-sf bg-apple-gray min-h-screen">
-    <!-- Navigation -->
-    <nav class="bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex items-center space-x-3">
-                    <div class="w-8 h-8 bg-apple-blue rounded-lg flex items-center justify-center">
-                        <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
-                        </svg>
-                    </div>
-                    <span class="text-xl font-semibold text-gray-900">AirShare</span>
-                </div>
-                <div class="flex items-center space-x-4">
-                    <a href="https://github.com/jaksatomovic/airshare" class="text-gray-600 hover:text-gray-900 transition-colors">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"/>
-                        </svg>
-                    </a>
-                </div>
+  </head>
+  <body class="font-sf bg-apple-gray selection:bg-apple-blue/20 text-apple-ink/90 dark:text-white/90">
+    <!-- Nav -->
+    <header class="sticky top-0 z-40">
+      <nav class="glass border-b border-black/5 dark:border-white/10">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+          <a class="flex items-center gap-3" href="#">
+            <div class="h-8 w-8 rounded-xl bg-apple-blue grid place-items-center text-white shadow-md">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
             </div>
+            <span class="text-[17px] font-semibold tracking-[-0.01em]">AirShare</span>
+          </a>
+          <div class="hidden sm:flex items-center gap-6 text-[14px]">
+            <a href="#features" class="opacity-80 hover:opacity-100 transition">Features</a>
+            <a href="#tech" class="opacity-80 hover:opacity-100 transition">Tech</a>
+            <a href="https://github.com/jaksatomovic/airshare" class="opacity-80 hover:opacity-100 transition">GitHub</a>
+            <a href="#download" class="inline-flex items-center gap-2 rounded-full bg-apple-blue px-5 py-2 text-white shadow hover:shadow-lg transition active:scale-[.98]">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 19h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Download
+            </a>
+          </div>
         </div>
-    </nav>
+      </nav>
+    </header>
 
-    <!-- Hero Section -->
-    <section class="relative overflow-hidden min-h-screen flex items-center">
-        <div class="ios-gradient absolute inset-0"></div>
-        <div class="absolute inset-0 bg-black/10"></div>
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-            <div class="text-center">
-                <h1 class="text-6xl md:text-8xl font-bold text-white mb-8 animate-fade-in-up">
-                    Share Files
-                    <span class="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-pink-400 to-purple-400 animate-pulse-slow">
-                        Instantly
-                    </span>
-                </h1>
-                <p class="text-2xl text-white/90 mb-12 max-w-3xl mx-auto animate-fade-in-up" style="animation-delay: 0.2s;">
-                    Cross-platform file sharing powered by <span class="font-semibold text-yellow-300">QUIC protocol</span>. 
-                    Private, secure, and lightning-fast transfers on your local network.
-                </p>
-                
-                <!-- Download Buttons -->
-                <div class="flex flex-col sm:flex-row gap-6 justify-center mb-16 animate-fade-in-up" style="animation-delay: 0.4s;">
-                    <button class="group bg-white text-apple-blue px-10 py-5 rounded-3xl font-semibold hover:bg-gray-100 transition-all duration-300 shadow-2xl hover:shadow-3xl hover:scale-105 flex items-center justify-center space-x-3">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                        </svg>
-                        <span>Download for macOS</span>
-                    </button>
-                    <button class="group bg-white text-apple-blue px-10 py-5 rounded-3xl font-semibold hover:bg-gray-100 transition-all duration-300 shadow-2xl hover:shadow-3xl hover:scale-105 flex items-center justify-center space-x-3">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h16a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6z"/>
-                        </svg>
-                        <span>Download for Windows</span>
-                    </button>
-                    <button class="group bg-white text-apple-blue px-10 py-5 rounded-3xl font-semibold hover:bg-gray-100 transition-all duration-300 shadow-2xl hover:shadow-3xl hover:scale-105 flex items-center justify-center space-x-3">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                        </svg>
-                        <span>Download for Linux</span>
-                    </button>
-                </div>
-                
-                <!-- Platform Icons -->
-                <div class="flex justify-center space-x-8 animate-fade-in-up" style="animation-delay: 0.6s;">
-                    <div class="text-center">
-                        <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-2 backdrop-blur-sm">
-                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-                            </svg>
-                        </div>
-                        <p class="text-white/80 text-sm">macOS</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-2 backdrop-blur-sm">
-                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M3 12V6.75l6-1.32v6.48L3 12zm17-9v8.75l-10 .15V5.21L20 3zM3 13l6 .09v6.81l-6-1.15V13zm17 .25V22l-10-1.91V13.1l10 .15z"/>
-                            </svg>
-                        </div>
-                        <p class="text-white/80 text-sm">Windows</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-2 backdrop-blur-sm">
-                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12.504 0C5.582 0 0 5.582 0 12.504s5.582 12.504 12.504 12.504 12.504-5.582 12.504-12.504S19.426 0 12.504 0zM12 19.5c-4.136 0-7.5-3.364-7.5-7.5S7.864 4.5 12 4.5s7.5 3.364 7.5 7.5-3.364 7.5-7.5 7.5z"/>
-                            </svg>
-                        </div>
-                        <p class="text-white/80 text-sm">Linux</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="py-32 bg-gradient-to-br from-white to-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-20 scroll-reveal">
-                <h2 class="text-5xl font-bold text-gray-900 mb-6">Why AirShare?</h2>
-                <p class="text-2xl text-gray-600 max-w-3xl mx-auto">
-                    Built with cutting-edge <span class="font-semibold text-apple-blue">QUIC protocol</span> for the ultimate file sharing experience
-                </p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="group text-center p-10 rounded-3xl bg-white hover:bg-gradient-to-br hover:from-apple-blue/5 hover:to-ios-purple/5 transition-all duration-500 shadow-lg hover:shadow-2xl hover:-translate-y-2 scroll-reveal">
-                    <div class="w-20 h-20 bg-gradient-to-br from-apple-blue to-ios-purple rounded-3xl flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-transform duration-300">
-                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Lightning Fast</h3>
-                    <p class="text-gray-600 text-lg leading-relaxed">Powered by <span class="font-semibold text-apple-blue">QUIC protocol</span> - the same technology used by Google Chrome. Ultra-fast file transfers with built-in encryption and multiplexing.</p>
-                </div>
-                
-                <div class="group text-center p-10 rounded-3xl bg-white hover:bg-gradient-to-br hover:from-ios-green/5 hover:to-ios-pink/5 transition-all duration-500 shadow-lg hover:shadow-2xl hover:-translate-y-2 scroll-reveal">
-                    <div class="w-20 h-20 bg-gradient-to-br from-ios-green to-ios-pink rounded-3xl flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-transform duration-300">
-                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Private & Secure</h3>
-                    <p class="text-gray-600 text-lg leading-relaxed">End-to-end encryption with <span class="font-semibold text-ios-green">TLS 1.3</span> and certificate-based authentication. Your files never leave your local network - complete privacy guaranteed.</p>
-                </div>
-                
-                <div class="group text-center p-10 rounded-3xl bg-white hover:bg-gradient-to-br hover:from-ios-orange/5 hover:to-apple-blue/5 transition-all duration-500 shadow-lg hover:shadow-2xl hover:-translate-y-2 scroll-reveal">
-                    <div class="w-20 h-20 bg-gradient-to-br from-ios-orange to-apple-blue rounded-3xl flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-transform duration-300">
-                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Zero Configuration</h3>
-                    <p class="text-gray-600 text-lg leading-relaxed">Drag and drop interface with <span class="font-semibold text-ios-orange">automatic device discovery</span>. No setup, no accounts, no cloud - just pure local file sharing.</p>
-                </div>
-                
-                <div class="group text-center p-10 rounded-3xl bg-white hover:bg-gradient-to-br hover:from-ios-purple/5 hover:to-ios-pink/5 transition-all duration-500 shadow-lg hover:shadow-2xl hover:-translate-y-2 scroll-reveal">
-                    <div class="w-20 h-20 bg-gradient-to-br from-ios-purple to-ios-pink rounded-3xl flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-transform duration-300">
-                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Cross-Platform</h3>
-                    <p class="text-gray-600 text-lg leading-relaxed">Works seamlessly across <span class="font-semibold text-ios-purple">macOS, Windows, and Linux</span>. Share files between any devices on your network without compatibility issues.</p>
-                </div>
-                
-                <div class="group text-center p-10 rounded-3xl bg-white hover:bg-gradient-to-br hover:from-apple-blue/5 hover:to-ios-green/5 transition-all duration-500 shadow-lg hover:shadow-2xl hover:-translate-y-2 scroll-reveal">
-                    <div class="w-20 h-20 bg-gradient-to-br from-apple-blue to-ios-green rounded-3xl flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-transform duration-300">
-                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-6">No Internet Required</h3>
-                    <p class="text-gray-600 text-lg leading-relaxed">Works completely <span class="font-semibold text-apple-blue">offline</span> on your local network. No cloud dependencies, no data collection, no tracking - just pure peer-to-peer sharing.</p>
-                </div>
-                
-                <div class="group text-center p-10 rounded-3xl bg-white hover:bg-gradient-to-br hover:from-ios-pink/5 hover:to-ios-orange/5 transition-all duration-500 shadow-lg hover:shadow-2xl hover:-translate-y-2 scroll-reveal">
-                    <div class="w-20 h-20 bg-gradient-to-br from-ios-pink to-ios-orange rounded-3xl flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-transform duration-300">
-                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Beautiful UI</h3>
-                    <p class="text-gray-600 text-lg leading-relaxed">Inspired by Apple's <span class="font-semibold text-ios-pink">AirDrop</span> with a stunning radar interface. Smooth animations and intuitive design make file sharing a joy.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Demo Section -->
-    <section class="py-32 bg-gradient-to-br from-gray-50 to-gray-100 relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-r from-apple-blue/5 via-ios-purple/5 to-ios-pink/5"></div>
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-20 scroll-reveal">
-                <h2 class="text-5xl font-bold text-gray-900 mb-6">See It In Action</h2>
-                <p class="text-2xl text-gray-600">Beautiful radar interface inspired by Apple's AirDrop</p>
-            </div>
-            
-            <div class="relative max-w-5xl mx-auto scroll-reveal">
-                <div class="glass-effect rounded-3xl p-12 shadow-2xl bg-white/80 backdrop-blur-xl">
-                    <div class="relative w-96 h-96 mx-auto">
-                        <!-- Radar Background -->
-                        <div class="absolute inset-0 rounded-full border-4 border-gray-300 bg-gradient-to-br from-blue-50 to-indigo-100"></div>
-                        
-                        <!-- Concentric Circles -->
-                        <div class="absolute inset-8 rounded-full border border-gray-300"></div>
-                        <div class="absolute inset-16 rounded-full border border-gray-300"></div>
-                        <div class="absolute inset-24 rounded-full border border-gray-300"></div>
-                        
-                        <!-- Center Dot -->
-                        <div class="absolute top-1/2 left-1/2 w-6 h-6 bg-gradient-to-br from-apple-blue to-ios-purple rounded-full transform -translate-x-1/2 -translate-y-1/2 shadow-lg"></div>
-                        
-                        <!-- Device Dots -->
-                        <div class="device-dot absolute top-1/4 left-1/4 w-8 h-8 bg-gradient-to-br from-ios-green to-ios-pink rounded-full flex items-center justify-center text-white text-sm font-bold transform -translate-x-1/2 -translate-y-1/2 shadow-lg">
-                            AR
-                        </div>
-                        <div class="device-dot absolute top-1/3 right-1/4 w-8 h-8 bg-gradient-to-br from-ios-purple to-ios-orange rounded-full flex items-center justify-center text-white text-sm font-bold transform -translate-x-1/2 -translate-y-1/2 shadow-lg">
-                            TR
-                        </div>
-                        <div class="device-dot absolute bottom-1/4 left-1/3 w-8 h-8 bg-gradient-to-br from-ios-orange to-apple-blue rounded-full flex items-center justify-center text-white text-sm font-bold transform -translate-x-1/2 -translate-y-1/2 shadow-lg">
-                            DI
-                        </div>
-                        
-                        <!-- Sweep Line -->
-                        <div class="absolute top-1/2 left-1/2 w-1/2 h-1 bg-gradient-to-r from-transparent via-apple-blue to-transparent transform origin-left animate-radar-sweep"></div>
-                        
-                        <!-- Pulse Animation -->
-                        <div class="absolute inset-0 rounded-full border-4 border-apple-blue opacity-30 animate-pulse-slow"></div>
-                    </div>
-                    
-                    <div class="text-center mt-12">
-                        <h3 class="text-3xl font-bold text-gray-900 mb-4">Radar Interface</h3>
-                        <p class="text-xl text-gray-600 mb-8">See nearby devices in real-time with beautiful animations</p>
-                        
-                        <!-- Feature highlights -->
-                        <div class="grid md:grid-cols-3 gap-6 mt-8">
-                            <div class="text-center">
-                                <div class="w-12 h-12 bg-gradient-to-br from-ios-green to-ios-pink rounded-xl flex items-center justify-center mx-auto mb-3">
-                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                                    </svg>
-                                </div>
-                                <h4 class="font-semibold text-gray-900 mb-2">Real-time Discovery</h4>
-                                <p class="text-sm text-gray-600">Instantly see all devices on your network</p>
-                            </div>
-                            <div class="text-center">
-                                <div class="w-12 h-12 bg-gradient-to-br from-ios-purple to-ios-orange rounded-xl flex items-center justify-center mx-auto mb-3">
-                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-                                    </svg>
-                                </div>
-                                <h4 class="font-semibold text-gray-900 mb-2">Drag & Drop</h4>
-                                <p class="text-sm text-gray-600">Simply drag files onto devices to share</p>
-                            </div>
-                            <div class="text-center">
-                                <div class="w-12 h-12 bg-gradient-to-br from-ios-orange to-apple-blue rounded-xl flex items-center justify-center mx-auto mb-3">
-                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
-                                    </svg>
-                                </div>
-                                <h4 class="font-semibold text-gray-900 mb-2">Secure Transfer</h4>
-                                <p class="text-sm text-gray-600">End-to-end encrypted file transfers</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Tech Stack Section -->
-    <section class="py-32 bg-gradient-to-br from-gray-900 to-black text-white relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-r from-apple-blue/10 via-ios-purple/10 to-ios-pink/10"></div>
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-20 scroll-reveal">
-                <h2 class="text-5xl font-bold text-white mb-6">Built with Modern Tech</h2>
-                <p class="text-2xl text-gray-300 max-w-3xl mx-auto">
-                    Leveraging cutting-edge technologies for optimal performance and security
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div class="group text-center p-8 rounded-3xl bg-white/5 hover:bg-white/10 transition-all duration-500 backdrop-blur-sm border border-white/10 hover:border-white/20 scroll-reveal">
-                    <div class="w-24 h-24 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                        <span class="text-3xl font-bold text-white">Py</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Python</h3>
-                    <p class="text-gray-300">Cross-platform backend</p>
-                </div>
-                
-                <div class="group text-center p-8 rounded-3xl bg-white/5 hover:bg-white/10 transition-all duration-500 backdrop-blur-sm border border-white/10 hover:border-white/20 scroll-reveal">
-                    <div class="w-24 h-24 bg-gradient-to-br from-apple-blue to-ios-purple rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                        <span class="text-2xl font-bold text-white">QUIC</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2">QUIC Protocol</h3>
-                    <p class="text-gray-300">Next-gen transport</p>
-                </div>
-                
-                <div class="group text-center p-8 rounded-3xl bg-white/5 hover:bg-white/10 transition-all duration-500 backdrop-blur-sm border border-white/10 hover:border-white/20 scroll-reveal">
-                    <div class="w-24 h-24 bg-gradient-to-br from-ios-green to-ios-pink rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                        <span class="text-2xl font-bold text-white">mDNS</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2">mDNS</h3>
-                    <p class="text-gray-300">Zero-config discovery</p>
-                </div>
-                
-                <div class="group text-center p-8 rounded-3xl bg-white/5 hover:bg-white/10 transition-all duration-500 backdrop-blur-sm border border-white/10 hover:border-white/20 scroll-reveal">
-                    <div class="w-24 h-24 bg-gradient-to-br from-ios-orange to-red-500 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                        <span class="text-2xl font-bold text-white">TLS</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2">TLS 1.3</h3>
-                    <p class="text-gray-300">Military-grade encryption</p>
-                </div>
-            </div>
-            
-            <!-- Additional tech highlights -->
-            <div class="mt-20 grid md:grid-cols-3 gap-8">
-                <div class="text-center scroll-reveal">
-                    <div class="w-16 h-16 bg-gradient-to-br from-ios-purple to-ios-pink rounded-2xl flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                        </svg>
-                    </div>
-                    <h4 class="text-lg font-semibold text-white mb-2">Async/Await</h4>
-                    <p class="text-gray-300">Non-blocking I/O for maximum performance</p>
-                </div>
-                <div class="text-center scroll-reveal">
-                    <div class="w-16 h-16 bg-gradient-to-br from-ios-green to-apple-blue rounded-2xl flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
-                        </svg>
-                    </div>
-                    <h4 class="text-lg font-semibold text-white mb-2">Certificate Auth</h4>
-                    <p class="text-gray-300">PKI-based device authentication</p>
-                </div>
-                <div class="text-center scroll-reveal">
-                    <div class="w-16 h-16 bg-gradient-to-br from-ios-orange to-ios-pink rounded-2xl flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-                        </svg>
-                    </div>
-                    <h4 class="text-lg font-semibold text-white mb-2">Drag & Drop</h4>
-                    <p class="text-gray-300">Native file system integration</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="py-32 bg-gradient-to-br from-apple-blue via-ios-purple to-ios-pink relative overflow-hidden">
-        <div class="absolute inset-0 bg-black/10"></div>
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-6xl font-bold text-white mb-8 scroll-reveal">Ready to Share?</h2>
-            <p class="text-2xl text-white/90 mb-12 max-w-3xl mx-auto scroll-reveal">
-                Download AirShare and start sharing files instantly with anyone on your network. 
-                <span class="font-semibold">Free, secure, and private.</span>
+    <!-- Hero -->
+    <section class="relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-br from-apple-blue via-ios.purple to-ios.pink opacity-[.22] dark:opacity-[.18]"></div>
+      <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="py-24 lg:py-32 grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h1 class="text-5xl md:text-6xl font-black tracking-tight leading-[1.05] text-apple-ink/95 dark:text-white animate-fadeUp">
+              Share files instantly —
+              <span class="bg-gradient-to-r from-apple-blue via-ios.purple to-ios.pink bg-clip-text text-transparent">privately</span>
+            </h1>
+            <p class="mt-6 text-xl md:text-2xl opacity-80 max-w-prose animate-fadeUp" style="animation-delay:.1s">
+              AirDrop‑style transfers over your LAN using QUIC + mDNS. No accounts. No cloud. <span class="font-semibold">Unlimited file size</span> on local network.
             </p>
-            
-            <!-- Download buttons with platform icons -->
-            <div class="flex flex-col sm:flex-row gap-6 justify-center mb-16 scroll-reveal">
-                <button class="group bg-white text-apple-blue px-10 py-5 rounded-3xl font-semibold hover:bg-gray-100 transition-all duration-300 shadow-2xl hover:shadow-3xl hover:scale-105 flex items-center justify-center space-x-3">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-                    </svg>
-                    <span>Download for macOS</span>
-                </button>
-                <button class="group bg-white text-apple-blue px-10 py-5 rounded-3xl font-semibold hover:bg-gray-100 transition-all duration-300 shadow-2xl hover:shadow-3xl hover:scale-105 flex items-center justify-center space-x-3">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M3 12V6.75l6-1.32v6.48L3 12zm17-9v8.75l-10 .15V5.21L20 3zM3 13l6 .09v6.81l-6-1.15V13zm17 .25V22l-10-1.91V13.1l10 .15z"/>
-                    </svg>
-                    <span>Download for Windows</span>
-                </button>
-                <button class="group bg-white text-apple-blue px-10 py-5 rounded-3xl font-semibold hover:bg-gray-100 transition-all duration-300 shadow-2xl hover:shadow-3xl hover:scale-105 flex items-center justify-center space-x-3">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12.504 0C5.582 0 0 5.582 0 12.504s5.582 12.504 12.504 12.504 12.504-5.582 12.504-12.504S19.426 0 12.504 0zM12 19.5c-4.136 0-7.5-3.364-7.5-7.5S7.864 4.5 12 4.5s7.5 3.364 7.5 7.5-3.364 7.5-7.5 7.5z"/>
-                    </svg>
-                    <span>Download for Linux</span>
-                </button>
+            <div class="mt-10 flex flex-wrap gap-4 animate-fadeUp" style="animation-delay:.2s">
+              <a href="#download" class="inline-flex items-center gap-3 rounded-2xl bg-apple-blue px-6 py-3 text-white shadow-lg hover:shadow-xl transition">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 19h14"/></svg>
+                Download for macOS / Windows / Linux
+              </a>
+              <a href="https://github.com/jaksatomovic/airshare" class="inline-flex items-center gap-3 rounded-2xl border border-black/10 dark:border-white/20 px-6 py-3 hover:bg-black/5 dark:hover:bg-white/5 transition">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.73.5.75 5.48.75 11.76c0 5 3.25 9.24 7.76 10.74.57.1.79-.25.79-.56 0-.27-.01-1.16-.02-2.1-3.16.69-3.83-1.34-3.83-1.34-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.02 1.75 2.66 1.25 3.31.95.1-.76.4-1.25.72-1.54-2.52-.29-5.17-1.26-5.17-5.62 0-1.24.44-2.25 1.16-3.04-.12-.29-.5-1.44.11-3.01 0 0 .95-.3 3.14 1.17A10.9 10.9 0 0 1 12 6.87c.96 0 1.92.13 2.82.38 2.18-1.48 3.13-1.17 3.13-1.17.62 1.57.23 2.72.11 3.01.73.79 1.16 1.8 1.16 3.04 0 4.37-2.65 5.33-5.18 5.62.41.35.77 1.04.77 2.1 0 1.52-.01 2.75-.01 3.12 0 .32.21.67.8.56 4.5-1.5 7.74-5.74 7.74-10.74C23.25 5.48 18.27.5 12 .5Z"/></svg>
+                Star on GitHub
+              </a>
             </div>
-            
-            <!-- Additional CTA buttons -->
-            <div class="flex flex-col sm:flex-row gap-4 justify-center scroll-reveal">
-                <button class="border-2 border-white text-white px-8 py-4 rounded-2xl font-semibold hover:bg-white/10 transition-all duration-300 backdrop-blur-sm">
-                    View on GitHub
-                </button>
-                <button class="border-2 border-white text-white px-8 py-4 rounded-2xl font-semibold hover:bg-white/10 transition-all duration-300 backdrop-blur-sm">
-                    Read Documentation
-                </button>
+            <ul class="mt-8 flex flex-wrap gap-4 text-sm opacity-70 animate-fadeUp" style="animation-delay:.3s">
+              <li class="inline-flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-ios.green"></span>E2E encrypted</li>
+              <li class="inline-flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-apple-blue"></span>Automatic discovery</li>
+              <li class="inline-flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-ios.purple"></span>No size limits on LAN</li>
+            </ul>
+          </div>
+
+          <!-- Radar mockup -->
+          <div class="relative lg:justify-self-end">
+            <div class="relative w-[28rem] h-[28rem] sm:w-[32rem] sm:h-[32rem] mx-auto rounded-[2rem] glass shadow-glass border border-black/5 dark:border-white/10 p-8">
+              <div class="relative w-full h-full rounded-full bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-[#12131A] dark:to-[#101114] border-4 border-white/60 dark:border-white/10 overflow-hidden">
+                <!-- concentric rings -->
+                <div class="absolute inset-8 rounded-full border border-black/10 dark:border-white/10"></div>
+                <div class="absolute inset-16 rounded-full border border-black/10 dark:border-white/10"></div>
+                <div class="absolute inset-24 rounded-full border border-black/10 dark:border-white/10"></div>
+
+                <!-- sweep -->
+                <div class="absolute inset-0 grid place-items-center">
+                  <div class="relative w-[85%] h-[85%]">
+                    <div class="absolute left-1/2 top-1/2 h-[2px] w-1/2 origin-left -translate-y-1/2 bg-gradient-to-r from-transparent via-apple-blue to-transparent animate-sweep"></div>
+                  </div>
+                </div>
+
+                <!-- pulse from center -->
+                <div class="absolute inset-0 rounded-full border-4 border-apple-blue/40 animate-ring"></div>
+
+                <!-- center -->
+                <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-gradient-to-br from-apple-blue to-ios.purple shadow"></div>
+
+                <!-- device dots -->
+                <div class="device absolute top-[20%] left-[28%] w-9 h-9 rounded-full text-white text-[11px] font-bold grid place-items-center bg-gradient-to-br from-ios.green to-ios.pink shadow-lg animate-floaty">AR</div>
+                <div class="device absolute top-[35%] right-[18%] w-9 h-9 rounded-full text-white text-[11px] font-bold grid place-items-center bg-gradient-to-br from-ios.purple to-ios.orange shadow-lg animate-floaty [animation-delay:.4s]">TR</div>
+                <div class="device absolute bottom-[18%] left-[35%] w-9 h-9 rounded-full text-white text-[11px] font-bold grid place-items-center bg-gradient-to-br from-ios.orange to-apple-blue shadow-lg animate-floaty [animation-delay:.8s]">DI</div>
+              </div>
             </div>
+            <p class="mt-4 text-center text-sm opacity-60">AirDrop‑inspired radar UI • demo</p>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-4 gap-8">
-                <div>
-                    <div class="flex items-center space-x-3 mb-4">
-                        <div class="w-8 h-8 bg-apple-blue rounded-lg flex items-center justify-center">
-                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
-                            </svg>
-                        </div>
-                        <span class="text-xl font-semibold">AirShare</span>
-                    </div>
-                    <p class="text-gray-400">Instant file sharing for your local network.</p>
-                </div>
-                
-                <div>
-                    <h3 class="font-semibold mb-4">Product</h3>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-white transition-colors">Features</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Download</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Documentation</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h3 class="font-semibold mb-4">Community</h3>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="https://github.com/jaksatomovic/airshare" class="hover:text-white transition-colors">GitHub</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Issues</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Discussions</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h3 class="font-semibold mb-4">Legal</h3>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-white transition-colors">Privacy</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Terms</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">License</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2024 AirShare. Made with ❤️ for seamless file sharing.</p>
-            </div>
+    <!-- Features -->
+    <section id="features" class="py-24 bg-gradient-to-b from-white to-apple-gray/60 dark:from-[#0B0B0D] dark:to-[#0E0E11]">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto">
+          <h2 class="text-4xl md:text-5xl font-black tracking-tight">Why AirShare?</h2>
+          <p class="mt-4 text-lg opacity-70">Built on modern transport (QUIC) with end‑to‑end security. Zero setup. Works offline.</p>
         </div>
+        <div class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <!-- Card -->
+          <article class="group rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-8 shadow-glass hover:shadow-xl transition">
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-apple-blue to-ios.purple grid place-items-center text-white shadow mb-6 group-hover:scale-105 transition">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            </div>
+            <h3 class="text-xl font-bold">Lightning Fast</h3>
+            <p class="mt-2 opacity-70">QUIC multiplexing with congestion control. Parallel streams for blazing transfers.</p>
+          </article>
+
+          <article class="group rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-8 shadow-glass hover:shadow-xl transition">
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-ios.green to-ios.pink grid place-items-center text-white shadow mb-6 group-hover:scale-105 transition">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15v2m-6 4h12a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2zm10-10V7a4 4 0 0 0-8 0v4h8z"/></svg>
+            </div>
+            <h3 class="text-xl font-bold">Private & Secure</h3>
+            <p class="mt-2 opacity-70">TLS 1.3, certificate auth. Your files never leave your network.</p>
+          </article>
+
+          <article class="group rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-8 shadow-glass hover:shadow-xl transition">
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-ios.orange to-apple-blue grid place-items-center text-white shadow mb-6 group-hover:scale-105 transition">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.318 6.318a4.5 4.5 0 0 0 0 6.364L12 20.364l7.682-7.682a4.5 4.5 0 0 0-6.364-6.364L12 7.636 10.682 6.318a4.5 4.5 0 0 0-6.364 0z"/></svg>
+            </div>
+            <h3 class="text-xl font-bold">Zero Configuration</h3>
+            <p class="mt-2 opacity-70">Automatic device discovery via mDNS. Drag & drop to send.</p>
+          </article>
+
+          <article class="group rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-8 shadow-glass hover:shadow-xl transition">
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-ios.purple to-ios.pink grid place-items-center text-white shadow mb-6 group-hover:scale-105 transition">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m9 12 2 2 4-4"/></svg>
+            </div>
+            <h3 class="text-xl font-bold">Cross‑Platform</h3>
+            <p class="mt-2 opacity-70">macOS, Windows, Linux. Seamless on the same LAN.</p>
+          </article>
+
+          <article class="group rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-8 shadow-glass hover:shadow-xl transition">
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-apple-blue to-ios.green grid place-items-center text-white shadow mb-6 group-hover:scale-105 transition">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8"/></svg>
+            </div>
+            <h3 class="text-xl font-bold">No Internet Needed</h3>
+            <p class="mt-2 opacity-70">Pure P2P on your local network. Works offline.</p>
+          </article>
+
+          <article class="group rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-8 shadow-glass hover:shadow-xl transition">
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-ios.pink to-ios.orange grid place-items-center text-white shadow mb-6 group-hover:scale-105 transition">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 7h6M9 12h6M9 17h6"/></svg>
+            </div>
+            <h3 class="text-xl font-bold">Unlimited File Size</h3>
+            <p class="mt-2 opacity-70">No artificial caps on LAN. Streamed in chunks with back‑pressure.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Demo block (Mac window mock) -->
+    <section class="py-24">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="rounded-3xl border border-black/5 dark:border-white/10 shadow-glass overflow-hidden bg-white/80 dark:bg-white/[.04] backdrop-blur">
+          <div class="flex items-center gap-2 px-4 h-10 border-b border-black/5 dark:border-white/10 bg-white/70 dark:bg-white/5">
+            <span class="h-3 w-3 rounded-full bg-[#ff5f57]"></span>
+            <span class="h-3 w-3 rounded-full bg-[#febc2e]"></span>
+            <span class="h-3 w-3 rounded-full bg-[#28c840]"></span>
+            <span class="ml-3 text-sm opacity-60">AirShare Demo</span>
+          </div>
+          <div class="p-8 lg:p-10 grid lg:grid-cols-2 gap-10 items-center">
+            <div>
+              <h3 class="text-2xl font-bold">Beautiful Radar Interface</h3>
+              <p class="mt-3 opacity-70">Drag a file onto a device. Confirm. Done. The desktop app mirrors this behavior with native drag‑and‑drop and animations.</p>
+              <ul class="mt-6 space-y-2 text-sm">
+                <li class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-apple-blue"></span> Hover glow & armed target during drag</li>
+                <li class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-ios.purple"></span> Poisson‑disc layout for even spacing</li>
+                <li class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-ios.green"></span> Completion ACK from receiver</li>
+              </ul>
+            </div>
+            <!-- inline SVG radar (crisp) -->
+            <div class="mx-auto w-full max-w-md">
+              <svg viewBox="0 0 400 400" class="w-full drop-shadow">
+                <defs>
+                  <radialGradient id="bg" cx="50%" cy="50%">
+                    <stop offset="0%" stop-color="#e9f2ff"/>
+                    <stop offset="100%" stop-color="#dbeafe"/>
+                  </radialGradient>
+                  <linearGradient id="sweep" x1="0%" x2="100%">
+                    <stop offset="0%" stop-color="transparent"/>
+                    <stop offset="50%" stop-color="#0A84FF"/>
+                    <stop offset="100%" stop-color="transparent"/>
+                  </linearGradient>
+                </defs>
+                <g>
+                  <circle cx="200" cy="200" r="180" fill="url(#bg)" stroke="#ffffff" stroke-opacity="0.6" stroke-width="6"/>
+                  <circle cx="200" cy="200" r="140" fill="none" stroke="#9ca3af55"/>
+                  <circle cx="200" cy="200" r="100" fill="none" stroke="#9ca3af55"/>
+                  <circle cx="200" cy="200" r="60" fill="none" stroke="#9ca3af55"/>
+                  <!-- sweep arm -->
+                  <g style="transform-origin:200px 200px" class="animate-sweep">
+                    <rect x="200" y="199" width="160" height="2" fill="url(#sweep)" />
+                  </g>
+                  <!-- center -->
+                  <circle cx="200" cy="200" r="7" fill="#0A84FF"/>
+                  <!-- devices -->
+                  <g>
+                    <circle cx="120" cy="120" r="16" fill="#34C759"/>
+                    <text x="120" y="124" text-anchor="middle" font-size="10" fill="#fff" font-weight="700">AR</text>
+                    <circle cx="290" cy="150" r="16" fill="#FF2D55"/>
+                    <text x="290" y="154" text-anchor="middle" font-size="10" fill="#fff" font-weight="700">TR</text>
+                    <circle cx="160" cy="290" r="16" fill="#5856D6"/>
+                    <text x="160" y="294" text-anchor="middle" font-size="10" fill="#fff" font-weight="700">DI</text>
+                  </g>
+                </g>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tech -->
+    <section id="tech" class="py-24 bg-gradient-to-b from-apple-gray to-white dark:from-[#0F1014] dark:to-[#0B0B0D]">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-4xl md:text-5xl font-black tracking-tight">Modern stack</h2>
+        <p class="mt-4 opacity-70">Python • QUIC • mDNS • TLS 1.3 • Async I/O</p>
+        <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div class="rounded-3xl p-8 border border-black/5 dark:border-white/10 bg-white/80 dark:bg-white/5 backdrop-blur shadow-glass">Python</div>
+          <div class="rounded-3xl p-8 border border-black/5 dark:border-white/10 bg-white/80 dark:bg-white/5 backdrop-blur shadow-glass">QUIC</div>
+          <div class="rounded-3xl p-8 border border-black/5 dark:border-white/10 bg-white/80 dark:bg-white/5 backdrop-blur shadow-glass">mDNS</div>
+          <div class="rounded-3xl p-8 border border-black/5 dark:border-white/10 bg-white/80 dark:bg-white/5 backdrop-blur shadow-glass">TLS 1.3</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="download" class="py-24 relative overflow-hidden">
+      <div class="absolute inset-0 -z-10 bg-gradient-to-tr from-apple-blue/10 via-ios.purple/10 to-ios.pink/10"></div>
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-4xl md:text-5xl font-black tracking-tight">Ready to share?</h2>
+        <p class="mt-4 text-lg opacity-70 max-w-2xl mx-auto">Download AirShare and start sending files instantly on your LAN.</p>
+        <div class="mt-10 flex flex-wrap gap-4 justify-center">
+          <a class="inline-flex items-center gap-3 rounded-2xl bg-white text-apple-blue px-6 py-3 shadow hover:shadow-lg transition" href="#">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            macOS
+          </a>
+          <a class="inline-flex items-center gap-3 rounded-2xl bg-white text-apple-blue px-6 py-3 shadow hover:shadow-lg transition" href="#">Windows</a>
+          <a class="inline-flex items-center gap-3 rounded-2xl bg-white text-apple-blue px-6 py-3 shadow hover:shadow-lg transition" href="#">Linux</a>
+          <a class="inline-flex items-center gap-3 rounded-2xl border border-black/10 dark:border-white/20 px-6 py-3 hover:bg-black/5 dark:hover:bg-white/5 transition" href="https://github.com/jaksatomovic/airshare">GitHub</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="py-10 border-t border-black/5 dark:border-white/10">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center text-sm opacity-70">
+        © <span id="year"></span> AirShare. Made with ❤ for seamless local sharing.
+      </div>
     </footer>
 
-    <style>
-        .python-gradient {
-            background: linear-gradient(45deg, #3776ab, #ffd43b);
-        }
-    </style>
-    
     <script>
-        // Scroll reveal animation
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('revealed');
-                }
-            });
-        }, observerOptions);
-
-        // Observe all scroll-reveal elements
-        document.querySelectorAll('.scroll-reveal').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Add parallax effect to hero section
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.ios-gradient');
-            if (hero) {
-                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-            }
-        });
-
-        // Add floating animation to device dots
-        const deviceDots = document.querySelectorAll('.device-dot');
-        deviceDots.forEach((dot, index) => {
-            dot.style.animationDelay = `${index * 0.5}s`;
-        });
-
-        // Add hover effects to feature cards
-        const featureCards = document.querySelectorAll('.group');
-        featureCards.forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                card.style.transform = 'translateY(-8px) scale(1.02)';
-            });
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'translateY(0) scale(1)';
-            });
-        });
+      document.getElementById('year').textContent = new Date().getFullYear();
+      // basic reveal on scroll
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('animate-fadeUp'); io.unobserve(e.target);} });
+      }, { threshold:.12 });
+      document.querySelectorAll('#features article, section[id] .scroll').forEach(el=>io.observe(el));
     </script>
-</body>
+  </body>
 </html>
