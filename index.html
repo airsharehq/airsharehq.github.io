@@ -104,8 +104,12 @@
           <!-- Hero download (prikaži SAMO detektirani OS; link otkriva ostale) -->
           <div class="mt-6 md:mt-10 flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-4 animate-fadeUp" style="animation-delay:.2s">
             <a id="btn-mac"   href="#mac"   class="download-btn inline-flex items-center justify-center gap-3 rounded-2xl bg-white text-apple-blue px-6 py-3 shadow-glass hover:shadow-glow transition w-full sm:w-auto"><span> Download for macOS</span></a>
-            <a id="btn-win"   href="#win"   class="download-btn inline-flex items-center justify-center gap-3 rounded-2xl bg-white text-apple-blue px-6 py-3 shadow-glass hover:shadow-glow transition w-full sm:w-auto"><span>⊞ Download for Windows</span></a>
-            <a id="btn-linux" href="#linux" class="download-btn inline-flex items-center justify-center gap-3 rounded-2xl bg-white text-apple-blue px-6 py-3 shadow-glass hover:shadow-glow transition w-full sm:w-auto"><span>⬢ Download for Linux</span></a>
+            <a id="btn-win"   href="#win"   class="download-btn inline-flex items-center justify-center gap-3 rounded-2xl bg-white text-apple-blue px-6 py-3 shadow-glass hover:shadow-glow transition w-full sm:w-auto">
+              <img src="https://img.icons8.com/color/24/windows-10.png" alt="Windows logo" class="h-5 w-5" loading="lazy" width="20" height="20"/><span>Download for Windows</span>
+            </a>
+            <a id="btn-linux" href="#linux" class="download-btn inline-flex items-center justify-center gap-3 rounded-2xl bg-white text-apple-blue px-6 py-3 shadow-glass hover:shadow-glow transition w-full sm:w-auto">
+              <img src="https://img.icons8.com/color/24/linux--v1.png" alt="Linux logo" class="h-5 w-5" loading="lazy" width="20" height="20"/><span>Download for Linux</span>
+            </a>
           </div>
 
           <!-- bullets -->
@@ -137,7 +141,7 @@
 
               <!-- devices -->
               <div class="device absolute top-[20%] left-[28%] w-8 h-8 md:w-9 md:h-9 rounded-2xl text-white text-[10px] md:text-[11px] font-bold grid place-items-center badge badge-grad shadow animate-floaty">AR</div>
-              <div class="device absolute top-[35%] right-[18%] w-8 h-8 md:w-9 md:h-9 rounded-2xl text-white text-[10px] md:text-[11px] font-bold grid place-items-center badge badge-grad-4 shadow animate-floaty" style="animation-delay:.4s">TR</div>
+              <div class="device absolute top-[35%] right-[18%] w-8 h-8 md:w-9 md:h-9 rounded-2xl text-[10px] md:text-[11px] font-bold grid place-items-center badge badge-grad-4 shadow animate-floaty" style="animation-delay:.4s">TR</div>
               <div class="device absolute bottom-[18%] left-[35%] w-8 h-8 md:w-9 md:h-9 rounded-2xl text-[10px] md:text-[11px] font-bold grid place-items-center badge badge-grad-2 shadow animate-floaty" style="animation-delay:.8s">DI</div>
             </div>
           </div>
@@ -156,7 +160,8 @@
       </div>
 
       <div class="mt-10 md:mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        <!-- 8 feature cards (unchanged) -->
+        <!-- (feature cards unchanged) -->
+        <!-- ... (izostavljeno radi kratkoće; identično tvom izvorniku) ... -->
         <article class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-6 md:p-8 shadow-soft">
           <div class="badge badge-grad w-12 h-12 grid place-items-center mb-4">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0A84FF" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
@@ -329,9 +334,13 @@
       <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight">Ready to share?</h2>
       <p class="mt-3 text-lg opacity-70 max-w-2xl mx-auto">Download AirShare and start sending files instantly on your LAN.</p>
       <div class="mt-10 flex flex-wrap gap-4 justify-center">
-        <a id="dl-mac"   class="dl inline-flex items-center gap-3 rounded-2xl bg-white text-apple-blue px-6 py-3 shadow-glass hover:shadow-glow transition" href="#mac">macOS</a>
-        <a id="dl-win"   class="dl inline-flex items-center gap-3 rounded-2xl bg-white text-apple-blue px-6 py-3 shadow-glass hover:shadow-glow transition" href="#win">Windows</a>
-        <a id="dl-linux" class="dl inline-flex items-center gap-3 rounded-2xl bg-white text-apple-blue px-6 py-3 shadow-glass hover:shadow-glow transition" href="#linux">Linux</a>
+        <a id="dl-mac"   class="dl inline-flex items-center gap-3 rounded-2xl bg-white text-apple-blue px-6 py-3 shadow-glass hover:shadow-glow transition" href="#mac"> macOS</a>
+        <a id="dl-win"   class="dl inline-flex items-center gap-3 rounded-2xl bg-white text-apple-blue px-6 py-3 shadow-glass hover:shadow-glow transition" href="#win">
+          <img src="https://img.icons8.com/color/24/windows-10.png" alt="Windows logo" class="h-5 w-5" loading="lazy" width="20" height="20"/>Windows
+        </a>
+        <a id="dl-linux" class="dl inline-flex items-center gap-3 rounded-2xl bg-white text-apple-blue px-6 py-3 shadow-glass hover:shadow-glow transition" href="#linux">
+          <img src="https://img.icons8.com/color/24/linux--v1.png" alt="Linux logo" class="h-5 w-5" loading="lazy" width="20" height="20"/>Linux
+        </a>
         <a class="inline-flex items-center gap-3 rounded-2xl border border-black/10 dark:border-white/20 px-6 py-3 hover:bg-black/5 dark:hover:bg-white/5 transition" href="https://github.com/airsharehq/airshare-downloads">GitHub</a>
       </div>
     </div>
@@ -343,6 +352,10 @@
       © <span id="year"></span> AirShare. Made with ❤ for seamless local sharing.
     </div>
     <p class="text-center text-xs opacity-50 mt-2">Downloads auto-filled from latest GitHub Release.</p>
+    <!-- Icons8 attribution (required for free use) -->
+    <p class="text-center text-[11px] opacity-60 mt-1">
+      Icons by <a class="underline hover:no-underline" href="https://icons8.com" rel="noopener" target="_blank">Icons8</a>.
+    </p>
   </footer>
 
   <script>
