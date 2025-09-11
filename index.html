@@ -138,7 +138,7 @@
               <!-- devices -->
               <div class="device absolute top-[20%] left-[28%] w-8 h-8 md:w-9 md:h-9 rounded-2xl text-white text-[10px] md:text-[11px] font-bold grid place-items-center badge badge-grad shadow animate-floaty">AR</div>
               <div class="device absolute top-[35%] right-[18%] w-8 h-8 md:w-9 md:h-9 rounded-2xl text-white text-[10px] md:text-[11px] font-bold grid place-items-center badge badge-grad-4 shadow animate-floaty" style="animation-delay:.4s">TR</div>
-              <div class="device absolute bottom-[18%] left-[35%] w-8 h-8 md:w-9 md:h-9 rounded-2xl text-white text-[10px] md:text-[11px] font-bold grid place-items-center badge badge-grad-2 shadow animate-floaty" style="animation-delay:.8s">DI</div>
+              <div class="device absolute bottom-[18%] left-[35%] w-8 h-8 md:w-9 md:h-9 rounded-2xl text-[10px] md:text-[11px] font-bold grid place-items-center badge badge-grad-2 shadow animate-floaty" style="animation-delay:.8s">DI</div>
             </div>
           </div>
           <p class="mt-3 md:mt-4 text-center text-xs md:text-sm opacity-60">AirDrop-inspired radar UI</p>
@@ -147,7 +147,7 @@
     </div>
   </section>
 
-  <!-- FEATURES (kratko, ne referira planove) -->
+  <!-- FEATURES -->
   <section id="features" class="py-20 md:py-24 bg-gradient-to-b from-white to-apple-gray/60 dark:from-[#0B0B0D] dark:to-[#0E0E11]">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-3xl mx-auto">
@@ -156,6 +156,7 @@
       </div>
 
       <div class="mt-10 md:mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <!-- 8 feature cards (unchanged) -->
         <article class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-6 md:p-8 shadow-soft">
           <div class="badge badge-grad w-12 h-12 grid place-items-center mb-4">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0A84FF" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
@@ -265,7 +266,7 @@
           <a href="#download" class="mt-8 inline-flex items-center justify-center w-full rounded-2xl bg-apple-blue text-white px-4 py-3 shadow hover:shadow-lg transition">Upgrade</a>
         </div>
 
-        <!-- Teams (coming soon) -->
+        <!-- Teams -->
         <div class="rounded-3xl bg-white/70 dark:bg-white/[.07] border border-dashed border-black/10 dark:border-white/20 p-8 flex flex-col">
           <div class="inline-block self-start rounded-full bg-black/5 dark:bg-white/10 text-xs px-2 py-1 mb-3">Coming soon</div>
           <div class="flex-1">
@@ -331,7 +332,7 @@
         <a id="dl-mac"   class="dl inline-flex items-center gap-3 rounded-2xl bg-white text-apple-blue px-6 py-3 shadow-glass hover:shadow-glow transition" href="#mac">macOS</a>
         <a id="dl-win"   class="dl inline-flex items-center gap-3 rounded-2xl bg-white text-apple-blue px-6 py-3 shadow-glass hover:shadow-glow transition" href="#win">Windows</a>
         <a id="dl-linux" class="dl inline-flex items-center gap-3 rounded-2xl bg-white text-apple-blue px-6 py-3 shadow-glass hover:shadow-glow transition" href="#linux">Linux</a>
-        <a class="inline-flex items-center gap-3 rounded-2xl border border-black/10 dark:border-white/20 px-6 py-3 hover:bg-black/5 dark:hover:bg-white/5 transition" href="https://github.com/jaksatomovic/airshare">GitHub</a>
+        <a class="inline-flex items-center gap-3 rounded-2xl border border-black/10 dark:border-white/20 px-6 py-3 hover:bg-black/5 dark:hover:bg-white/5 transition" href="https://github.com/airsharehq/airshare-downloads">GitHub</a>
       </div>
     </div>
   </section>
@@ -341,7 +342,7 @@
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center text-sm opacity-70">
       © <span id="year"></span> AirShare. Made with ❤ for seamless local sharing.
     </div>
-    <p class="text-center text-xs opacity-50 mt-2">Placeholders: replace #mac/#win/#linux with real GitHub Releases links.</p>
+    <p class="text-center text-xs opacity-50 mt-2">Downloads auto-filled from latest GitHub Release.</p>
   </footer>
 
   <script>
@@ -358,14 +359,12 @@
       const map = { mac:['btn-mac','dl-mac'], win:['btn-win','dl-win'], linux:['btn-linux','dl-linux'] };
       const heroAll = ['btn-mac','btn-win','btn-linux'];
 
-      // sakrij sve u hero pa prikaži samo detektirani, neovisno o rezoluciji
       heroAll.forEach(id => document.getElementById(id)?.classList.add('hidden'));
       (map[os]||[]).slice(0,1).forEach(id => {
         const el = document.getElementById(id);
         if (el){ el.classList.remove('hidden'); el.classList.add('highlight'); }
       });
 
-      // “Other platforms” link otkriva ostale
       const showAll = document.getElementById('show-all-downloads');
       if (showAll) {
         showAll.classList.remove('hidden');
@@ -376,9 +375,70 @@
         });
       }
 
-      // CTA: uvijek prikaži sve, samo highlightaj detektirani
       ['dl-mac','dl-win','dl-linux'].forEach(id => document.getElementById(id)?.classList.remove('hidden'));
       const cta = map[os]?.[1]; if (cta) document.getElementById(cta)?.classList.add('highlight');
+    })();
+
+    // === AUTOFILL LATEST RELEASE DOWNLOAD LINKS ===
+    (async function setLatestDownloads(){
+      const owner = 'airsharehq';
+      const repo  = 'airshare-downloads';
+
+      const pickers = {
+        mac:   (a) => /\.dmg$/i.test(a.name) || /\.pkg$/i.test(a.name),
+        win:   (a) => /\.exe$/i.test(a.name) || /\.msi$/i.test(a.name),
+        linux: (a) => /\.AppImage$/i.test(a.name) || /\.tar\.gz$/i.test(a.name) || /\.deb$/i.test(a.name) || /\.rpm$/i.test(a.name),
+        sha:   (a) => /^SHA256SUMS.*\.txt$/i.test(a.name)
+      };
+
+      // Fallback: stranica latest releasa (korisnik ručno izabere)
+      const fallback = `https://github.com/${owner}/${repo}/releases/latest`;
+
+      function setHref(os, url, versionText){
+        const ids = os === 'mac' ? ['btn-mac','dl-mac']
+                 : os === 'win' ? ['btn-win','dl-win']
+                 :                ['btn-linux','dl-linux'];
+        ids.forEach(id => {
+          const el = document.getElementById(id);
+          if (el) {
+            el.href = url;
+            el.setAttribute('rel','nofollow noopener');
+            el.setAttribute('download',''); // hint browseru da skine
+            if (versionText) el.title = `AirShare ${versionText}`;
+          }
+        });
+      }
+
+      try {
+        const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/releases/latest`, {
+          headers: { 'Accept':'application/vnd.github+json' }
+        });
+        if (!res.ok) throw new Error('GitHub API error: ' + res.status);
+        const rel = await res.json();
+        const assets = rel.assets || [];
+        const versionText = rel.tag_name || '';
+
+        const mac   = assets.find(pickers.mac);
+        const win   = assets.find(pickers.win);
+        const linux = assets.find(pickers.linux);
+        const sha   = assets.find(pickers.sha);
+
+        setHref('mac',   mac?.browser_download_url   || fallback, versionText);
+        setHref('win',   win?.browser_download_url   || fallback, versionText);
+        setHref('linux', linux?.browser_download_url || fallback, versionText);
+
+        if (sha?.browser_download_url) {
+          const p = document.createElement('p');
+          p.className = 'mt-3 text-xs opacity-60';
+          p.innerHTML = `Checksums: <a class="underline hover:no-underline" rel="nofollow noopener" href="${sha.browser_download_url}">SHA256SUMS</a>`;
+          document.querySelector('#download .mx-auto')?.appendChild(p);
+        }
+      } catch (e) {
+        console.warn(e);
+        setHref('mac',   fallback);
+        setHref('win',   fallback);
+        setHref('linux', fallback);
+      }
     })();
   </script>
 </body>
