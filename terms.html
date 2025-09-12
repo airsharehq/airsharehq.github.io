@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Terms of Service — AirShare</title>
+  <meta name="robots" content="index,follow" />
+  <meta name="description" content="Terms of Service for AirShare." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { apple: { blue: '#0A84FF', gray: '#F2F2F7', ink: '#1C1C1E' }, ios: { purple: '#5856D6', pink: '#FF2D55', orange: '#FF9500', green: '#34C759' } },
+          fontFamily: { sf: ['-apple-system','BlinkMacSystemFont','SF Pro Display','SF Pro Text','Inter','system-ui','Segoe UI','Roboto','Helvetica Neue','Arial','sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    @media (prefers-color-scheme: dark) { body { background:#0B0B0D; color: rgba(255,255,255,.9); } }
+  </style>
+</head>
+<body class="font-sf text-apple-ink/90">
+  <header class="border-b border-black/5 dark:border-white/10 bg-white/70 dark:bg-white/[.06] backdrop-blur">
+    <div class="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3">
+        <div class="h-8 w-8 rounded-xl bg-apple-blue grid place-items-center text-white shadow-md">AS</div>
+        <span class="text-[17px] font-semibold tracking-[-0.01em]">AirShare</span>
+      </a>
+      <nav class="text-sm">
+        <a href="/terms.html" class="mr-4 opacity-80 hover:opacity-100">Terms</a>
+        <a href="/privacy.html" class="mr-4 opacity-80 hover:opacity-100">Privacy</a>
+        <a href="/refunds.html" class="opacity-80 hover:opacity-100">Refunds</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-4 py-10 md:py-16">
+    <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">Terms of Service</h1>
+    <div class="mt-6 prose prose-neutral max-w-none prose-a:text-apple-blue">
+      
+<p>These Terms of Service (“Terms”) govern your access to and use of the AirShare application, website and related services (collectively, “Services”). By installing or using AirShare you agree to these Terms.</p>
+
+<h2>1. Who we are</h2>
+<p>“AirShare”, “we”, “us” or “our” refers to the AirShare project published at <a href="https://airsharehq.github.io">airsharehq.github.io</a>. Contact: <a href="mailto:info@trayairshare.com">info@trayairshare.com</a>.</p>
+
+<h2>2. License & ownership</h2>
+<p>Subject to these Terms, we grant you a limited, non-exclusive, non-transferable, revocable license to install and use the AirShare software on devices you own or control. We (and/or our licensors) retain all rights, title and interest in the software and the content on our site.</p>
+
+<h2>3. Acceptable use</h2>
+<ul>
+  <li>You will not use the Services to infringe intellectual property rights or violate applicable law.</li>
+  <li>You will not reverse engineer, decompile or attempt to access source code except where permitted by law.</li>
+  <li>You will not use the Services to transmit malware, spam, or harmful content.</li>
+</ul>
+
+<h2>4. Accounts & payments</h2>
+<p>Where paid plans are offered, billing is handled by Paddle. You authorize recurring charges for subscriptions until you cancel. Pricing and features are listed on the site and may change prospectively. Taxes may apply.</p>
+
+<h2>5. Peer-to-peer & relays</h2>
+<p>AirShare primarily operates over your local network using peer-to-peer connections. Optional encrypted relay services may be used to connect devices outside your LAN. You are responsible for the content you transfer.</p>
+
+<h2>6. Third-party services</h2>
+<p>AirShare may rely on third-party services (e.g., GitHub Releases for downloads, Paddle for billing). Their terms and privacy practices apply when you interact with them.</p>
+
+<h2>7. Disclaimers</h2>
+<p>THE SERVICES ARE PROVIDED “AS IS” AND “AS AVAILABLE” WITHOUT WARRANTIES OF ANY KIND. To the fullest extent permitted by law, we disclaim all warranties, express or implied, including merchantability, fitness for a particular purpose, and non-infringement.</p>
+
+<h2>8. Limitation of liability</h2>
+<p>To the maximum extent permitted by law, we shall not be liable for any indirect, incidental, special, consequential, exemplary or punitive damages, or any loss of data, profits, or revenues, arising out of or related to your use of the Services.</p>
+
+<h2>9. Termination</h2>
+<p>We may suspend or terminate your access if you materially breach these Terms. You may stop using the Services at any time. Upon termination, the license granted to you ends.</p>
+
+<h2>10. Changes</h2>
+<p>We may update these Terms from time to time. Changes apply prospectively. We will indicate the “Last updated” date above and, where appropriate, provide additional notice.</p>
+
+<h2>11. Governing law</h2>
+<p>Unless otherwise required by mandatory local law, these Terms are governed by the laws of Croatia, without regard to conflict-of-laws principles, and courts in Zagreb, Croatia shall have jurisdiction.</p>
+
+    </div>
+    <p class="mt-10 text-sm opacity-60">Last updated: 12 Sept 2025</p>
+  </main>
+
+  <footer class="py-10 border-t border-black/5 dark:border-white/10 text-center text-sm opacity-70">
+    © <span id="year"></span> Jakša Tomović. All rights reserved.
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  </footer>
+</body>
+</html>

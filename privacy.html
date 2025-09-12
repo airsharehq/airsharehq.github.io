@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy Policy — AirShare</title>
+  <meta name="robots" content="index,follow" />
+  <meta name="description" content="Privacy Policy for AirShare." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { apple: { blue: '#0A84FF', gray: '#F2F2F7', ink: '#1C1C1E' }, ios: { purple: '#5856D6', pink: '#FF2D55', orange: '#FF9500', green: '#34C759' } },
+          fontFamily: { sf: ['-apple-system','BlinkMacSystemFont','SF Pro Display','SF Pro Text','Inter','system-ui','Segoe UI','Roboto','Helvetica Neue','Arial','sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    @media (prefers-color-scheme: dark) { body { background:#0B0B0D; color: rgba(255,255,255,.9); } }
+  </style>
+</head>
+<body class="font-sf text-apple-ink/90">
+  <header class="border-b border-black/5 dark:border-white/10 bg-white/70 dark:bg-white/[.06] backdrop-blur">
+    <div class="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3">
+        <div class="h-8 w-8 rounded-xl bg-apple-blue grid place-items-center text-white shadow-md">AS</div>
+        <span class="text-[17px] font-semibold tracking-[-0.01em]">AirShare</span>
+      </a>
+      <nav class="text-sm">
+        <a href="/terms.html" class="mr-4 opacity-80 hover:opacity-100">Terms</a>
+        <a href="/privacy.html" class="mr-4 opacity-80 hover:opacity-100">Privacy</a>
+        <a href="/refunds.html" class="opacity-80 hover:opacity-100">Refunds</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-4 py-10 md:py-16">
+    <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">Privacy Policy</h1>
+    <div class="mt-6 prose prose-neutral max-w-none prose-a:text-apple-blue">
+      
+<p>This Privacy Policy explains what information AirShare processes when you use our website and apps, and how we use it. AirShare is designed to work locally and minimize data collection.</p>
+
+<h2>1. Data we do <em>not</em> collect by default</h2>
+<ul>
+  <li><strong>No account</strong> is required to use AirShare.</li>
+  <li><strong>No file contents</strong> are sent to our servers during local (LAN) transfers.</li>
+  <li><strong>No contact lists</strong> or precise location data are collected.</li>
+</ul>
+
+<h2>2. Data we may process</h2>
+<ul>
+  <li><strong>Website hosting</strong>: Downloads are served via GitHub Pages and GitHub Releases. GitHub may log standard technical data (IP address, user agent) in accordance with their policies.</li>
+  <li><strong>Payments</strong>: If you purchase a paid plan, billing data is processed by Paddle. We receive limited metadata necessary for license fulfillment (subscription status, plan).</li>
+  <li><strong>Support</strong>: If you email us at <a href="mailto:info@trayairshare.com">info@trayairshare.com</a>, we process the information you provide to respond.</li>
+</ul>
+
+<h2>3. Peer-to-peer transfers</h2>
+<p>Local transfers occur directly between devices on your network using QUIC + mDNS. When using an <strong>encrypted relay</strong> for out-of-LAN connectivity, traffic is end-to-end encrypted; relay operators may see limited operational metadata (timestamps, IPs) but cannot read file contents.</p>
+
+<h2>4. Cookies</h2>
+<p>We do not set our own cookies. GitHub Pages and Paddle may set strictly necessary cookies for security, session handling and payments. We do not use third‑party tracking cookies or advertising cookies.</p>
+
+<h2>5. Data retention</h2>
+<ul>
+  <li><strong>Billing metadata</strong> is retained for the period required by tax/accounting laws.</li>
+  <li><strong>Support emails</strong> are retained for reasonable periods to handle follow-ups.</li>
+</ul>
+
+<h2>6. Your rights (GDPR/EU)</h2>
+<p>Where applicable, you have rights to access, rectify, erase, restrict or object to processing, and data portability. To exercise rights, contact <a href="mailto:info@trayairshare.com">info@trayairshare.com</a>. You also have the right to lodge a complaint with your local supervisory authority.</p>
+
+<h2>7. Security</h2>
+<p>We use industry-standard protections (TLS, encryption in transit). AirShare LAN transfers are peer-to-peer; keep your devices updated and protected with strong OS-level security.</p>
+
+<h2>8. Children</h2>
+<p>AirShare is not directed to children under 13. If we learn we processed data from a child without appropriate consent, we will delete it.</p>
+
+<h2>9. Changes</h2>
+<p>We may revise this Policy. We will update the “Last updated” date and, when material, provide additional notice.</p>
+
+<h2>10. Contact</h2>
+<p>Questions or requests: <a href="mailto:info@trayairshare.com">info@trayairshare.com</a>.</p>
+
+    </div>
+    <p class="mt-10 text-sm opacity-60">Last updated: 12 Sept 2025</p>
+  </main>
+
+  <footer class="py-10 border-t border-black/5 dark:border-white/10 text-center text-sm opacity-70">
+    © <span id="year"></span> Jakša Tomović. All rights reserved.
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  </footer>
+</body>
+</html>
