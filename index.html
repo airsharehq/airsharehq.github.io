@@ -42,85 +42,24 @@
         }
     </script>
     <style>
-        .glass {
-            backdrop-filter: saturate(120%) blur(18px);
-            background: rgba(255, 255, 255, .72)
-        }
-
-        .badge {
-            border-radius: 18px;
-            padding: 12px;
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), 0 8px 20px rgba(0, 0, 0, .06)
-        }
-
-        .badge-grad {
-            background: linear-gradient(135deg, #eaf2ff 0%, #d9e7ff 100%)
-        }
-
-        .badge-grad-2 {
-            background: linear-gradient(135deg, #e9fced 0%, #d3f6e0 100%)
-        }
-
-        .badge-grad-3 {
-            background: linear-gradient(135deg, #fff1e0 0%, #ffe3c4 100%)
-        }
-
-        .badge-grad-4 {
-            background: linear-gradient(135deg, #f9e8ff 0%, #ecd8ff 100%)
-        }
-
-        .highlight {
-            box-shadow: 0 0 0 10px rgba(10, 132, 255, .14), 0 10px 30px rgba(10, 132, 255, .25);
-            transform: translateY(-2px)
-        }
-
-        .text-gradient-strong {
-            background-image: linear-gradient(90deg, #0A84FF 0%, #5856D6 55%, #111827 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 1px 0 rgba(255, 255, 255, .35))
-        }
-
+        .glass { backdrop-filter: saturate(120%) blur(18px); background: rgba(255, 255, 255, .72) }
+        .badge { border-radius: 18px; padding: 12px; box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), 0 8px 20px rgba(0, 0, 0, .06) }
+        .badge-grad { background: linear-gradient(135deg, #eaf2ff 0%, #d9e7ff 100%) }
+        .badge-grad-2 { background: linear-gradient(135deg, #e9fced 0%, #d3f6e0 100%) }
+        .badge-grad-3 { background: linear-gradient(135deg, #fff1e0 0%, #ffe3c4 100%) }
+        .badge-grad-4 { background: linear-gradient(135deg, #f9e8ff 0%, #ecd8ff 100%) }
+        .highlight { box-shadow: 0 0 0 10px rgba(10, 132, 255, .14), 0 10px 30px rgba(10, 132, 255, .25); transform: translateY(-2px) }
+        .text-gradient-strong { background-image: linear-gradient(90deg, #0A84FF 0%, #5856D6 55%, #111827 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 1px 0 rgba(255, 255, 255, .35)) }
         @media (prefers-color-scheme: dark) {
-            html {
-                color-scheme: dark
-            }
-
-            body {
-                background: #0B0B0D
-            }
-
-            .glass {
-                background: rgba(28, 28, 30, .5)
-            }
-
-            .badge-grad {
-                background: linear-gradient(135deg, #1b2433 0%, #121826 100%)
-            }
-
-            .badge-grad-2 {
-                background: linear-gradient(135deg, #13281c 0%, #0e2017 100%)
-            }
-
-            .badge-grad-3 {
-                background: linear-gradient(135deg, #2a1f12 0%, #22190e 100%)
-            }
-
-            .badge-grad-4 {
-                background: linear-gradient(135deg, #241b33 0%, #1a1426 100%)
-            }
+            html { color-scheme: dark }
+            body { background: #0B0B0D }
+            .glass { background: rgba(28, 28, 30, .5) }
+            .badge-grad { background: linear-gradient(135deg, #1b2433 0%, #121826 100%) }
+            .badge-grad-2 { background: linear-gradient(135deg, #13281c 0%, #0e2017 100%) }
+            .badge-grad-3 { background: linear-gradient(135deg, #2a1f12 0%, #22190e 100%) }
+            .badge-grad-4 { background: linear-gradient(135deg, #241b33 0%, #1a1426 100%) }
         }
-
-        @media (prefers-reduced-motion: reduce) {
-
-            .animate-sweep,
-            .animate-fadeUp,
-            .animate-floaty,
-            .animate-ring {
-                animation: none !important
-            }
-        }
+        @media (prefers-reduced-motion: reduce) { .animate-sweep, .animate-fadeUp, .animate-floaty, .animate-ring { animation: none !important } }
     </style>
 </head>
 
@@ -132,20 +71,15 @@
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
                 <a class="flex items-center gap-3" href="#">
                     <div class="h-8 w-8 rounded-xl bg-apple-blue grid place-items-center text-white shadow-md">
-                        <!-- <img src="/mnt/data/arishare_1024.png" alt="Logo" class="h-5 w-5"> -->
                         <div class="h-8 w-8 rounded-xl bg-apple-blue grid place-items-center text-white shadow-md">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="h-5 w-5">
-                              <!-- Linije -->
                               <line x1="50" y1="20" x2="20" y2="80" stroke="white" stroke-width="6" stroke-linecap="round"/>
                               <line x1="50" y1="20" x2="80" y2="80" stroke="white" stroke-width="6" stroke-linecap="round"/>
-                          
-                              <!-- Krugovi -->
                               <circle cx="50" cy="20" r="8" fill="white"/>
                               <circle cx="20" cy="80" r="8" fill="white"/>
                               <circle cx="80" cy="80" r="8" fill="white"/>
                             </svg>
                           </div>
-                          
                     </div>
                     <span class="text-[17px] font-semibold tracking-[-0.01em]">AirShare</span>
                 </a>
@@ -180,8 +114,10 @@
                     <div class="mt-6 md:mt-10 flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-4 animate-fadeUp"
                         style="animation-delay:.2s">
                         <a id="btn-mac" href="#mac"
-                            class="download-btn inline-flex items-center justify-center gap-3 rounded-2xl bg-white text-apple-blue px-6 py-3 shadow-glass hover:shadow-glow transition w-full sm:w-auto"><span>
-                                Download for macOS</span></a>
+                            class="download-btn inline-flex items-center justify-center gap-3 rounded-2xl bg-white text-apple-blue px-6 py-3 shadow-glass hover:shadow-glow transition w-full sm:w-auto">
+                            <img src="https://img.icons8.com/ios-filled/24/mac-os.png" alt="Apple logo" class="h-5 w-5" loading="lazy" width="20" height="20" />
+                            <span>Download for macOS</span>
+                        </a>
                         <a id="btn-win" href="#win"
                             class="download-btn inline-flex items-center justify-center gap-3 rounded-2xl bg-white text-apple-blue px-6 py-3 shadow-glass hover:shadow-glow transition w-full sm:w-auto">
                             <img src="https://img.icons8.com/color/24/windows-10.png" alt="Windows logo" class="h-5 w-5"
@@ -263,58 +199,45 @@
 
             <div class="mt-10 md:mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 <!-- (feature cards unchanged) -->
-                <!-- ... (izostavljeno radi kratkoće; identično tvom izvorniku) ... -->
-                <article
-                    class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-6 md:p-8 shadow-soft">
+                <article class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-6 md:p-8 shadow-soft">
                     <div class="badge badge-grad w-12 h-12 grid place-items-center mb-4">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0A84FF" stroke-width="2.1"
-                            stroke-linecap="round" stroke-linejoin="round">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0A84FF" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M13 10V3L4 14h7v7l9-11h-7z" />
                         </svg>
                     </div>
                     <h4 class="font-semibold">Blazing speed</h4>
                     <p class="mt-1 text-sm opacity-70">QUIC multiplexing, parallel streams.</p>
                 </article>
-                <article
-                    class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-6 md:p-8 shadow-soft">
+                <article class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-6 md:p-8 shadow-soft">
                     <div class="badge badge-grad-2 w-12 h-12 grid place-items-center mb-4">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="2.1"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path
-                                d="M12 15v2m-6 4h12a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2zm10-10V7a4 4 0 0 0-8 0v4h8z" />
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 15v2m-6 4h12a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2zm10-10V7a4 4 0 0 0-8 0v4h8z" />
                         </svg>
                     </div>
                     <h4 class="font-semibold">End-to-end security</h4>
                     <p class="mt-1 text-sm opacity-70">TLS 1.3, certificate-based auth.</p>
                 </article>
-                <article
-                    class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-6 md:p-8 shadow-soft">
+                <article class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-6 md:p-8 shadow-soft">
                     <div class="badge badge-grad-3 w-12 h-12 grid place-items-center mb-4">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF9500" stroke-width="2.1"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path
-                                d="M4.318 6.318a4.5 4.5 0 0 0 0 6.364L12 20.364l7.682-7.682a4.5 4.5 0 0 0-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 0 0-6.364 0z" />
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF9500" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4.318 6.318a4.5 4.5 0 0 0 0 6.364L12 20.364l7.682-7.682a4.5 4.5 0 0 0-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 0 0-6.364 0z" />
                         </svg>
                     </div>
                     <h4 class="font-semibold">Zero-config setup</h4>
                     <p class="mt-1 text-sm opacity-70">mDNS discovery, drag & drop.</p>
                 </article>
-                <article
-                    class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-6 md:p-8 shadow-soft">
+                <article class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-6 md:p-8 shadow-soft">
                     <div class="badge badge-grad-4 w-12 h-12 grid place-items-center mb-4">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF2D55" stroke-width="2.1"
-                            stroke-linecap="round" stroke-linejoin="round">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF2D55" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M9 7h6M9 12h6M9 17h6" />
                         </svg>
                     </div>
                     <h4 class="font-semibold">Unlimited size on LAN</h4>
                     <p class="mt-1 text-sm opacity-70">Streamed in chunks with back-pressure.</p>
                 </article>
-                <article
-                    class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-6 md:p-8 shadow-soft">
+                <article class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-6 md:p-8 shadow-soft">
                     <div class="badge badge-grad w-12 h-12 grid place-items-center mb-4">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5856D6" stroke-width="2.1"
-                            stroke-linecap="round" stroke-linejoin="round">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5856D6" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="9" />
                             <path d="M8 12h8" />
                         </svg>
@@ -322,44 +245,36 @@
                     <h4 class="font-semibold">Works fully offline</h4>
                     <p class="mt-1 text-sm opacity-70">Pure P2P on your local network.</p>
                 </article>
-                <article
-                    class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-6 md:p-8 shadow-soft">
+                <article class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-6 md:p-8 shadow-soft">
                     <div class="badge badge-grad-2 w-12 h-12 grid place-items-center mb-4">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="2.1"
-                            stroke-linecap="round" stroke-linejoin="round">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M13 10V3L4 14h7v7l9-11h-7z" />
                         </svg>
                     </div>
                     <h4 class="font-semibold">Transfer history</h4>
                     <p class="mt-1 text-sm opacity-70">Keep your past sends neatly organized.</p>
                 </article>
-                <article
-                    class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-6 md:p-8 shadow-soft">
+                <article class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-6 md:p-8 shadow-soft">
                     <div class="badge badge-grad w-12 h-12 grid place-items-center mb-4">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0A84FF" stroke-width="2.1"
-                            stroke-linecap="round" stroke-linejoin="round">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0A84FF" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M3 12h18M12 3v18" />
                         </svg>
                     </div>
                     <h4 class="font-semibold">Encrypted relay</h4>
                     <p class="mt-1 text-sm opacity-70">Seamless out-of-LAN connectivity.</p>
                 </article>
-                <article
-                    class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-6 md:p-8 shadow-soft">
+                <article class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-6 md:p-8 shadow-soft">
                     <div class="badge badge-grad-3 w-12 h-12 grid place-items-center mb-4">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF9500" stroke-width="2.1"
-                            stroke-linecap="round" stroke-linejoin="round">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF9500" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M9 12l2 2 4-4" />
                         </svg>
                     </div>
                     <h4 class="font-semibold">Cross-platform</h4>
                     <p class="mt-1 text-sm opacity-70">macOS, Windows, Linux.</p>
                 </article>
-                <article
-                    class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-6 md:p-8 shadow-soft">
+                <article class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-6 md:p-8 shadow-soft">
                     <div class="badge badge-grad-4 w-12 h-12 grid place-items-center mb-4">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF2D55" stroke-width="2.1"
-                            stroke-linecap="round" stroke-linejoin="round">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF2D55" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M4 12h16" />
                         </svg>
                     </div>
@@ -389,7 +304,7 @@
                         <div class="mt-6 text-4xl font-extrabold tracking-tight">€0</div>
                         <ul class="mt-6 space-y-2 text-sm">
                             <li>✅ <strong>No device limit</strong></li>
-                            <li>✅ Max file size <strong>100 MB</strong></li>
+                            <li>✅ Max file size <strong>200 MB</strong></li>
                             <li>✅ Transfer history <strong>7 days</strong></li>
                             <li>— No relay/out-of-LAN</li>
                         </ul>
@@ -414,6 +329,7 @@
                             <li>✅ <strong>Unlimited file size</strong></li>
                             <li>✅ Transfer history <strong>Unlimited</strong></li>
                             <li>✅ Relay/out-of-LAN <strong>Unlimited</strong></li>
+                            <li>✅ <strong>Phone transfers (iOS & Android)</strong></li>
                             <li>✅ Priority support</li>
                         </ul>
                     </div>
@@ -506,7 +422,10 @@
             <div class="mt-10 flex flex-wrap gap-4 justify-center">
                 <a id="dl-mac"
                     class="dl inline-flex items-center gap-3 rounded-2xl bg-white text-apple-blue px-6 py-3 shadow-glass hover:shadow-glow transition"
-                    href="#mac"> macOS</a>
+                    href="#mac">
+                    <img src="https://img.icons8.com/ios-filled/24/mac-os.png" alt="Apple logo" class="h-5 w-5" loading="lazy" width="20" height="20" />
+                    macOS
+                </a>
                 <a id="dl-win"
                     class="dl inline-flex items-center gap-3 rounded-2xl bg-white text-apple-blue px-6 py-3 shadow-glass hover:shadow-glow transition"
                     href="#win">
@@ -544,9 +463,11 @@
         // Year
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // OS detection → u HERO prikaži samo primarni gumb; link otkriva ostale.
+        // OS detection → HERO: on desktop show primary OS; on mobile show ALL buttons (fix for phones)
         (function () {
-            const ua = navigator.userAgent;
+            const ua = navigator.userAgent || '';
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(ua) || window.matchMedia('(max-width: 640px)').matches;
+
             let os = 'linux';
             if (/Macintosh|Mac OS X/.test(ua)) os = 'mac';
             else if (/Windows/.test(ua)) os = 'win';
@@ -554,22 +475,29 @@
             const map = { mac: ['btn-mac', 'dl-mac'], win: ['btn-win', 'dl-win'], linux: ['btn-linux', 'dl-linux'] };
             const heroAll = ['btn-mac', 'btn-win', 'btn-linux'];
 
-            heroAll.forEach(id => document.getElementById(id)?.classList.add('hidden'));
-            (map[os] || []).slice(0, 1).forEach(id => {
-                const el = document.getElementById(id);
-                if (el) { el.classList.remove('hidden'); el.classList.add('highlight'); }
-            });
-
-            const showAll = document.getElementById('show-all-downloads');
-            if (showAll) {
-                showAll.classList.remove('hidden');
-                showAll.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    heroAll.forEach(id => document.getElementById(id)?.classList.remove('hidden', 'highlight'));
-                    showAll.classList.add('hidden');
+            if (isMobile) {
+                // Show all buttons on mobile for clarity
+                heroAll.forEach(id => document.getElementById(id)?.classList.remove('hidden', 'highlight'));
+                document.getElementById('show-all-downloads')?.classList.add('hidden');
+            } else {
+                // Desktop behavior: show only detected OS, keep the "Other platforms" link
+                heroAll.forEach(id => document.getElementById(id)?.classList.add('hidden'));
+                (map[os] || []).slice(0, 1).forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) { el.classList.remove('hidden'); el.classList.add('highlight'); }
                 });
+                const showAll = document.getElementById('show-all-downloads');
+                if (showAll) {
+                    showAll.classList.remove('hidden');
+                    showAll.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        heroAll.forEach(id => document.getElementById(id)?.classList.remove('hidden', 'highlight'));
+                        showAll.classList.add('hidden');
+                    });
+                }
             }
 
+            // Always show CTA buttons
             ['dl-mac', 'dl-win', 'dl-linux'].forEach(id => document.getElementById(id)?.classList.remove('hidden'));
             const cta = map[os]?.[1]; if (cta) document.getElementById(cta)?.classList.add('highlight');
         })();
@@ -598,7 +526,7 @@
                     if (el) {
                         el.href = url;
                         el.setAttribute('rel', 'nofollow noopener');
-                        el.setAttribute('download', ''); // hint browseru da skine
+                        el.setAttribute('download', '');
                         if (versionText) el.title = `AirShare ${versionText}`;
                     }
                 });
