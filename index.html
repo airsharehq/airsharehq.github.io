@@ -1,10 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" href="/assets/favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon/favicon.svg" />
+  <link rel="shortcut icon" href="/assets/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="AirShare" />
+  <link rel="manifest" href="/assets/favicon/site.webmanifest" />
+
+
   <title>AirShare — Instant Local File Sharing</title>
-  <meta name="description" content="Beautiful, private, lightning-fast file sharing over your local network. QUIC + mDNS. No accounts. No cloud." />
+  <meta name="description"
+    content="Beautiful, private, lightning-fast file sharing over your local network. QUIC + mDNS. No accounts. No cloud." />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -15,7 +27,7 @@
             ios: { purple: '#5856D6', pink: '#FF2D55', orange: '#FF9500', green: '#34C759' }
           },
           fontFamily: {
-            sf: ['-apple-system','BlinkMacSystemFont','SF Pro Display','SF Pro Text','Inter','system-ui','Segoe UI','Roboto','Helvetica Neue','Arial','sans-serif']
+            sf: ['-apple-system', 'BlinkMacSystemFont', 'SF Pro Display', 'SF Pro Text', 'Inter', 'system-ui', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif']
           },
           boxShadow: {
             glass: '0 10px 30px rgba(0,0,0,.08)',
@@ -40,28 +52,108 @@
     }
   </script>
   <style>
-    .glass { backdrop-filter: saturate(120%) blur(18px); background: rgba(255,255,255,.72) }
-    .badge { border-radius: 18px; padding: 12px; box-shadow: inset 0 1px 0 rgba(255,255,255,.5), 0 8px 20px rgba(0,0,0,.06) }
-    .badge-grad { background: linear-gradient(135deg, #eaf2ff 0%, #d9e7ff 100%) }
-    .badge-grad-2 { background: linear-gradient(135deg, #e9fced 0%, #d3f6e0 100%) }
-    .badge-grad-3 { background: linear-gradient(135deg, #fff1e0 0%, #ffe3c4 100%) }
-    .badge-grad-4 { background: linear-gradient(135deg, #f9e8ff 0%, #ecd8ff 100%) }
-    .highlight { box-shadow: 0 0 0 10px rgba(10,132,255,.14), 0 10px 30px rgba(10,132,255,.25); transform: translateY(-2px) }
-    .text-gradient-strong { background-image: linear-gradient(90deg, #0A84FF 0%, #5856D6 55%, #111827 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 1px 0 rgba(255,255,255,.35)) }
-    @media (prefers-color-scheme: dark) {
-      html { color-scheme: dark }
-      body { background: #0B0B0D }
-      .glass { background: rgba(28,28,30,.5) }
-      .badge-grad { background: linear-gradient(135deg, #1b2433 0%, #121826 100%) }
-      .badge-grad-2 { background: linear-gradient(135deg, #13281c 0%, #0e2017 100%) }
-      .badge-grad-3 { background: linear-gradient(135deg, #2a1f12 0%, #22190e 100%) }
-      .badge-grad-4 { background: linear-gradient(135deg, #241b33 0%, #1a1426 100%) }
+    .glass {
+      backdrop-filter: saturate(120%) blur(18px);
+      background: rgba(255, 255, 255, .72)
     }
-    @media (prefers-reduced-motion: reduce) { .animate-sweep, .animate-fadeUp, .animate-floaty, .animate-ring { animation: none !important } }
-    .icon8 { width: 22px; height: 22px; display:block }
-    .icon8-lg { width: 26px; height: 26px; display:block }
-    .pricing-li { display:flex; align-items:center; gap:.5rem }
-    .pricing-li img { width:18px; height:18px }
+
+    .badge {
+      border-radius: 18px;
+      padding: 12px;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), 0 8px 20px rgba(0, 0, 0, .06)
+    }
+
+    .badge-grad {
+      background: linear-gradient(135deg, #eaf2ff 0%, #d9e7ff 100%)
+    }
+
+    .badge-grad-2 {
+      background: linear-gradient(135deg, #e9fced 0%, #d3f6e0 100%)
+    }
+
+    .badge-grad-3 {
+      background: linear-gradient(135deg, #fff1e0 0%, #ffe3c4 100%)
+    }
+
+    .badge-grad-4 {
+      background: linear-gradient(135deg, #f9e8ff 0%, #ecd8ff 100%)
+    }
+
+    .highlight {
+      box-shadow: 0 0 0 10px rgba(10, 132, 255, .14), 0 10px 30px rgba(10, 132, 255, .25);
+      transform: translateY(-2px)
+    }
+
+    .text-gradient-strong {
+      background-image: linear-gradient(90deg, #0A84FF 0%, #5856D6 55%, #111827 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 1px 0 rgba(255, 255, 255, .35))
+    }
+
+    @media (prefers-color-scheme: dark) {
+      html {
+        color-scheme: dark
+      }
+
+      body {
+        background: #0B0B0D
+      }
+
+      .glass {
+        background: rgba(28, 28, 30, .5)
+      }
+
+      .badge-grad {
+        background: linear-gradient(135deg, #1b2433 0%, #121826 100%)
+      }
+
+      .badge-grad-2 {
+        background: linear-gradient(135deg, #13281c 0%, #0e2017 100%)
+      }
+
+      .badge-grad-3 {
+        background: linear-gradient(135deg, #2a1f12 0%, #22190e 100%)
+      }
+
+      .badge-grad-4 {
+        background: linear-gradient(135deg, #241b33 0%, #1a1426 100%)
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .animate-sweep,
+      .animate-fadeUp,
+      .animate-floaty,
+      .animate-ring {
+        animation: none !important
+      }
+    }
+
+    .icon8 {
+      width: 22px;
+      height: 22px;
+      display: block
+    }
+
+    .icon8-lg {
+      width: 26px;
+      height: 26px;
+      display: block
+    }
+
+    .pricing-li {
+      display: flex;
+      align-items: center;
+      gap: .5rem
+    }
+
+    .pricing-li img {
+      width: 18px;
+      height: 18px
+    }
   </style>
 </head>
 
@@ -74,11 +166,11 @@
         <a class="flex items-center gap-3" href="#">
           <div class="h-8 w-8 rounded-xl bg-apple-blue grid place-items-center text-white shadow-md">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="h-5 w-5" aria-hidden="true">
-              <line x1="50" y1="20" x2="20" y2="80" stroke="white" stroke-width="6" stroke-linecap="round"/>
-              <line x1="50" y1="20" x2="80" y2="80" stroke="white" stroke-width="6" stroke-linecap="round"/>
-              <circle cx="50" cy="20" r="8" fill="white"/>
-              <circle cx="20" cy="80" r="8" fill="white"/>
-              <circle cx="80" cy="80" r="8" fill="white"/>
+              <line x1="50" y1="20" x2="20" y2="80" stroke="white" stroke-width="6" stroke-linecap="round" />
+              <line x1="50" y1="20" x2="80" y2="80" stroke="white" stroke-width="6" stroke-linecap="round" />
+              <circle cx="50" cy="20" r="8" fill="white" />
+              <circle cx="20" cy="80" r="8" fill="white" />
+              <circle cx="80" cy="80" r="8" fill="white" />
             </svg>
           </div>
           <span class="text-[17px] font-semibold tracking-[-0.01em]">AirShare</span>
@@ -88,8 +180,9 @@
           <a href="#pricing" class="opacity-80 hover:opacity-100 transition">Pricing</a>
           <a href="#download" class="opacity-80 hover:opacity-100 transition">Download</a>
           <a href="https://github.com/airsharehq/"
-             class="inline-flex items-center gap-2 rounded-full border border-black/10 dark:border-white/15 px-4 py-1.5 hover:bg-black/5 dark:hover:bg-white/5 transition">
-            <img class="icon8" src="https://img.icons8.com/ios-glyphs/30/github.png" alt="GitHub icon by Icons8" loading="lazy" width="22" height="22" />
+            class="inline-flex items-center gap-2 rounded-full border border-black/10 dark:border-white/15 px-4 py-1.5 hover:bg-black/5 dark:hover:bg-white/5 transition">
+            <img class="icon8" src="https://img.icons8.com/ios-glyphs/30/github.png" alt="GitHub icon by Icons8"
+              loading="lazy" width="22" height="22" />
             GitHub
           </a>
         </div>
@@ -106,28 +199,38 @@
           <h1 class="text-[34px] leading-[1.1] md:text-5xl lg:text-6xl font-extrabold tracking-tight animate-fadeUp">
             Share files instantly — <span class="text-gradient-strong">privately</span>
           </h1>
-          <p class="mt-4 md:mt-6 text-base md:text-xl opacity-80 max-w-prose animate-fadeUp" style="animation-delay:.1s">
+          <p class="mt-4 md:mt-6 text-base md:text-xl opacity-80 max-w-prose animate-fadeUp"
+            style="animation-delay:.1s">
             AirDrop-style transfers over your LAN using QUIC + mDNS. No accounts. No cloud.
             <strong>Unlimited file size</strong>.
           </p>
 
           <!-- Hero download -->
-          <div class="mt-6 md:mt-10 flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-4 animate-fadeUp" style="animation-delay:.2s">
-            <a id="btn-mac" href="#mac" class="download-btn inline-flex items-center justify-center gap-3 rounded-2xl bg-white text-apple-blue px-6 py-3 shadow-glass hover:shadow-glow transition w-full sm:w-auto">
-              <img src="https://img.icons8.com/ios-filled/24/mac-os.png" alt="macOS icon by Icons8" class="h-5 w-5" loading="lazy" width="20" height="20" />
+          <div class="mt-6 md:mt-10 flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-4 animate-fadeUp"
+            style="animation-delay:.2s">
+            <a id="btn-mac" href="#mac"
+              class="download-btn inline-flex items-center justify-center gap-3 rounded-2xl bg-white text-apple-blue px-6 py-3 shadow-glass hover:shadow-glow transition w-full sm:w-auto">
+              <img src="https://img.icons8.com/ios-filled/24/mac-os.png" alt="macOS icon by Icons8" class="h-5 w-5"
+                loading="lazy" width="20" height="20" />
               <span>Download for macOS</span>
             </a>
-            <a id="btn-win" href="#win" class="download-btn inline-flex items-center justify-center gap-3 rounded-2xl bg-white text-apple-blue px-6 py-3 shadow-glass hover:shadow-glow transition w-full sm:w-auto">
-              <img src="https://img.icons8.com/color/24/windows-10.png" alt="Windows icon by Icons8" class="h-5 w-5" loading="lazy" width="20" height="20" />
+            <a id="btn-win" href="#win"
+              class="download-btn inline-flex items-center justify-center gap-3 rounded-2xl bg-white text-apple-blue px-6 py-3 shadow-glass hover:shadow-glow transition w-full sm:w-auto">
+              <img src="https://img.icons8.com/color/24/windows-10.png" alt="Windows icon by Icons8" class="h-5 w-5"
+                loading="lazy" width="20" height="20" />
               <span>Download for Windows</span>
             </a>
-            <a id="btn-linux" href="#linux" class="download-btn inline-flex items-center justify-center gap-3 rounded-2xl bg-white text-apple-blue px-6 py-3 shadow-glass hover:shadow-glow transition w-full sm:w-auto">
-              <img src="https://img.icons8.com/color/24/linux--v1.png" alt="Linux icon by Icons8" class="h-5 w-5" loading="lazy" width="20" height="20" />
+            <a id="btn-linux" href="#linux"
+              class="download-btn inline-flex items-center justify-center gap-3 rounded-2xl bg-white text-apple-blue px-6 py-3 shadow-glass hover:shadow-glow transition w-full sm:w-auto">
+              <img src="https://img.icons8.com/color/24/linux--v1.png" alt="Linux icon by Icons8" class="h-5 w-5"
+                loading="lazy" width="20" height="20" />
               <span>Download for Linux</span>
             </a>
           </div>
 
-          <ul class="mt-5 md:mt-8 flex flex-wrap items-center gap-4 md:gap-5 text-sm text-black/70 dark:text-white/70 animate-fadeUp" style="animation-delay:.3s">
+          <ul
+            class="mt-5 md:mt-8 flex flex-wrap items-center gap-4 md:gap-5 text-sm text-black/70 dark:text-white/70 animate-fadeUp"
+            style="animation-delay:.3s">
             <li class="flex items-center gap-2">
               <img class="icon8" src="https://img.icons8.com/ios-glyphs/30/lock--v1.png" alt="Lock icon by Icons8" />
               E2E encrypted
@@ -137,7 +240,8 @@
               Automatic discovery
             </li>
             <li class="flex items-center gap-2">
-              <img class="icon8" src="https://img.icons8.com/ios-glyphs/30/infinity.png" alt="Infinity icon by Icons8" />
+              <img class="icon8" src="https://img.icons8.com/ios-glyphs/30/infinity.png"
+                alt="Infinity icon by Icons8" />
               No size limits on LAN
             </li>
           </ul>
@@ -149,40 +253,55 @@
 
         <!-- Radar mock (unchanged) -->
         <div class="relative lg:justify-self-end">
-          <div class="relative w-[18rem] h-[18rem] md:w-[24rem] md:h-[24rem] lg:w-[30rem] lg:h-[30rem] mx-auto rounded-3xl glass shadow-glass border border-black/5 dark:border-white/10 p-6 md:p-8">
-            <div class="relative w-full h-full rounded-full bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-[#12131A] dark:to-[#101114] border-4 border-white/60 dark:border-white/10 overflow-hidden">
+          <div
+            class="relative w-[18rem] h-[18rem] md:w-[24rem] md:h-[24rem] lg:w-[30rem] lg:h-[30rem] mx-auto rounded-3xl glass shadow-glass border border-black/5 dark:border-white/10 p-6 md:p-8">
+            <div
+              class="relative w-full h-full rounded-full bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-[#12131A] dark:to-[#101114] border-4 border-white/60 dark:border-white/10 overflow-hidden">
               <div class="absolute inset-8 rounded-full border border-black/10 dark:border-white/10"></div>
               <div class="absolute inset-16 rounded-full border border-black/10 dark:border-white/10"></div>
               <div class="absolute inset-24 rounded-full border border-black/10 dark:border-white/10"></div>
               <div class="absolute inset-0 grid place-items-center">
                 <div class="relative w-[85%] h-[85%]">
-                  <div class="absolute left-1/2 top-1/2 h-[2px] w-1/2 origin-left -translate-y-1/2 bg-gradient-to-r from-transparent via-apple-blue to-transparent animate-sweep"></div>
+                  <div
+                    class="absolute left-1/2 top-1/2 h-[2px] w-1/2 origin-left -translate-y-1/2 bg-gradient-to-r from-transparent via-apple-blue to-transparent animate-sweep">
+                  </div>
                 </div>
               </div>
               <div class="absolute inset-0 rounded-full border-4 border-apple-blue/40 animate-ring"></div>
-              <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-gradient-to-br from-apple-blue to-ios.purple shadow"></div>
-              <div class="device absolute top-[20%] left-[28%] w-8 h-8 md:w-9 md:h-9 rounded-2xl text-white text-[10px] md:text-[11px] font-bold grid place-items-center badge badge-grad shadow animate-floaty">AR</div>
-              <div class="device absolute top-[35%] right-[18%] w-8 h-8 md:w-9 md:h-9 rounded-2xl text-[10px] md:text-[11px] font-bold grid place-items-center badge badge-grad-4 shadow animate-floaty" style="animation-delay:.4s">TR</div>
-              <div class="device absolute bottom-[18%] left-[35%] w-8 h-8 md:w-9 md:h-9 rounded-2xl text-[10px] md:text-[11px] font-bold grid place-items-center badge badge-grad-2 shadow animate-floaty" style="animation-delay:.8s">DI</div>
+              <div
+                class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-gradient-to-br from-apple-blue to-ios.purple shadow">
+              </div>
+              <div
+                class="device absolute top-[20%] left-[28%] w-8 h-8 md:w-9 md:h-9 rounded-2xl text-white text-[10px] md:text-[11px] font-bold grid place-items-center badge badge-grad shadow animate-floaty">
+                AR</div>
+              <div
+                class="device absolute top-[35%] right-[18%] w-8 h-8 md:w-9 md:h-9 rounded-2xl text-[10px] md:text-[11px] font-bold grid place-items-center badge badge-grad-4 shadow animate-floaty"
+                style="animation-delay:.4s">TR</div>
+              <div
+                class="device absolute bottom-[18%] left-[35%] w-8 h-8 md:w-9 md:h-9 rounded-2xl text-[10px] md:text-[11px] font-bold grid place-items-center badge badge-grad-2 shadow animate-floaty"
+                style="animation-delay:.8s">DI</div>
             </div>
           </div>
-          <p class="mt-3 md:mt-4 text-center text-xs md:text-sm opacity-60">AirDrop-inspired radar UI</p>
+          <!-- <p class="mt-3 md:mt-4 text-center text-xs md:text-sm opacity-60">AirDrop-inspired radar UI</p> -->
         </div>
       </div>
     </div>
   </section>
 
   <!-- FEATURES -->
-  <section id="features" class="py-20 md:py-24 bg-gradient-to-b from-white to-apple-gray/60 dark:from-[#0B0B0D] dark:to-[#0E0E11]">
+  <section id="features"
+    class="py-20 md:py-24 bg-gradient-to-b from-white to-apple-gray/60 dark:from-[#0B0B0D] dark:to-[#0E0E11]">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-3xl mx-auto">
         <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight">What you get</h2>
-        <p class="mt-3 md:mt-4 text-base md:text-lg opacity-70">Everything you need for effortless, private file sharing.</p>
+        <p class="mt-3 md:mt-4 text-base md:text-lg opacity-70">Everything you need for effortless, private file
+          sharing.</p>
       </div>
 
       <div class="mt-10 md:mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         <!-- Speed -->
-        <article class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-6 md:p-8 shadow-soft">
+        <article
+          class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-6 md:p-8 shadow-soft">
           <div class="badge badge-grad w-12 h-12 grid place-items-center mb-4">
             <img class="icon8" src="https://img.icons8.com/ios-glyphs/30/rocket.png" alt="Speed icon by Icons8" />
           </div>
@@ -191,7 +310,8 @@
         </article>
 
         <!-- Security -->
-        <article class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-6 md:p-8 shadow-soft">
+        <article
+          class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-6 md:p-8 shadow-soft">
           <div class="badge badge-grad-2 w-12 h-12 grid place-items-center mb-4">
             <img class="icon8" src="https://img.icons8.com/ios-glyphs/30/lock--v1.png" alt="Lock icon by Icons8" />
           </div>
@@ -200,16 +320,19 @@
         </article>
 
         <!-- Zero config -->
-        <article class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-6 md:p-8 shadow-soft">
+        <article
+          class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-6 md:p-8 shadow-soft">
           <div class="badge badge-grad-3 w-12 h-12 grid place-items-center mb-4">
-            <img class="icon8" src="https://img.icons8.com/ios-glyphs/30/settings-3.png" alt="Settings icon by Icons8" />
+            <img class="icon8" src="https://img.icons8.com/ios-glyphs/30/settings-3.png"
+              alt="Settings icon by Icons8" />
           </div>
           <h4 class="font-semibold">Zero-config setup</h4>
           <p class="mt-1 text-sm opacity-70">mDNS discovery, one-tap QR share, drag & drop.</p>
         </article>
 
         <!-- Unlimited -->
-        <article class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-6 md:p-8 shadow-soft">
+        <article
+          class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-6 md:p-8 shadow-soft">
           <div class="badge badge-grad-4 w-12 h-12 grid place-items-center mb-4">
             <img class="icon8" src="https://img.icons8.com/ios-glyphs/30/infinity.png" alt="Infinity icon by Icons8" />
           </div>
@@ -218,7 +341,8 @@
         </article>
 
         <!-- Offline -->
-        <article class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-6 md:p-8 shadow-soft">
+        <article
+          class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-6 md:p-8 shadow-soft">
           <div class="badge badge-grad w-12 h-12 grid place-items-center mb-4">
             <img class="icon8" src="https://img.icons8.com/ios-glyphs/30/wifi-off.png" alt="Offline icon by Icons8" />
           </div>
@@ -227,16 +351,19 @@
         </article>
 
         <!-- History -->
-        <article class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-6 md:p-8 shadow-soft">
+        <article
+          class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-6 md:p-8 shadow-soft">
           <div class="badge badge-grad-2 w-12 h-12 grid place-items-center mb-4">
-            <img class="icon8" src="https://img.icons8.com/ios-glyphs/30/time-machine.png" alt="History icon by Icons8" />
+            <img class="icon8" src="https://img.icons8.com/ios-glyphs/30/time-machine.png"
+              alt="History icon by Icons8" />
           </div>
           <h4 class="font-semibold">Transfer history</h4>
           <p class="mt-1 text-sm opacity-70">SQLite log with search, export & retention.</p>
         </article>
 
         <!-- Phone uploads -->
-        <article class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-6 md:p-8 shadow-soft">
+        <article
+          class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-6 md:p-8 shadow-soft">
           <div class="badge badge-grad w-12 h-12 grid place-items-center mb-4">
             <img class="icon8" src="https://img.icons8.com/ios-glyphs/30/smartphone.png" alt="Phone icon by Icons8" />
           </div>
@@ -245,7 +372,8 @@
         </article>
 
         <!-- QR / PIN -->
-        <article class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-6 md:p-8 shadow-soft">
+        <article
+          class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-6 md:p-8 shadow-soft">
           <div class="badge badge-grad-3 w-12 h-12 grid place-items-center mb-4">
             <img class="icon8" src="https://img.icons8.com/ios-glyphs/30/qr-code.png" alt="QR icon by Icons8" />
           </div>
@@ -254,7 +382,8 @@
         </article>
 
         <!-- Out-of-LAN relay (optional/pro) -->
-        <article class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-6 md:p-8 shadow-soft">
+        <article
+          class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-6 md:p-8 shadow-soft">
           <div class="badge badge-grad-4 w-12 h-12 grid place-items-center mb-4">
             <img class="icon8" src="https://img.icons8.com/ios-glyphs/30/cloud.png" alt="Relay icon by Icons8" />
           </div>
@@ -265,119 +394,237 @@
     </div>
   </section>
 
- <!-- PRICING -->
-  <section id="pricing" class="py-24 bg-gradient-to-b from-white to-apple-gray/60 dark:from-[#0B0B0D] dark:to-[#0E0E11]">
+  <!-- PRICING -->
+  <section id="pricing"
+    class="py-24 bg-gradient-to-b from-white to-apple-gray/60 dark:from-[#0B0B0D] dark:to-[#0E0E11]">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-3xl mx-auto">
         <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight">Simple, fair pricing</h2>
         <p class="mt-3 opacity-70">Start free. Upgrade when you need more.</p>
+
+        <!-- Billing Toggle -->
+        <div
+          class="mt-6 inline-flex items-center justify-center rounded-full p-1 bg-white/70 dark:bg-white/[.06] border border-black/5 dark:border-white/10 shadow-sm">
+          <button id="billing-monthly"
+            class="billing-tab px-4 py-2 text-sm rounded-full transition aria-[pressed=true]:bg-apple-blue aria-[pressed=true]:text-white hover:bg-black/5 dark:hover:bg-white/10"
+            aria-pressed="true" data-plan="monthly" type="button">
+            Monthly
+          </button>
+          <button id="billing-yearly"
+            class="billing-tab px-4 py-2 text-sm rounded-full transition aria-[pressed=true]:bg-apple-blue aria-[pressed=true]:text-white hover:bg-black/5 dark:hover:bg-white/10"
+            aria-pressed="false" data-plan="yearly" type="button">
+            Yearly
+            <!-- badge je maknut iz gumba; prikazuje se u Pro yearly cijeni -->
+          </button>
+        </div>
+        <p id="billing-note" class="mt-2 text-xs opacity-60">Billed monthly</p>
       </div>
 
       <div class="mt-12 grid gap-6 md:grid-cols-3 items-stretch">
         <!-- Free -->
-        <div class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-8 shadow flex flex-col">
+        <div
+          class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-8 shadow flex flex-col">
           <div class="flex-1">
             <h3 class="text-xl font-bold flex items-center gap-2">
-              <img class="icon8-lg" src="https://img.icons8.com/ios-glyphs/30/gift.png" alt="Free plan icon by Icons8" />
+              <img class="icon8-lg" src="https://img.icons8.com/ios-glyphs/30/gift.png"
+                alt="Free plan icon by Icons8" />
               Free
             </h3>
             <p class="mt-1 text-sm opacity-70">For personal use on LAN</p>
             <div class="mt-6 text-4xl font-extrabold tracking-tight">€0</div>
             <ul class="mt-6 space-y-2 text-sm">
-              <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/checkmark.png" alt="check" /> <strong>No device limit</strong></li>
-              <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/checkmark.png" alt="check" /> Max file size <strong>200 MB</strong></li>
-              <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/checkmark.png" alt="check" /> Transfer history <strong>7 days</strong></li>
-              <li class="pricing-li opacity-70"><img src="https://img.icons8.com/ios-glyphs/30/cancel.png" alt="no" /> No relay/out-of-LAN</li>
+              <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/checkmark.png" alt="check" />
+                <strong>No device limit</strong>
+              </li>
+              <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/checkmark.png" alt="ok" />
+                <strong>All file types</strong>
+              </li>
+              <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/checkmark.png" alt="check" /> Max
+                file size <strong>200 MB</strong></li>
+              <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/checkmark.png" alt="check" />
+                Transfers/day <strong>10</strong></li>
+              <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/checkmark.png" alt="lock" />
+                Password-protected links &amp; expiring shares</li>
+              <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/checkmark.png" alt="check" />
+                Transfer history <strong>7 days</strong></li>
             </ul>
           </div>
-          <a href="#download" class="mt-8 inline-flex items-center justify-center w-full rounded-2xl border px-4 py-3 hover:bg-black/5 dark:hover:bg-white/5 transition">
+          <a href="#download"
+            class="mt-8 inline-flex items-center justify-center w-full rounded-2xl border px-4 py-3 hover:bg-black/5 dark:hover:bg-white/5 transition">
             Get started
           </a>
         </div>
 
         <!-- Pro -->
-        <div class="rounded-3xl bg-white shadow-glass border border-black/5 p-8 ring-1 ring-apple-blue/10 flex flex-col">
+        <div class="rounded-3xl bg-white shadow-glass border border-black/5 p-8 ring-1 ring-apple-blue/10 flex flex-col"
+          data-billing="monthly">
           <div class="inline-block self-start rounded-full bg-apple-blue/10 text-apple-blue text-xs px-2 py-1 mb-3">
-            <img class="inline-block mr-1 align-[-2px] w-3.5 h-3.5" src="https://img.icons8.com/ios-glyphs/30/star--v1.png" alt="star" />
+            <img class="inline-block mr-1 align-[-2px] w-3.5 h-3.5"
+              src="https://img.icons8.com/ios-glyphs/30/star--v1.png" alt="star" />
             Most popular
           </div>
           <div class="flex-1">
             <h3 class="text-xl font-bold flex items-center gap-2">
-              <img class="icon8-lg" src="https://img.icons8.com/ios-glyphs/30/certificate.png" alt="Pro plan icon by Icons8" />
+              <!-- Pro icon must be certificate.png -->
+              <img class="icon8-lg" src="https://img.icons8.com/ios-glyphs/30/certificate.png"
+                alt="Pro plan icon by Icons8" />
               Pro
             </h3>
-            <p class="mt-1 text-sm opacity-70">For power users & indie teams</p>
-            <div class="mt-6 text-4xl font-extrabold tracking-tight">€6<span class="text-base font-medium opacity-70">/mo</span></div>
+            <p class="mt-1 text-sm opacity-70">For power users &amp; indie teams</p>
+
+            <!-- Price (Monthly / Yearly) -->
+            <div class="mt-6">
+              <!-- Monthly -->
+              <div data-price="monthly" class="price-row">
+                <div class="text-4xl font-extrabold tracking-tight">
+                  €6 <span class="text-base font-medium opacity-70">/mo</span>
+                </div>
+                <div class="mt-1 text-xs opacity-60">Billed monthly</div>
+              </div>
+              <!-- Yearly -->
+              <div data-price="yearly" class="price-row hidden">
+                <div class="text-4xl font-extrabold tracking-tight">
+                  €60 <span class="text-base font-medium opacity-70">/yr</span>
+                </div>
+                <div class="mt-1 flex items-center gap-2 text-xs">
+                  <span class="opacity-60">Equivalent to ~€5/mo</span>
+                  <span class="inline-block rounded-full px-2 py-[2px] bg-apple-blue/10 text-apple-blue">Save
+                    ~17%</span>
+                </div>
+              </div>
+            </div>
+
             <ul class="mt-6 space-y-2 text-sm">
-              <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/checkmark.png" alt="check" /> <strong>Unlimited file size</strong></li>
-              <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/checkmark.png" alt="check" /> Transfer history <strong>Unlimited</strong></li>
-              <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/checkmark.png" alt="check" /> Relay/out-of-LAN <strong>Unlimited</strong></li>
-              <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/checkmark.png" alt="check" /> <strong>Phone transfers (iOS & Android)</strong></li>
-              <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/technical-support.png" alt="support" /> Priority support</li>
+              <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/ok.png" alt="check" />
+                <strong>Everything in FREE</strong>
+              </li>
+              <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/checkmark.png" alt="check" />
+                <strong>Unlimited file size</strong>
+              </li>
+              <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/checkmark.png" alt="check" />
+                Transfers/day <strong>Unlimited</strong></li>
+              <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/checkmark.png" alt="check" />
+                Transfer history <strong>Unlimited</strong></li>
+              <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/technical-support.png"
+                  alt="support" /> Priority support</li>
             </ul>
           </div>
-          <a href="#download" class="mt-8 inline-flex items-center justify-center w-full rounded-2xl bg-apple-blue text-white px-4 py-3 shadow hover:shadow-lg transition">
+          <a href="#download"
+            class="mt-8 inline-flex items-center justify-center w-full rounded-2xl bg-apple-blue text-white px-4 py-3 shadow hover:shadow-lg transition">
             Upgrade
           </a>
         </div>
 
         <!-- Teams -->
-        <div class="rounded-3xl bg-white/70 dark:bg-white/[.07] border border-dashed border-black/10 dark:border-white/20 p-8 flex flex-col">
+        <div
+          class="rounded-3xl bg-white/70 dark:bg-white/[.07] border border-dashed border-black/10 dark:border-white/20 p-8 flex flex-col">
           <div class="inline-block self-start rounded-full bg-black/5 dark:bg-white/10 text-xs px-2 py-1 mb-3">
-            <img class="inline-block mr-1 align-[-2px] w-3.5 h-3.5" src="https://img.icons8.com/ios-glyphs/30/briefcase.png" alt="briefcase" />
+            <img class="inline-block mr-1 align-[-2px] w-3.5 h-3.5"
+              src="https://img.icons8.com/ios-glyphs/30/briefcase.png" alt="briefcase" />
             Coming soon
           </div>
           <div class="flex-1">
             <h3 class="text-xl font-bold flex items-center gap-2">
-              <img class="icon8-lg" src="https://img.icons8.com/ios-glyphs/30/conference-call.png" alt="Teams icon by Icons8" />
+              <!-- Changed Teams icon to certificate -->
+              <img class="icon8-lg" src="https://img.icons8.com/ios-glyphs/30/certificate.png"
+                alt="Teams icon by Icons8" />
               Teams
             </h3>
-            <p class="mt-1 text-sm opacity-70">For offices & organizations</p>
+            <p class="mt-1 text-sm opacity-70">For offices &amp; organizations</p>
             <div class="mt-6 text-4xl font-extrabold tracking-tight">—</div>
-            <ul class="mt-6 space-y-2 text-sm opacity-70">
-              <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/organization.png" alt="workspace" /> Workspaces & SSO</li>
-              <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/administrator-male.png" alt="admin" /> Admin controls & audit logs</li>
-              <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/server.png" alt="server" /> Dedicated relays</li>
-              <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/life-buoy.png" alt="SLA" /> SLA support</li>
+            <ul class="mt-6 space-y-2 text-sm opacity-90">
+              <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/ok.png" alt="ok" />
+                <strong>Everything in Pro</strong>
+              </li>
+              <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/organization.png" alt="workspace" />
+                Workspaces &amp; SSO</li>
+              <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/administrator-male.png"
+                  alt="admin" /> Admin controls &amp; audit logs</li>
+              <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/server.png" alt="server" />
+                Dedicated relays</li>
+              <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/agreement.png" alt="SLA" /> SLA
+                support</li>
             </ul>
           </div>
-          <button disabled class="mt-8 inline-flex items-center justify-center w-full rounded-2xl border px-4 py-3 opacity-60 cursor-not-allowed">
+          <button disabled
+            class="mt-8 inline-flex items-center justify-center w-full rounded-2xl border px-4 py-3 opacity-60 cursor-not-allowed">
             Notify me
           </button>
         </div>
       </div>
     </div>
+
+    <!-- Tiny, framework-free toggle logic -->
+    <script>
+        (function () {
+          const monthlyBtn = document.getElementById('billing-monthly');
+          const yearlyBtn = document.getElementById('billing-yearly');
+          const proCard = document.querySelector('[data-billing]');
+          const note = document.getElementById('billing-note');
+
+          function setPlan(plan) {
+            monthlyBtn.setAttribute('aria-pressed', plan === 'monthly');
+            yearlyBtn.setAttribute('aria-pressed', plan === 'yearly');
+            proCard.setAttribute('data-billing', plan);
+
+            document.querySelectorAll('[data-price]').forEach(el => {
+              el.classList.toggle('hidden', el.getAttribute('data-price') !== plan);
+            });
+
+            note.textContent = plan === 'yearly' ? 'Billed yearly (save ~17%)' : 'Billed monthly';
+          }
+
+          monthlyBtn.addEventListener('click', () => setPlan('monthly'));
+          yearlyBtn.addEventListener('click', () => setPlan('yearly'));
+          setPlan('monthly');
+        })();
+    </script>
   </section>
 
+
   <!-- HOW IT WORKS -->
-  <section class="py-20 bg-gradient-to-b from-apple-gray/60 to-white dark:from-[#0E0E11] dark:to-[#0B0B0D] scroll-mt-20">
+  <section
+    class="py-20 bg-gradient-to-b from-apple-gray/60 to-white dark:from-[#0E0E11] dark:to-[#0B0B0D] scroll-mt-20">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-3xl mx-auto">
         <h2 class="text-3xl md:4xl lg:text-4xl font-extrabold tracking-tight">How it works</h2>
-        <p class="mt-3 text-base md:text-lg opacity-70">Three simple steps to start sharing files instantly on your local network.</p>
+        <p class="mt-3 text-base md:text-lg opacity-70">Three simple steps to start sharing files instantly on your
+          local network.</p>
       </div>
 
       <div class="mt-12 grid gap-8 md:grid-cols-3">
         <div class="text-center">
-          <div class="relative mx-auto w-20 h-20 rounded-3xl bg-gradient-to-br from-apple-blue/20 to-ios-purple/20 flex items-center justify-center mb-6">
-            <div class="w-12 h-12 rounded-2xl bg-apple-blue flex items-center justify-center text-white font-bold text-xl">1</div>
+          <div
+            class="relative mx-auto w-20 h-20 rounded-3xl bg-gradient-to-br from-apple-blue/20 to-ios-purple/20 flex items-center justify-center mb-6">
+            <div
+              class="w-12 h-12 rounded-2xl bg-apple-blue flex items-center justify-center text-white font-bold text-xl">
+              1</div>
           </div>
           <h3 class="text-xl font-semibold mb-3">Download & Install</h3>
-          <p class="text-sm opacity-70">Get AirShare for your platform. No configuration needed - it works out of the box.</p>
+          <p class="text-sm opacity-70">Get AirShare for your platform. No configuration needed - it works out of the
+            box.</p>
         </div>
         <div class="text-center">
-          <div class="relative mx-auto w-20 h-20 rounded-3xl bg-gradient-to-br from-ios-purple/20 to-ios-pink/20 flex items-center justify-center mb-6">
-            <div class="w-12 h-12 rounded-2xl bg-ios-purple flex items-center justify-center text-white font-bold text-xl">2</div>
+          <div
+            class="relative mx-auto w-20 h-20 rounded-3xl bg-gradient-to-br from-ios-purple/20 to-ios-pink/20 flex items-center justify-center mb-6">
+            <div
+              class="w-12 h-12 rounded-2xl bg-ios-purple flex items-center justify-center text-white font-bold text-xl">
+              2</div>
           </div>
           <h3 class="text-xl font-semibold mb-3">Discover Devices</h3>
-          <p class="text-sm opacity-70">AirShare automatically finds other devices on your network using mDNS discovery.</p>
+          <p class="text-sm opacity-70">AirShare automatically finds other devices on your network using mDNS discovery.
+          </p>
         </div>
         <div class="text-center">
-          <div class="relative mx-auto w-20 h-20 rounded-3xl bg-gradient-to-br from-ios-pink/20 to-ios-orange/20 flex items-center justify-center mb-6">
-            <div class="w-12 h-12 rounded-2xl bg-ios-pink flex items-center justify-center text-white font-bold text-xl">3</div>
+          <div
+            class="relative mx-auto w-20 h-20 rounded-3xl bg-gradient-to-br from-ios-pink/20 to-ios-orange/20 flex items-center justify-center mb-6">
+            <div
+              class="w-12 h-12 rounded-2xl bg-ios-pink flex items-center justify-center text-white font-bold text-xl">3
+            </div>
           </div>
           <h3 class="text-xl font-semibold mb-3">Share Instantly</h3>
-          <p class="text-sm opacity-70">Drag & drop files to any device. QUIC ensures lightning-fast, secure transfers.</p>
+          <p class="text-sm opacity-70">Drag & drop files to any device. QUIC ensures lightning-fast, secure transfers.
+          </p>
         </div>
       </div>
     </div>
@@ -388,21 +635,32 @@
     <div class="absolute inset-0 -z-10 bg-gradient-to-tr from-apple-blue/10 via-ios.purple/10 to-ios.pink/10"></div>
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
       <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight">Ready to share?</h2>
-      <p class="mt-3 text-lg opacity-70 max-w-2xl mx-auto">Download AirShare and start sending files instantly on your LAN.</p>
+      <p class="mt-3 text-lg opacity-70 max-w-2xl mx-auto">Download AirShare and start sending files instantly on your
+        LAN.</p>
       <div class="mt-10 flex flex-wrap gap-4 justify-center">
-        <a id="dl-mac" class="dl inline-flex items-center gap-3 rounded-2xl bg-white text-apple-blue px-6 py-3 shadow-glass hover:shadow-glow transition" href="#mac">
-          <img src="https://img.icons8.com/ios-filled/24/mac-os.png" alt="macOS icon by Icons8" class="h-5 w-5" loading="lazy" width="20" height="20" />
+        <a id="dl-mac"
+          class="dl inline-flex items-center gap-3 rounded-2xl bg-white text-apple-blue px-6 py-3 shadow-glass hover:shadow-glow transition"
+          href="#mac">
+          <img src="https://img.icons8.com/ios-filled/24/mac-os.png" alt="macOS icon by Icons8" class="h-5 w-5"
+            loading="lazy" width="20" height="20" />
           macOS
         </a>
-        <a id="dl-win" class="dl inline-flex items-center gap-3 rounded-2xl bg-white text-apple-blue px-6 py-3 shadow-glass hover:shadow-glow transition" href="#win">
-          <img src="https://img.icons8.com/color/24/windows-10.png" alt="Windows icon by Icons8" class="h-5 w-5" loading="lazy" width="20" height="20" />
+        <a id="dl-win"
+          class="dl inline-flex items-center gap-3 rounded-2xl bg-white text-apple-blue px-6 py-3 shadow-glass hover:shadow-glow transition"
+          href="#win">
+          <img src="https://img.icons8.com/color/24/windows-10.png" alt="Windows icon by Icons8" class="h-5 w-5"
+            loading="lazy" width="20" height="20" />
           Windows
         </a>
-        <a id="dl-linux" class="dl inline-flex items-center gap-3 rounded-2xl bg-white text-apple-blue px-6 py-3 shadow-glass hover:shadow-glow transition" href="#linux">
-          <img src="https://img.icons8.com/color/24/linux--v1.png" alt="Linux icon by Icons8" class="h-5 w-5" loading="lazy" width="20" height="20" />
+        <a id="dl-linux"
+          class="dl inline-flex items-center gap-3 rounded-2xl bg-white text-apple-blue px-6 py-3 shadow-glass hover:shadow-glow transition"
+          href="#linux">
+          <img src="https://img.icons8.com/color/24/linux--v1.png" alt="Linux icon by Icons8" class="h-5 w-5"
+            loading="lazy" width="20" height="20" />
           Linux
         </a>
-        <a class="inline-flex items-center gap-3 rounded-2xl border border-black/10 dark:border-white/20 px-6 py-3 hover:bg-black/5 dark:hover:bg-white/5 transition" href="https://github.com/airsharehq">
+        <a class="inline-flex items-center gap-3 rounded-2xl border border-black/10 dark:border-white/20 px-6 py-3 hover:bg-black/5 dark:hover:bg-white/5 transition"
+          href="https://github.com/airsharehq">
           <img class="icon8" src="https://img.icons8.com/ios-glyphs/30/github.png" alt="GitHub icon by Icons8" />
           GitHub
         </a>
@@ -420,7 +678,8 @@
     </div>
     <p class="text-center text-xs opacity-50 mt-2">Downloads auto-filled from latest GitHub Release.</p>
     <p class="text-center text-[11px] opacity-60 mt-1">
-      Icons by <a class="underline hover:no-underline" href="https://icons8.com" rel="noopener" target="_blank">Icons8</a>.
+      Icons by <a class="underline hover:no-underline" href="https://icons8.com" rel="noopener"
+        target="_blank">Icons8</a>.
     </p>
   </footer>
 
@@ -437,15 +696,15 @@
       if (/Macintosh|Mac OS X/.test(ua)) os = 'mac';
       else if (/Windows/.test(ua)) os = 'win';
 
-      const map = { mac: ['btn-mac','dl-mac'], win: ['btn-win','dl-win'], linux: ['btn-linux','dl-linux'] };
-      const heroAll = ['btn-mac','btn-win','btn-linux'];
+      const map = { mac: ['btn-mac', 'dl-mac'], win: ['btn-win', 'dl-win'], linux: ['btn-linux', 'dl-linux'] };
+      const heroAll = ['btn-mac', 'btn-win', 'btn-linux'];
 
       if (isMobile) {
-        heroAll.forEach(id => document.getElementById(id)?.classList.remove('hidden','highlight'));
+        heroAll.forEach(id => document.getElementById(id)?.classList.remove('hidden', 'highlight'));
         document.getElementById('show-all-downloads')?.classList.add('hidden');
       } else {
         heroAll.forEach(id => document.getElementById(id)?.classList.add('hidden'));
-        (map[os] || []).slice(0,1).forEach(id => {
+        (map[os] || []).slice(0, 1).forEach(id => {
           const el = document.getElementById(id);
           if (el) { el.classList.remove('hidden'); el.classList.add('highlight'); }
         });
@@ -454,12 +713,12 @@
           showAll.classList.remove('hidden');
           showAll.addEventListener('click', (e) => {
             e.preventDefault();
-            heroAll.forEach(id => document.getElementById(id)?.classList.remove('hidden','highlight'));
+            heroAll.forEach(id => document.getElementById(id)?.classList.remove('hidden', 'highlight'));
             showAll.classList.add('hidden');
           });
         }
       }
-      ['dl-mac','dl-win','dl-linux'].forEach(id => document.getElementById(id)?.classList.remove('hidden'));
+      ['dl-mac', 'dl-win', 'dl-linux'].forEach(id => document.getElementById(id)?.classList.remove('hidden'));
       const cta = map[os]?.[1]; if (cta) document.getElementById(cta)?.classList.add('highlight');
     })();
 
@@ -478,20 +737,20 @@
       const fallback = `https://github.com/${owner}/${repo}/releases/latest`;
 
       function setHref(os, url, versionText) {
-        const ids = os === 'mac' ? ['btn-mac', 'dl-mac'] : os === 'win' ? ['btn-win','dl-win'] : ['btn-linux','dl-linux'];
+        const ids = os === 'mac' ? ['btn-mac', 'dl-mac'] : os === 'win' ? ['btn-win', 'dl-win'] : ['btn-linux', 'dl-linux'];
         ids.forEach(id => {
           const el = document.getElementById(id);
           if (el) {
             el.href = url || fallback;
-            el.setAttribute('rel','nofollow noopener');
-            el.setAttribute('download','');
+            el.setAttribute('rel', 'nofollow noopener');
+            el.setAttribute('download', '');
             if (versionText) el.title = `AirShare ${versionText}`;
           }
         });
       }
 
       try {
-        const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/releases/latest`, { headers: { 'Accept': 'application/vnd.github+json' }});
+        const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/releases/latest`, { headers: { 'Accept': 'application/vnd.github+json' } });
         if (!res.ok) throw new Error('GitHub API error: ' + res.status);
         const rel = await res.json();
         const assets = rel.assets || [];
@@ -521,4 +780,5 @@
     })();
   </script>
 </body>
+
 </html>
