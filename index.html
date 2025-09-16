@@ -395,155 +395,155 @@
   </section>
 
   <!-- PRICING -->
-  <section id="pricing"
-    class="py-24 bg-gradient-to-b from-white to-apple-gray/60 dark:from-[#0B0B0D] dark:to-[#0E0E11]">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto">
-        <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight">Simple, fair pricing</h2>
-        <p class="mt-3 opacity-70">Start free. Upgrade when you need more.</p>
+<section id="pricing"
+  class="py-24 bg-gradient-to-b from-white to-apple-gray/60 dark:from-[#0B0B0D] dark:to-[#0E0E11]">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto">
+      <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight">Simple, fair pricing</h2>
+      <p class="mt-3 opacity-70">Start free. Upgrade when you need more.</p>
 
-        <!-- Billing Toggle -->
-        <div
-          class="mt-6 inline-flex items-center justify-center rounded-full p-1 bg-white/70 dark:bg-white/[.06] border border-black/5 dark:border-white/10 shadow-sm">
-          <button id="billing-monthly"
-            class="billing-tab px-4 py-2 text-sm rounded-full transition aria-[pressed=true]:bg-apple-blue aria-[pressed=true]:text-white hover:bg-black/5 dark:hover:bg-white/10"
-            aria-pressed="true" data-plan="monthly" type="button">
-            Monthly
-          </button>
-          <button id="billing-yearly"
-            class="billing-tab px-4 py-2 text-sm rounded-full transition aria-[pressed=true]:bg-apple-blue aria-[pressed=true]:text-white hover:bg-black/5 dark:hover:bg-white/10"
-            aria-pressed="false" data-plan="yearly" type="button">
-            Yearly
-            <!-- badge je maknut iz gumba; prikazuje se u Pro yearly cijeni -->
-          </button>
-        </div>
-        <p id="billing-note" class="mt-2 text-xs opacity-60">Billed monthly</p>
+      <!-- Billing Toggle: Yearly vs Lifetime -->
+      <div
+        class="mt-6 inline-flex items-center justify-center rounded-full p-1 bg-white/70 dark:bg-white/[.06] border border-black/5 dark:border-white/10 shadow-sm">
+        <button id="billing-yearly"
+          class="billing-tab px-4 py-2 text-sm rounded-full transition aria-[pressed=true]:bg-apple-blue aria-[pressed=true]:text-white hover:bg-black/5 dark:hover:bg-white/10"
+          aria-pressed="true" data-plan="yearly" type="button">
+          Yearly (one-time)
+        </button>
+        <button id="billing-lifetime"
+          class="billing-tab px-4 py-2 text-sm rounded-full transition aria-[pressed=true]:bg-apple-blue aria-[pressed=true]:text-white hover:bg-black/5 dark:hover:bg-white/10"
+          aria-pressed="false" data-plan="lifetime" type="button">
+          Lifetime
+        </button>
       </div>
-
-      <div class="mt-12 grid gap-6 md:grid-cols-2 items-stretch justify-center max-w-4xl mx-auto">
-        <!-- Free -->
-        <div
-          class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-8 shadow flex flex-col">
-          <div class="flex-1">
-            <h3 class="text-xl font-bold flex items-center gap-2">
-              <img class="icon8-lg" src="https://img.icons8.com/ios-glyphs/30/gift.png"
-                alt="Free plan icon by Icons8" />
-              Free
-            </h3>
-            <p class="mt-1 text-sm opacity-70">For personal use on LAN</p>
-            <div class="mt-6 text-4xl font-extrabold tracking-tight">€0</div>
-            <ul class="mt-6 space-y-2 text-sm">
-              <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/checkmark.png" alt="check" />
-                <strong>No device limit</strong>
-              </li>
-              <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/checkmark.png" alt="ok" />
-                <strong>All file types</strong>
-              </li>
-              <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/checkmark.png" alt="check" /> Max
-                file size <strong>200 MB</strong></li>
-              <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/checkmark.png" alt="check" />
-                Transfers/day <strong>10</strong></li>
-              <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/checkmark.png" alt="lock" />
-                Password-protected links &amp; expiring shares</li>
-              <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/checkmark.png" alt="check" />
-                Transfer history <strong>7 days</strong></li>
-            </ul>
-          </div>
-          <a href="#download"
-            class="mt-8 inline-flex items-center justify-center w-full rounded-2xl border px-4 py-3 hover:bg-black/5 dark:hover:bg-white/5 transition">
-            Get started
-          </a>
-        </div>
-
-        <!-- Pro -->
-        <div
-          class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-8 shadow flex flex-col"
-          data-billing="monthly">
-          <div class="inline-block self-start rounded-full bg-apple-blue/10 text-apple-blue text-xs px-2 py-1 mb-3">
-            <img class="inline-block mr-1 align-[-2px] w-3.5 h-3.5"
-              src="https://img.icons8.com/ios-glyphs/30/star--v1.png" alt="star" />
-            Most popular
-          </div>
-          <div class="flex-1">
-            <h3 class="text-xl font-bold flex items-center gap-2">
-              <!-- Pro icon must be certificate.png -->
-              <img class="icon8-lg" src="https://img.icons8.com/ios-glyphs/30/certificate.png"
-                alt="Pro plan icon by Icons8" />
-              Pro
-            </h3>
-            <p class="mt-1 text-sm opacity-70">For power users &amp; indie teams</p>
-
-            <!-- Price (Monthly / Yearly) -->
-            <div class="mt-6">
-              <!-- Monthly -->
-              <div data-price="monthly" class="price-row">
-                <div class="text-4xl font-extrabold tracking-tight">
-                  €6 <span class="text-base font-medium opacity-70">/mo</span>
-                </div>
-                <div class="mt-1 text-xs opacity-60">Billed monthly</div>
-              </div>
-              <!-- Yearly -->
-              <div data-price="yearly" class="price-row hidden">
-                <div class="text-4xl font-extrabold tracking-tight">
-                  €60 <span class="text-base font-medium opacity-70">/yr</span>
-                </div>
-                <div class="mt-1 flex items-center gap-2 text-xs">
-                  <span class="opacity-60">Equivalent to ~€5/mo</span>
-                  <span class="inline-block rounded-full px-2 py-[2px] bg-apple-blue/10 text-apple-blue">Save
-                    ~17%</span>
-                </div>
-              </div>
-            </div>
-
-            <ul class="mt-6 space-y-2 text-sm">
-              <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/ok.png" alt="check" />
-                <strong>Everything in FREE</strong>
-              </li>
-              <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/checkmark.png" alt="check" />
-                <strong>Unlimited file size</strong>
-              </li>
-              <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/checkmark.png" alt="check" />
-                Transfers/day <strong>Unlimited</strong></li>
-              <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/checkmark.png" alt="check" />
-                Transfer history <strong>Unlimited</strong></li>
-              <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/technical-support.png"
-                  alt="support" /> Priority support</li>
-            </ul>
-          </div>
-          <a href="#download"
-            class="mt-8 inline-flex items-center justify-center w-full rounded-2xl bg-apple-blue text-white px-4 py-3 shadow hover:shadow-lg transition">
-            Upgrade
-          </a>
-        </div>
-      </div>
+      <p id="billing-note" class="mt-2 text-xs opacity-60">
+        One-time purchase — no auto-renew
+      </p>
     </div>
 
-    <!-- Tiny, framework-free toggle logic -->
-    <script>
-        (function () {
-          const monthlyBtn = document.getElementById('billing-monthly');
-          const yearlyBtn = document.getElementById('billing-yearly');
-          const proCard = document.querySelector('[data-billing]');
-          const note = document.getElementById('billing-note');
+    <div class="mt-12 grid gap-6 md:grid-cols-2 items-stretch justify-center max-w-4xl mx-auto">
+      <!-- Free (unchanged features) -->
+      <div
+        class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-8 shadow flex flex-col">
+        <div class="flex-1">
+          <h3 class="text-xl font-bold flex items-center gap-2">
+            <img class="icon8-lg" src="https://img.icons8.com/ios-glyphs/30/gift.png" alt="Free plan icon by Icons8" />
+            Free
+          </h3>
+          <p class="mt-1 text-sm opacity-70">For personal use on LAN</p>
+          <div class="mt-6 text-4xl font-extrabold tracking-tight">€0</div>
+          <ul class="mt-6 space-y-2 text-sm">
+            <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/checkmark.png" alt="check" />
+              <strong>No device limit</strong>
+            </li>
+            <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/checkmark.png" alt="ok" />
+              <strong>All file types</strong>
+            </li>
+            <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/checkmark.png" alt="check" /> Max
+              file size <strong>200 MB</strong></li>
+            <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/checkmark.png" alt="check" />
+              Transfers/day <strong>10</strong></li>
+            <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/checkmark.png" alt="lock" />
+              Password-protected links &amp; expiring shares</li>
+            <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/checkmark.png" alt="check" />
+              Transfer history <strong>7 days</strong></li>
+          </ul>
+        </div>
+        <a href="#download"
+          class="mt-8 inline-flex items-center justify-center w-full rounded-2xl border px-4 py-3 hover:bg-black/5 dark:hover:bg-white/5 transition">
+          Get started
+        </a>
+      </div>
 
-          function setPlan(plan) {
-            monthlyBtn.setAttribute('aria-pressed', plan === 'monthly');
-            yearlyBtn.setAttribute('aria-pressed', plan === 'yearly');
-            proCard.setAttribute('data-billing', plan);
+      <!-- Pro (Yearly / Lifetime) -->
+      <div
+        class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-8 shadow flex flex-col"
+        data-billing="yearly">
+        <div class="inline-block self-start rounded-full bg-apple-blue/10 text-apple-blue text-xs px-2 py-1 mb-3">
+          <img class="inline-block mr-1 align-[-2px] w-3.5 h-3.5"
+            src="https://img.icons8.com/ios-glyphs/30/star--v1.png" alt="star" />
+          Most popular
+        </div>
+        <div class="flex-1">
+          <h3 class="text-xl font-bold flex items-center gap-2">
+            <img class="icon8-lg" src="https://img.icons8.com/ios-glyphs/30/certificate.png" alt="Pro plan icon" />
+            Pro
+          </h3>
+          <p class="mt-1 text-sm opacity-70">For power users &amp; indie teams</p>
 
-            document.querySelectorAll('[data-price]').forEach(el => {
-              el.classList.toggle('hidden', el.getAttribute('data-price') !== plan);
-            });
+          <!-- Price (Yearly / Lifetime) -->
+          <div class="mt-6">
+            <!-- Yearly (one-time 12 months) -->
+            <div data-price="yearly" class="price-row">
+              <div class="text-4xl font-extrabold tracking-tight">
+                €29 <span class="text-base font-medium opacity-70">/year</span>
+              </div>
+              <div class="mt-1 text-xs opacity-60">One-time purchase, valid 12 months</div>
+            </div>
 
-            note.textContent = plan === 'yearly' ? 'Billed yearly (save ~17%)' : 'Billed monthly';
-          }
+            <!-- Lifetime (no expiry) -->
+            <div data-price="lifetime" class="price-row hidden">
+              <div class="text-4xl font-extrabold tracking-tight">
+                €79 <span class="text-base font-medium opacity-70">one-time</span>
+              </div>
+              <div class="mt-1 text-xs opacity-60">Lifetime license — no expiry</div>
+            </div>
+          </div>
 
-          monthlyBtn.addEventListener('click', () => setPlan('monthly'));
-          yearlyBtn.addEventListener('click', () => setPlan('yearly'));
-          setPlan('monthly');
-        })();
-    </script>
-  </section>
+          <!-- Features (unchanged list) -->
+          <ul class="mt-6 space-y-2 text-sm">
+            <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/ok.png" alt="check" />
+              <strong>Everything in FREE</strong>
+            </li>
+            <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/checkmark.png" alt="check" />
+              <strong>Unlimited file size</strong>
+            </li>
+            <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/checkmark.png" alt="check" />
+              Transfers/day <strong>Unlimited</strong></li>
+            <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/checkmark.png" alt="check" />
+              Transfer history <strong>Unlimited</strong></li>
+            <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/technical-support.png"
+                alt="support" /> Priority support</li>
+          </ul>
+        </div>
+
+        <a href="#download"
+          class="mt-8 inline-flex items-center justify-center w-full rounded-2xl bg-apple-blue text-white px-4 py-3 shadow hover:shadow-lg transition">
+          Upgrade
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toggle logic (Yearly/Lifetime) -->
+  <script>
+    (function () {
+      const yearlyBtn = document.getElementById('billing-yearly');
+      const lifetimeBtn = document.getElementById('billing-lifetime');
+      const proCard = document.querySelector('[data-billing]');
+      const note = document.getElementById('billing-note');
+
+      function setPlan(plan) {
+        yearlyBtn.setAttribute('aria-pressed', plan === 'yearly');
+        lifetimeBtn.setAttribute('aria-pressed', plan === 'lifetime');
+        proCard.setAttribute('data-billing', plan);
+
+        document.querySelectorAll('[data-price]').forEach(el => {
+          el.classList.toggle('hidden', el.getAttribute('data-price') !== plan);
+        });
+
+        note.textContent = plan === 'yearly'
+          ? 'One-time purchase — valid 12 months'
+          : 'One-time purchase — lifetime license (no auto-renew)';
+      }
+
+      yearlyBtn.addEventListener('click', () => setPlan('yearly'));
+      lifetimeBtn.addEventListener('click', () => setPlan('lifetime'));
+      setPlan('yearly');
+    })();
+  </script>
+</section>
+
 
 
   <!-- HOW IT WORKS -->
