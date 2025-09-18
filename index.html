@@ -394,7 +394,7 @@
     </div>
   </section>
 
-  <!-- PRICING -->
+    <!-- PRICING -->
 <section id="pricing"
   class="py-24 bg-gradient-to-b from-white to-apple-gray/60 dark:from-[#0B0B0D] dark:to-[#0E0E11]">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -490,9 +490,9 @@
             </div>
           </div>
 
-          <!-- Features (unchanged list) -->
+          <!-- Features -->
           <ul class="mt-6 space-y-2 text-sm">
-            <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/ok.png" alt="check" />
+            <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/checkmark.png.png" alt="check" />
               <strong>Everything in FREE</strong>
             </li>
             <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/checkmark.png" alt="check" />
@@ -507,9 +507,10 @@
           </ul>
         </div>
 
-        <a href="https://sandbox-pay.paddle.io/hsc_01k525469vtq4xf7xqm09e7app_p00rnqdt7nn23n4mwyabrsd0rr40tfbx"
+        <a id="buy-button"
+          href="https://airshare.lemonsqueezy.com/buy/0f4cf8dc-425e-447f-b003-794944b7cfe1?media=0&discount=0"
           class="mt-8 inline-flex items-center justify-center w-full rounded-2xl bg-apple-blue text-white px-4 py-3 shadow hover:shadow-lg transition">
-          Upgrade
+          Buy Now
         </a>
       </div>
     </div>
@@ -522,6 +523,12 @@
       const lifetimeBtn = document.getElementById('billing-lifetime');
       const proCard = document.querySelector('[data-billing]');
       const note = document.getElementById('billing-note');
+      const buyButton = document.getElementById('buy-button');
+
+      const links = {
+        yearly: "https://airshare.lemonsqueezy.com/buy/0f4cf8dc-425e-447f-b003-794944b7cfe1?media=0&discount=0",
+        lifetime: "https://airshare.lemonsqueezy.com/buy/c97f8ad2-ee9d-4d0c-9bf0-b79cea874916?media=0&discount=0"
+      };
 
       function setPlan(plan) {
         yearlyBtn.setAttribute('aria-pressed', plan === 'yearly');
@@ -535,6 +542,8 @@
         note.textContent = plan === 'yearly'
           ? 'One-time purchase — valid 12 months'
           : 'One-time purchase — lifetime license (no auto-renew)';
+
+        buyButton.href = links[plan];
       }
 
       yearlyBtn.addEventListener('click', () => setPlan('yearly'));
@@ -543,6 +552,7 @@
     })();
   </script>
 </section>
+
 
 
 
