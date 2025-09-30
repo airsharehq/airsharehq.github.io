@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AirShare FAQ - Frequently Asked Questions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/png" href="icons/airshare.png">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .faq-item {
+            transition: all 0.3s ease;
+        }
+        .faq-item:hover {
+            background-color: #f8fafc;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Header -->
+    <header class="gradient-bg text-white py-16">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex justify-center mb-6">
+                <img src="icons/airshare.png" alt="AirShare" class="w-16 h-16 rounded-full shadow-lg">
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">AirShare FAQ</h1>
+            <p class="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">
+                Frequently Asked Questions about AirShare - Secure peer-to-peer file sharing
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12">
+        <!-- Quick Navigation -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8 card-hover">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Quick Navigation</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <a href="#getting-started" class="text-blue-600 hover:text-blue-800 font-medium">Getting Started</a>
+                <a href="#troubleshooting" class="text-blue-600 hover:text-blue-800 font-medium">Troubleshooting</a>
+                <a href="#features" class="text-blue-600 hover:text-blue-800 font-medium">Features & Pro</a>
+                <a href="#security" class="text-blue-600 hover:text-blue-800 font-medium">Security</a>
+                <a href="#technical" class="text-blue-600 hover:text-blue-800 font-medium">Technical</a>
+                <a href="#support" class="text-blue-600 hover:text-blue-800 font-medium">Support</a>
+            </div>
+        </div>
+
+        <!-- Getting Started Section -->
+        <section id="getting-started" class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 flex items-center">
+                <span class="bg-blue-100 text-blue-600 rounded-full w-8 h-8 flex items-center justify-center text-lg font-bold mr-3">1</span>
+                Getting Started
+            </h2>
+            
+            <div class="space-y-6">
+                <div class="bg-white rounded-lg shadow-md p-6 faq-item">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">How do I install AirShare?</h3>
+                    <div class="text-gray-600 space-y-2">
+                        <p>AirShare is available for Windows, macOS, and Linux. Download the installer from our website and follow the installation wizard. No additional setup is required - just install and run!</p>
+                        <ul class="list-disc list-inside ml-4 space-y-1">
+                            <li>Windows: Download the .exe installer</li>
+                            <li>macOS: Download the .dmg file and drag to Applications</li>
+                            <li>Linux: Download the .AppImage file and make it executable</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6 faq-item">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">How do I share files with AirShare?</h3>
+                    <div class="text-gray-600 space-y-2">
+                        <p>Sharing files is simple:</p>
+                        <ol class="list-decimal list-inside ml-4 space-y-1">
+                            <li>Make sure AirShare is running on both devices</li>
+                            <li>Both devices must be on the same WiFi network</li>
+                            <li>Drag and drop files onto a device in the radar, or click on a device and select files</li>
+                            <li>Enter the PIN code when prompted</li>
+                            <li>Files will be transferred securely</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6 faq-item">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Why can't I see other devices on the radar?</h3>
+                    <div class="text-gray-600 space-y-2">
+                        <p>If you can't see other devices, check these common issues:</p>
+                        <ul class="list-disc list-inside ml-4 space-y-1">
+                            <li>Ensure both devices are on the same WiFi network</li>
+                            <li>Check that AirShare is running on both devices</li>
+                            <li>Verify that "Discovery" is set to "Everyone" in preferences</li>
+                            <li>Check your firewall settings - AirShare needs network access</li>
+                            <li>Try refreshing the device list (F5 or View → Refresh)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Troubleshooting Section -->
+        <section id="troubleshooting" class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 flex items-center">
+                <span class="bg-red-100 text-red-600 rounded-full w-8 h-8 flex items-center justify-center text-lg font-bold mr-3">2</span>
+                Troubleshooting
+            </h2>
+            
+            <div class="space-y-6">
+                <div class="bg-white rounded-lg shadow-md p-6 faq-item">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Transfer failed or stuck - what should I do?</h3>
+                    <div class="text-gray-600 space-y-2">
+                        <p>If a transfer fails or gets stuck:</p>
+                        <ul class="list-disc list-inside ml-4 space-y-1">
+                            <li>Check that both devices are still connected to the same WiFi</li>
+                            <li>Ensure both devices have AirShare running</li>
+                            <li>Try canceling and restarting the transfer</li>
+                            <li>Check available disk space on the receiving device</li>
+                            <li>Restart AirShare on both devices if the problem persists</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6 faq-item">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">AirShare won't start or crashes</h3>
+                    <div class="text-gray-600 space-y-2">
+                        <p>If AirShare won't start or crashes frequently:</p>
+                        <ul class="list-disc list-inside ml-4 space-y-1">
+                            <li>Check that you have the latest version installed</li>
+                            <li>Restart your computer</li>
+                            <li>Check if antivirus software is blocking AirShare</li>
+                            <li>Try running as administrator (Windows) or with sudo (Linux)</li>
+                            <li>Check the log files in the AirShare data directory</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6 faq-item">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Slow transfer speeds</h3>
+                    <div class="text-gray-600 space-y-2">
+                        <p>Transfer speeds depend on several factors:</p>
+                        <ul class="list-disc list-inside ml-4 space-y-1">
+                            <li>WiFi network quality and signal strength</li>
+                            <li>Network congestion and other devices using bandwidth</li>
+                            <li>Device performance (CPU, RAM, storage speed)</li>
+                            <li>File size and type (large files may take longer to process)</li>
+                            <li>Distance between devices</li>
+                        </ul>
+                        <p class="mt-2 text-sm text-gray-500">For best performance, ensure devices are close to the WiFi router and minimize other network activity.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features & Pro Section -->
+        <section id="features" class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 flex items-center">
+                <span class="bg-green-100 text-green-600 rounded-full w-8 h-8 flex items-center justify-center text-lg font-bold mr-3">3</span>
+                Features & Pro Version
+            </h2>
+            
+            <div class="space-y-6">
+                <div class="bg-white rounded-lg shadow-md p-6 faq-item">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">What's the difference between Free and Pro versions?</h3>
+                    <div class="text-gray-600">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-gray-800 mb-2">Free Version</h4>
+                                <ul class="text-sm space-y-1">
+                                    <li>• Up to 200MB file size limit</li>
+                                    <li>• 10 transfers per day</li>
+                                    <li>• 7 days transfer history</li>
+                                    <li>• Basic file sharing</li>
+                                </ul>
+                            </div>
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-blue-800 mb-2">Pro Version</h4>
+                                <ul class="text-sm space-y-1">
+                                    <li>• Unlimited file sizes</li>
+                                    <li>• Unlimited daily transfers</li>
+                                    <li>• 365 days transfer history</li>
+                                    <li>• Mobile Share (QR code)</li>
+                                    <li>• Priority support</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6 faq-item">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">How do I upgrade to Pro?</h3>
+                    <div class="text-gray-600 space-y-2">
+                        <p>To upgrade to Pro:</p>
+                        <ol class="list-decimal list-inside ml-4 space-y-1">
+                            <li>Go to Device → Activate License in the menu</li>
+                            <li>Enter your Pro license key</li>
+                            <li>Click "Activate Pro"</li>
+                            <li>Restart AirShare to apply changes</li>
+                        </ol>
+                        <p class="mt-2 text-sm text-gray-500">You can purchase a Pro license from our website or contact support for enterprise licensing.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6 faq-item">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">What is Mobile Share?</h3>
+                    <div class="text-gray-600 space-y-2">
+                        <p>Mobile Share is a Pro feature that allows you to share files with mobile devices using QR codes:</p>
+                        <ul class="list-disc list-inside ml-4 space-y-1">
+                            <li>Generate a QR code on your computer</li>
+                            <li>Scan the QR code with your phone's camera</li>
+                            <li>Access a web interface to send/receive files</li>
+                            <li>Works with any device that has a web browser</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Security Section -->
+        <section id="security" class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 flex items-center">
+                <span class="bg-yellow-100 text-yellow-600 rounded-full w-8 h-8 flex items-center justify-center text-lg font-bold mr-3">4</span>
+                Security & Privacy
+            </h2>
+            
+            <div class="space-y-6">
+                <div class="bg-white rounded-lg shadow-md p-6 faq-item">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Is AirShare secure?</h3>
+                    <div class="text-gray-600 space-y-2">
+                        <p>Yes, AirShare uses multiple security measures:</p>
+                        <ul class="list-disc list-inside ml-4 space-y-1">
+                            <li><strong>QUIC Protocol:</strong> All transfers use encrypted QUIC connections</li>
+                            <li><strong>PIN Authentication:</strong> Each transfer requires a PIN code</li>
+                            <li><strong>Peer-to-Peer:</strong> Files never pass through external servers</li>
+                            <li><strong>Local Network Only:</strong> Transfers only work on your local WiFi</li>
+                            <li><strong>No Data Collection:</strong> We don't collect or store your files</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6 faq-item">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Can others on my network see my files?</h3>
+                    <div class="text-gray-600 space-y-2">
+                        <p>No, your files are protected by:</p>
+                        <ul class="list-disc list-inside ml-4 space-y-1">
+                            <li>End-to-end encryption during transfer</li>
+                            <li>PIN code authentication required for each transfer</li>
+                            <li>Files are only accessible to devices you explicitly choose</li>
+                            <li>No files are stored on network infrastructure</li>
+                        </ul>
+                        <p class="mt-2 text-sm text-gray-500">Only devices with AirShare installed and the correct PIN can access your files.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6 faq-item">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">What happens to my files after transfer?</h3>
+                    <div class="text-gray-600 space-y-2">
+                        <p>Files are handled securely:</p>
+                        <ul class="list-disc list-inside ml-4 space-y-1">
+                            <li>Files are saved to the recipient's chosen download folder</li>
+                            <li>No copies are kept on the sender's device after transfer</li>
+                            <li>Transfer history is stored locally (not uploaded anywhere)</li>
+                            <li>You can clear transfer history at any time</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Section -->
+        <section id="technical" class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 flex items-center">
+                <span class="bg-purple-100 text-purple-600 rounded-full w-8 h-8 flex items-center justify-center text-lg font-bold mr-3">5</span>
+                Technical Details
+            </h2>
+            
+            <div class="space-y-6">
+                <div class="bg-white rounded-lg shadow-md p-6 faq-item">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">What operating systems are supported?</h3>
+                    <div class="text-gray-600 space-y-2">
+                        <p>AirShare supports:</p>
+                        <ul class="list-disc list-inside ml-4 space-y-1">
+                            <li><strong>Windows:</strong> Windows 10 and later (64-bit)</li>
+                            <li><strong>macOS:</strong> macOS 10.14 (Mojave) and later</li>
+                            <li><strong>Linux:</strong> Most modern distributions (Ubuntu, Fedora, etc.)</li>
+                        </ul>
+                        <p class="mt-2 text-sm text-gray-500">Mobile versions are planned for future releases.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6 faq-item">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">What network requirements does AirShare have?</h3>
+                    <div class="text-gray-600 space-y-2">
+                        <p>AirShare requires:</p>
+                        <ul class="list-disc list-inside ml-4 space-y-1">
+                            <li>WiFi network connection (wired Ethernet also works)</li>
+                            <li>All devices must be on the same local network</li>
+                            <li>No internet connection required for transfers</li>
+                            <li>Ports 8080-8090 should be available (configurable)</li>
+                            <li>mDNS/Bonjour support for device discovery</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6 faq-item">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">How do I check the log files?</h3>
+                    <div class="text-gray-600 space-y-2">
+                        <p>Log files are located in:</p>
+                        <ul class="list-disc list-inside ml-4 space-y-1">
+                            <li><strong>Windows:</strong> %APPDATA%\AirShare\logs\</li>
+                            <li><strong>macOS:</strong> ~/Library/Application Support/AirShare/logs/</li>
+                            <li><strong>Linux:</strong> ~/.local/share/AirShare/logs/</li>
+                        </ul>
+                        <p class="mt-2 text-sm text-gray-500">Log files contain technical details about transfers and can help diagnose issues.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Support Section -->
+        <section id="support" class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 flex items-center">
+                <span class="bg-indigo-100 text-indigo-600 rounded-full w-8 h-8 flex items-center justify-center text-lg font-bold mr-3">6</span>
+                Support & Contact
+            </h2>
+            
+            <div class="space-y-6">
+                <div class="bg-white rounded-lg shadow-md p-6 faq-item">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">How can I get help?</h3>
+                    <div class="text-gray-600 space-y-2">
+                        <p>We offer several support options:</p>
+                        <ul class="list-disc list-inside ml-4 space-y-1">
+                            <li><strong>Documentation:</strong> Check the built-in help (Help → Help Documentation)</li>
+                            <li><strong>Email Support:</strong> Contact us through the app (Help → Contact)</li>
+                            <li><strong>Bug Reports:</strong> Use the bug report feature in the app</li>
+                            <li><strong>GitHub:</strong> Visit our GitHub repository for issues and discussions</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6 faq-item">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">How do I report a bug?</h3>
+                    <div class="text-gray-600 space-y-2">
+                        <p>To report a bug effectively:</p>
+                        <ol class="list-decimal list-inside ml-4 space-y-1">
+                            <li>Go to Help → Contact in the app</li>
+                            <li>Select "Bug Report"</li>
+                            <li>Describe what happened and when</li>
+                            <li>Include your operating system and AirShare version</li>
+                            <li>Attach log files if possible</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6 faq-item">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Can I request new features?</h3>
+                    <div class="text-gray-600 space-y-2">
+                        <p>Yes! We welcome feature requests:</p>
+                        <ul class="list-disc list-inside ml-4 space-y-1">
+                            <li>Use the "Feature Request" option in Help → Contact</li>
+                            <li>Describe the feature and how it would help you</li>
+                            <li>Check our GitHub repository for existing feature requests</li>
+                            <li>Vote on existing requests if you find them useful</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Still Need Help? -->
+        <div class="bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg p-8 text-white text-center">
+            <h2 class="text-2xl font-bold mb-4">Still Need Help?</h2>
+            <p class="text-lg mb-6">If you couldn't find the answer to your question, we're here to help!</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="mailto:support@airshare.app" class="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                    Email Support
+                </a>
+                <a href="https://github.com/airshare/airshare" class="bg-gray-800 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-700 transition-colors">
+                    GitHub Repository
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-16">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex justify-center mb-4">
+                <img src="icons/airshare.png" alt="AirShare" class="w-8 h-8 rounded-full">
+            </div>
+            <p class="text-gray-400 mb-2">© 2025 Jakša Tomović / Canarin. All rights reserved.</p>
+            <p class="text-sm text-gray-500">AirShare - Secure peer-to-peer file sharing</p>
+        </div>
+    </footer>
+
+    <!-- Smooth scrolling script -->
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add some interactivity to FAQ items
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // Add a subtle highlight effect
+                this.style.backgroundColor = '#f1f5f9';
+                setTimeout(() => {
+                    this.style.backgroundColor = '';
+                }, 200);
+            });
+        });
+    </script>
+</body>
+</html>
