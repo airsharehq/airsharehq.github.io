@@ -23,110 +23,105 @@
       theme: {
         extend: {
           colors: {
-            apple: { blue: '#0A84FF', gray: '#F2F2F7', ink: '#1C1C1E' },
-            ios: { purple: '#5856D6', pink: '#FF2D55', orange: '#FF9500', green: '#34C759' }
+            // Matching your Vue app colors
+            accent: '#6aa4ff',
+            accent2: '#84ffd2',
+            base: '#0b1220',
+            baseDark: '#0f1826',
+            panelTop: 'rgba(255, 255, 255, 0.06)',
+            panelBot: 'rgba(255, 255, 255, 0.03)',
           },
           fontFamily: {
-            sf: ['-apple-system', 'BlinkMacSystemFont', 'SF Pro Display', 'SF Pro Text', 'Inter', 'system-ui', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif']
+            sans: ['ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Arial', 'sans-serif']
           },
           boxShadow: {
-            glass: '0 10px 30px rgba(0,0,0,.08)',
-            soft: '0 6px 20px rgba(0,0,0,.06)',
-            glow: '0 0 0 8px rgba(10,132,255,.12)',
+            glass: '0 10px 40px rgba(0,0,0,.3)',
+            soft: '0 8px 24px rgba(0,0,0,.25)',
+            glow: '0 0 0 1px rgba(106,164,255,.3), 0 8px 32px rgba(106,164,255,.2)',
+            glowGreen: '0 0 0 1px rgba(132,255,210,.3), 0 8px 32px rgba(132,255,210,.2)',
           },
           keyframes: {
             sweep: { '0%': { transform: 'rotate(0deg)' }, '100%': { transform: 'rotate(360deg)' } },
             fadeUp: { '0%': { opacity: 0, transform: 'translateY(24px)' }, '100%': { opacity: 1, transform: 'translateY(0)' } },
-            floaty: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-8px)' } },
-            ring: { '0%': { opacity: .35, transform: 'scale(.85)' }, '70%': { opacity: 0, transform: 'scale(1.2)' }, '100%': { opacity: 0, transform: 'scale(1.25)' } }
+            pulse: { '0%, 100%': { opacity: 1 }, '50%': { opacity: .5 } },
+            ring: { '0%': { opacity: .4, transform: 'scale(.9)' }, '70%': { opacity: 0, transform: 'scale(1.3)' }, '100%': { opacity: 0, transform: 'scale(1.4)' } }
           },
           animation: {
             sweep: 'sweep 4s linear infinite',
             fadeUp: 'fadeUp .7s ease-out both',
-            floaty: 'floaty 3s ease-in-out infinite',
-            ring: 'ring 2.4s ease-out infinite'
+            pulse: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            ring: 'ring 2.5s ease-out infinite'
           },
-          borderRadius: { xl2: '1.25rem' }
+          borderRadius: { xl2: '1.25rem', '2xl': '1rem', '3xl': '1.5rem' }
         }
-      }
+      },
+      darkMode: 'class'
     }
   </script>
   <style>
+    /* Matching your Vue app dark theme */
+    html {
+      color-scheme: dark;
+    }
+
+    body {
+      background: linear-gradient(to bottom right, #0b1220 0%, #0f1826 50%, #0b1220 100%);
+      min-height: 100vh;
+    }
+
     .glass {
-      backdrop-filter: saturate(120%) blur(18px);
-      background: rgba(255, 255, 255, .72)
+      backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .badge {
-      border-radius: 18px;
-      padding: 12px;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), 0 8px 20px rgba(0, 0, 0, .06)
+      border-radius: 1rem;
+      padding: 14px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, .3);
     }
 
+    /* Accent blue gradient */
     .badge-grad {
-      background: linear-gradient(135deg, #eaf2ff 0%, #d9e7ff 100%)
+      background: linear-gradient(135deg, rgba(106, 164, 255, 0.15) 0%, rgba(106, 164, 255, 0.08) 100%);
+      border: 1px solid rgba(106, 164, 255, 0.2);
     }
 
+    /* Accent green gradient */
     .badge-grad-2 {
-      background: linear-gradient(135deg, #e9fced 0%, #d3f6e0 100%)
+      background: linear-gradient(135deg, rgba(132, 255, 210, 0.15) 0%, rgba(132, 255, 210, 0.08) 100%);
+      border: 1px solid rgba(132, 255, 210, 0.2);
     }
 
+    /* Mixed gradient */
     .badge-grad-3 {
-      background: linear-gradient(135deg, #fff1e0 0%, #ffe3c4 100%)
+      background: linear-gradient(135deg, rgba(106, 164, 255, 0.12) 0%, rgba(132, 255, 210, 0.12) 100%);
+      border: 1px solid rgba(150, 200, 255, 0.2);
     }
 
+    /* Dark variant */
     .badge-grad-4 {
-      background: linear-gradient(135deg, #f9e8ff 0%, #ecd8ff 100%)
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.15);
     }
 
     .highlight {
-      box-shadow: 0 0 0 10px rgba(10, 132, 255, .14), 0 10px 30px rgba(10, 132, 255, .25);
-      transform: translateY(-2px)
+      box-shadow: 0 0 0 1px rgba(106, 164, 255, .4), 0 8px 32px rgba(106, 164, 255, .3);
+      transform: translateY(-2px);
     }
 
     .text-gradient-strong {
-      background-image: linear-gradient(90deg, #0A84FF 0%, #5856D6 55%, #111827 100%);
+      background-image: linear-gradient(90deg, #6aa4ff 0%, #84ffd2 100%);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 1px 0 rgba(255, 255, 255, .35))
-    }
-
-    @media (prefers-color-scheme: dark) {
-      html {
-        color-scheme: dark
-      }
-
-      body {
-        background: #0B0B0D
-      }
-
-      .glass {
-        background: rgba(28, 28, 30, .5)
-      }
-
-      .badge-grad {
-        background: linear-gradient(135deg, #1b2433 0%, #121826 100%)
-      }
-
-      .badge-grad-2 {
-        background: linear-gradient(135deg, #13281c 0%, #0e2017 100%)
-      }
-
-      .badge-grad-3 {
-        background: linear-gradient(135deg, #2a1f12 0%, #22190e 100%)
-      }
-
-      .badge-grad-4 {
-        background: linear-gradient(135deg, #241b33 0%, #1a1426 100%)
-      }
+      filter: drop-shadow(0 0 20px rgba(106, 164, 255, .4));
     }
 
     @media (prefers-reduced-motion: reduce) {
-
       .animate-sweep,
       .animate-fadeUp,
-      .animate-floaty,
+      .animate-pulse,
       .animate-ring {
         animation: none !important
       }
@@ -157,14 +152,14 @@
   </style>
 </head>
 
-<body class="font-sf text-apple-ink/90 dark:text-white/90 selection:bg-apple-blue/20">
+<body class="dark text-white/90 selection:bg-accent/20">
 
   <!-- NAV -->
   <header class="sticky top-0 z-40">
-    <nav class="glass border-b border-black/5 dark:border-white/10">
+    <nav class="glass border-b border-white/10">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         <a class="flex items-center gap-3" href="#">
-          <div class="h-8 w-8 rounded-xl bg-apple-blue grid place-items-center text-white shadow-md">
+          <div class="h-9 w-9 rounded-xl bg-gradient-to-br from-accent to-accent2 grid place-items-center text-white shadow-glow">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="h-5 w-5" aria-hidden="true">
               <line x1="50" y1="20" x2="20" y2="80" stroke="white" stroke-width="6" stroke-linecap="round" />
               <line x1="50" y1="20" x2="80" y2="80" stroke="white" stroke-width="6" stroke-linecap="round" />
@@ -173,16 +168,15 @@
               <circle cx="80" cy="80" r="8" fill="white" />
             </svg>
           </div>
-          <span class="text-[17px] font-semibold tracking-[-0.01em]">AirShare</span>
+          <span class="text-lg font-semibold text-white">AirShare</span>
         </a>
-        <div class="hidden sm:flex items-center gap-6 text-[14px]">
-          <a href="#features" class="opacity-80 hover:opacity-100 transition">Features</a>
-          <a href="#pricing" class="opacity-80 hover:opacity-100 transition">Pricing</a>
-          <a href="#download" class="opacity-80 hover:opacity-100 transition">Download</a>
+        <div class="hidden sm:flex items-center gap-6 text-sm">
+          <a href="#features" class="text-white/70 hover:text-white transition">Features</a>
+          <a href="#pricing" class="text-white/70 hover:text-white transition">Pricing</a>
+          <a href="#download" class="text-white/70 hover:text-white transition">Download</a>
           <a href="https://github.com/airsharehq/"
-            class="inline-flex items-center gap-2 rounded-full border border-black/10 dark:border-white/15 px-4 py-1.5 hover:bg-black/5 dark:hover:bg-white/5 transition">
-            <img class="icon8" src="https://img.icons8.com/ios-glyphs/30/github.png" alt="GitHub icon by Icons8"
-              loading="lazy" width="22" height="22" />
+            class="inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-1.5 hover:bg-white/10 transition text-white">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
             GitHub
           </a>
         </div>
@@ -192,97 +186,92 @@
 
   <!-- HERO -->
   <section class="relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-apple-blue/15 via-ios.purple/15 to-ios.pink/15"></div>
+    <div class="absolute inset-0 bg-gradient-to-br from-accent/10 via-accent2/10 to-accent/5"></div>
     <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="py-16 md:py-24 lg:py-32 grid lg:grid-cols-2 gap-10 md:gap-16 items-center">
         <div>
-          <h1 class="text-[34px] leading-[1.1] md:text-5xl lg:text-6xl font-extrabold tracking-tight animate-fadeUp">
+          <h1 class="text-[38px] leading-[1.1] md:text-5xl lg:text-6xl font-bold tracking-tight text-white animate-fadeUp">
             Share files instantly — <span class="text-gradient-strong">privately</span>
           </h1>
-          <p class="mt-4 md:mt-6 text-base md:text-xl opacity-80 max-w-prose animate-fadeUp"
+          <p class="mt-5 md:mt-6 text-base md:text-xl text-white/70 max-w-prose animate-fadeUp leading-relaxed"
             style="animation-delay:.1s">
-            AirDrop-style transfers over your LAN using QUIC + mDNS. No accounts. No cloud.
-            <strong>Unlimited file size</strong>.
+            AirDrop-style file sharing over your local network. QUIC protocol, mDNS discovery, E2E encrypted.
+            <strong class="text-accent2">No limits</strong>. <strong class="text-accent2">No cloud</strong>.
           </p>
 
           <!-- Hero download -->
-          <div class="mt-6 md:mt-10 flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-4 animate-fadeUp"
+          <div class="mt-8 md:mt-10 flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-4 animate-fadeUp"
             style="animation-delay:.2s">
             <a id="btn-mac" href="#mac"
-              class="download-btn inline-flex items-center justify-center gap-3 rounded-2xl bg-white text-apple-blue px-6 py-3 shadow-glass hover:shadow-glow transition w-full sm:w-auto">
-              <img src="https://img.icons8.com/ios-filled/24/mac-os.png" alt="macOS icon by Icons8" class="h-5 w-5"
-                loading="lazy" width="20" height="20" />
-              <span>Download for macOS</span>
+              class="download-btn inline-flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-accent to-accent2 text-white font-medium px-7 py-3.5 shadow-glow hover:shadow-glowGreen transition-all duration-300 w-full sm:w-auto">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+              Download for macOS
             </a>
             <a id="btn-win" href="#win"
-              class="download-btn inline-flex items-center justify-center gap-3 rounded-2xl bg-white text-apple-blue px-6 py-3 shadow-glass hover:shadow-glow transition w-full sm:w-auto">
-              <img src="https://img.icons8.com/color/24/windows-10.png" alt="Windows icon by Icons8" class="h-5 w-5"
-                loading="lazy" width="20" height="20" />
-              <span>Download for Windows</span>
+              class="download-btn inline-flex items-center justify-center gap-3 rounded-xl bg-white/10 text-white font-medium px-7 py-3.5 border border-white/20 hover:bg-white/15 transition-all duration-300 w-full sm:w-auto">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>
+              Download for Windows
             </a>
             <a id="btn-linux" href="#linux"
-              class="download-btn inline-flex items-center justify-center gap-3 rounded-2xl bg-white text-apple-blue px-6 py-3 shadow-glass hover:shadow-glow transition w-full sm:w-auto">
-              <img src="https://img.icons8.com/color/24/linux--v1.png" alt="Linux icon by Icons8" class="h-5 w-5"
-                loading="lazy" width="20" height="20" />
-              <span>Download for Linux</span>
+              class="download-btn inline-flex items-center justify-center gap-3 rounded-xl bg-white/10 text-white font-medium px-7 py-3.5 border border-white/20 hover:bg-white/15 transition-all duration-300 w-full sm:w-auto">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.504 0c-.155 0-.315.008-.48.021-4.226.333-3.105 4.807-3.17 6.298-.076 1.092-.3 1.953-1.05 3.02-.885 1.051-2.127 2.75-2.716 4.521-.278.84-.41 1.734-.127 2.538.362 1.03 1.482 1.972 2.512 2.283 1.39.42 2.779-.166 3.925-.742 1.17-.588 2.634-1.177 4.417-1.177 1.783 0 3.247.589 4.417 1.177 1.146.576 2.535 1.162 3.925.742 1.03-.311 2.15-1.253 2.512-2.283.283-.804.151-1.698-.127-2.538-.589-1.771-1.831-3.47-2.715-4.521-.75-1.067-.975-1.928-1.05-3.02-.066-1.491 1.055-5.965-3.17-6.298-.165-.013-.325-.021-.48-.021zm-.005 5.334c.616 0 1.114.498 1.114 1.113 0 .615-.498 1.113-1.114 1.113-.615 0-1.113-.498-1.113-1.113 0-.615.498-1.113 1.113-1.113z"/></svg>
+              Download for Linux
             </a>
           </div>
 
           <ul
-            class="mt-5 md:mt-8 flex flex-wrap items-center gap-4 md:gap-5 text-sm text-black/70 dark:text-white/70 animate-fadeUp"
+            class="mt-6 md:mt-8 flex flex-wrap items-center gap-5 md:gap-6 text-sm text-white/60 animate-fadeUp"
             style="animation-delay:.3s">
             <li class="flex items-center gap-2">
-              <img class="icon8" src="https://img.icons8.com/ios-glyphs/30/lock--v1.png" alt="Lock icon by Icons8" />
-              E2E encrypted
+              <svg class="w-5 h-5 text-accent2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+              <span class="text-white/80">TLS 1.3 encrypted</span>
             </li>
             <li class="flex items-center gap-2">
-              <img class="icon8" src="https://img.icons8.com/ios-glyphs/30/radar.png" alt="Discovery icon by Icons8" />
-              Automatic discovery
+              <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+              <span class="text-white/80">QUIC protocol</span>
             </li>
             <li class="flex items-center gap-2">
-              <img class="icon8" src="https://img.icons8.com/ios-glyphs/30/infinity.png"
-                alt="Infinity icon by Icons8" />
-              No size limits on LAN
+              <svg class="w-5 h-5 text-accent2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path></svg>
+              <span class="text-white/80">100% offline</span>
             </li>
           </ul>
 
-          <p class="mt-2 text-sm opacity-70">
-            <a id="show-all-downloads" href="#" class="hidden underline hover:no-underline">Other platforms</a>
+          <p class="mt-3 text-sm text-white/50">
+            <a id="show-all-downloads" href="#" class="hidden underline hover:no-underline hover:text-white/70">Other platforms</a>
           </p>
         </div>
 
-        <!-- Radar mock (unchanged) -->
+        <!-- Radar mock - Matching your app design -->
         <div class="relative lg:justify-self-end">
           <div
-            class="relative w-[18rem] h-[18rem] md:w-[24rem] md:h-[24rem] lg:w-[30rem] lg:h-[30rem] mx-auto rounded-3xl glass shadow-glass border border-black/5 dark:border-white/10 p-6 md:p-8">
+            class="relative w-[18rem] h-[18rem] md:w-[24rem] md:h-[24rem] lg:w-[30rem] lg:h-[30rem] mx-auto rounded-2xl bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 p-6 md:p-8 shadow-glass">
             <div
-              class="relative w-full h-full rounded-full bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-[#12131A] dark:to-[#101114] border-4 border-white/60 dark:border-white/10 overflow-hidden">
-              <div class="absolute inset-8 rounded-full border border-black/10 dark:border-white/10"></div>
-              <div class="absolute inset-16 rounded-full border border-black/10 dark:border-white/10"></div>
-              <div class="absolute inset-24 rounded-full border border-black/10 dark:border-white/10"></div>
+              class="relative w-full h-full rounded-full bg-gradient-to-br from-[#12131A] to-[#0b1220] border-2 border-white/20 overflow-hidden">
+              <div class="absolute inset-8 rounded-full border border-white/10"></div>
+              <div class="absolute inset-16 rounded-full border border-white/10"></div>
+              <div class="absolute inset-24 rounded-full border border-white/10"></div>
               <div class="absolute inset-0 grid place-items-center">
                 <div class="relative w-[85%] h-[85%]">
                   <div
-                    class="absolute left-1/2 top-1/2 h-[2px] w-1/2 origin-left -translate-y-1/2 bg-gradient-to-r from-transparent via-apple-blue to-transparent animate-sweep">
+                    class="absolute left-1/2 top-1/2 h-[2px] w-1/2 origin-left -translate-y-1/2 bg-gradient-to-r from-transparent via-accent to-transparent animate-sweep opacity-60">
                   </div>
                 </div>
               </div>
-              <div class="absolute inset-0 rounded-full border-4 border-apple-blue/40 animate-ring"></div>
+              <div class="absolute inset-0 rounded-full border-2 border-accent/30 animate-ring"></div>
               <div
-                class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-gradient-to-br from-apple-blue to-ios.purple shadow">
+                class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-gradient-to-br from-accent to-accent2 shadow-glow animate-pulse">
               </div>
               <div
-                class="device absolute top-[20%] left-[28%] w-8 h-8 md:w-9 md:h-9 rounded-2xl text-white text-[10px] md:text-[11px] font-bold grid place-items-center badge badge-grad shadow animate-floaty">
-                AR</div>
+                class="device absolute top-[20%] left-[28%] w-10 h-10 md:w-11 md:h-11 rounded-xl text-white text-xs font-semibold grid place-items-center badge badge-grad shadow">
+                JT</div>
               <div
-                class="device absolute top-[35%] right-[18%] w-8 h-8 md:w-9 md:h-9 rounded-2xl text-[10px] md:text-[11px] font-bold grid place-items-center badge badge-grad-4 shadow animate-floaty"
-                style="animation-delay:.4s">TR</div>
+                class="device absolute top-[35%] right-[18%] w-10 h-10 md:w-11 md:h-11 rounded-xl text-xs font-semibold grid place-items-center badge badge-grad-2 shadow animate-pulse"
+                style="animation-delay:.6s">TO</div>
               <div
-                class="device absolute bottom-[18%] left-[35%] w-8 h-8 md:w-9 md:h-9 rounded-2xl text-[10px] md:text-[11px] font-bold grid place-items-center badge badge-grad-2 shadow animate-floaty"
-                style="animation-delay:.8s">DI</div>
+                class="device absolute bottom-[18%] left-[35%] w-10 h-10 md:w-11 md:h-11 rounded-xl text-xs font-semibold grid place-items-center badge badge-grad-4 shadow animate-pulse"
+                style="animation-delay:1.2s">DI</div>
             </div>
           </div>
-          <!-- <p class="mt-3 md:mt-4 text-center text-xs md:text-sm opacity-60">AirDrop-inspired radar UI</p> -->
         </div>
       </div>
     </div>
@@ -290,106 +279,103 @@
 
 <!-- FEATURES -->
 <section id="features"
-  class="py-20 md:py-24 bg-gradient-to-b from-white to-apple-gray/60 dark:from-[#0B0B0D] dark:to-[#0E0E11]">
+  class="py-20 md:py-24 bg-gradient-to-b from-baseDark to-base">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-3xl mx-auto">
-      <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight">What you get</h2>
-      <p class="mt-3 md:mt-4 text-base md:text-lg opacity-70">Everything you need for effortless, private file
-        sharing.</p>
+      <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-white">What makes it special</h2>
+      <p class="mt-4 text-base md:text-lg text-white/60">Everything you need for seamless, secure file sharing on your local network.</p>
     </div>
 
-    <div class="mt-10 md:mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="mt-12 md:mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
       
-      <!-- Decentralized -->
+      <!-- P2P Direct -->
       <article
-        class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-6 md:p-8 shadow-soft">
-        <div class="badge badge-grad w-12 h-12 grid place-items-center mb-4">
-          <img class="icon8" src="https://img.icons8.com/ios-glyphs/30/share.png" alt="Decentralized icon by Icons8" />
+        class="group rounded-2xl bg-white/5 border border-white/10 p-7 shadow-soft hover:border-accent/40 hover:shadow-glow transition-all duration-300">
+        <div class="badge badge-grad w-14 h-14 grid place-items-center mb-5">
+          <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
         </div>
-        <h4 class="font-semibold">Decentralized</h4>
-        <p class="mt-1 text-sm opacity-70">Share files without a central server. The file transfer is completely peer-to-peer.</p>
+        <h4 class="text-lg font-semibold text-white mb-2">Peer-to-Peer Direct</h4>
+        <p class="text-sm text-white/60 leading-relaxed">100% peer-to-peer transfers. No middleman, no cloud servers. Your files never leave your local network.</p>
       </article>
 
-      <!-- Speed -->
+      <!-- QUIC Speed -->
       <article
-        class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-6 md:p-8 shadow-soft">
-        <div class="badge badge-grad w-12 h-12 grid place-items-center mb-4">
-          <img class="icon8" src="https://img.icons8.com/ios-glyphs/30/rocket.png" alt="Speed icon by Icons8" />
+        class="group rounded-2xl bg-white/5 border border-white/10 p-7 shadow-soft hover:border-accent2/40 hover:shadow-glowGreen transition-all duration-300">
+        <div class="badge badge-grad-2 w-14 h-14 grid place-items-center mb-5">
+          <svg class="w-6 h-6 text-accent2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
         </div>
-        <h4 class="font-semibold">Blazing speed</h4>
-        <p class="mt-1 text-sm opacity-70">Parallel streams, zero copy where possible.</p>
+        <h4 class="text-lg font-semibold text-white mb-2">Lightning Fast QUIC</h4>
+        <p class="text-sm text-white/60 leading-relaxed">Modern QUIC protocol with multiplexed streams. Faster than TCP, optimized for large files.</p>
       </article>
 
       <!-- Security -->
       <article
-        class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-6 md:p-8 shadow-soft">
-        <div class="badge badge-grad-2 w-12 h-12 grid place-items-center mb-4">
-          <img class="icon8" src="https://img.icons8.com/ios-glyphs/30/lock--v1.png" alt="Lock icon by Icons8" />
+        class="group rounded-2xl bg-white/5 border border-white/10 p-7 shadow-soft hover:border-accent/40 hover:shadow-glow transition-all duration-300">
+        <div class="badge badge-grad-3 w-14 h-14 grid place-items-center mb-5">
+          <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
         </div>
-        <h4 class="font-semibold">End-to-end security</h4>
-        <p class="mt-1 text-sm opacity-70">PIN-gated links, token auth, TLS 1.3 when needed.</p>
+        <h4 class="text-lg font-semibold text-white mb-2">TLS 1.3 Encrypted</h4>
+        <p class="text-sm text-white/60 leading-relaxed">End-to-end encryption with TLS 1.3. SHA-256 integrity verification on every file.</p>
       </article>
 
-      <!-- Zero config -->
+      <!-- Auto Discovery -->
       <article
-        class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-6 md:p-8 shadow-soft">
-        <div class="badge badge-grad-3 w-12 h-12 grid place-items-center mb-4">
-          <img class="icon8" src="https://img.icons8.com/ios-glyphs/30/settings-3.png"
-            alt="Settings icon by Icons8" />
+        class="group rounded-2xl bg-white/5 border border-white/10 p-7 shadow-soft hover:border-accent2/40 hover:shadow-glowGreen transition-all duration-300">
+        <div class="badge badge-grad-2 w-14 h-14 grid place-items-center mb-5">
+          <svg class="w-6 h-6 text-accent2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
         </div>
-        <h4 class="font-semibold">Zero-config setup</h4>
-        <p class="mt-1 text-sm opacity-70">mDNS discovery, one-tap QR share, drag & drop.</p>
+        <h4 class="text-lg font-semibold text-white mb-2">Auto Discovery</h4>
+        <p class="text-sm text-white/60 leading-relaxed">mDNS finds devices automatically. No manual IP entry. No setup. Just works.</p>
       </article>
 
-      <!-- Unlimited -->
+      <!-- No Limits -->
       <article
-        class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-6 md:p-8 shadow-soft">
-        <div class="badge badge-grad-4 w-12 h-12 grid place-items-center mb-4">
-          <img class="icon8" src="https://img.icons8.com/ios-glyphs/30/infinity.png" alt="Infinity icon by Icons8" />
+        class="group rounded-2xl bg-white/5 border border-white/10 p-7 shadow-soft hover:border-accent/40 hover:shadow-glow transition-all duration-300">
+        <div class="badge badge-grad w-14 h-14 grid place-items-center mb-5">
+          <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
         </div>
-        <h4 class="font-semibold">Unlimited size on LAN</h4>
-        <p class="mt-1 text-sm opacity-70">Streamed with back-pressure, resume friendly.</p>
+        <h4 class="text-lg font-semibold text-white mb-2">Unlimited Size</h4>
+        <p class="text-sm text-white/60 leading-relaxed">Send 100GB videos or entire project folders. No artificial limits on local network.</p>
       </article>
 
-      <!-- Offline -->
+      <!-- Cross-Platform -->
       <article
-        class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-6 md:p-8 shadow-soft">
-        <div class="badge badge-grad w-12 h-12 grid place-items-center mb-4">
-          <img class="icon8" src="https://img.icons8.com/ios-glyphs/30/wifi-off.png" alt="Offline icon by Icons8" />
+        class="group rounded-2xl bg-white/5 border border-white/10 p-7 shadow-soft hover:border-accent2/40 hover:shadow-glowGreen transition-all duration-300">
+        <div class="badge badge-grad-4 w-14 h-14 grid place-items-center mb-5">
+          <svg class="w-6 h-6 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
         </div>
-        <h4 class="font-semibold">Works fully offline</h4>
-        <p class="mt-1 text-sm opacity-70">Pure local network — no accounts, no cloud.</p>
+        <h4 class="text-lg font-semibold text-white mb-2">Cross-Platform</h4>
+        <p class="text-sm text-white/60 leading-relaxed">macOS, Windows, Linux. Share between any devices on the same network.</p>
       </article>
 
-      <!-- History -->
+      <!-- Transfer History -->
       <article
-        class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-6 md:p-8 shadow-soft">
-        <div class="badge badge-grad-2 w-12 h-12 grid place-items-center mb-4">
-          <img class="icon8" src="https://img.icons8.com/ios-glyphs/30/time-machine.png"
-            alt="History icon by Icons8" />
+        class="group rounded-2xl bg-white/5 border border-white/10 p-7 shadow-soft hover:border-accent/40 hover:shadow-glow transition-all duration-300">
+        <div class="badge badge-grad-3 w-14 h-14 grid place-items-center mb-5">
+          <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
         </div>
-        <h4 class="font-semibold">Transfer history</h4>
-        <p class="mt-1 text-sm opacity-70">SQLite log with search, export & retention.</p>
+        <h4 class="text-lg font-semibold text-white mb-2">Transfer History</h4>
+        <p class="text-sm text-white/60 leading-relaxed">SQLite-based history with search and filtering. Track all your transfers locally.</p>
       </article>
 
-      <!-- Cross-platform -->
+      <!-- Drag & Drop -->
       <article
-        class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-6 md:p-8 shadow-soft">
-        <div class="badge badge-grad w-12 h-12 grid place-items-center mb-4">
-          <img class="icon8" src="https://img.icons8.com/ios-glyphs/30/multiple-devices.png" alt="Cross-platform icon by Icons8" />
+        class="group rounded-2xl bg-white/5 border border-white/10 p-7 shadow-soft hover:border-accent2/40 hover:shadow-glowGreen transition-all duration-300">
+        <div class="badge badge-grad-2 w-14 h-14 grid place-items-center mb-5">
+          <svg class="w-6 h-6 text-accent2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path></svg>
         </div>
-        <h4 class="font-semibold">Cross-platform</h4>
-        <p class="mt-1 text-sm opacity-70">Available for Windows, macOS, Linux, Android, and iOS.</p>
+        <h4 class="text-lg font-semibold text-white mb-2">Drag & Drop</h4>
+        <p class="text-sm text-white/60 leading-relaxed">Intuitive UI. Just drag files to any discovered device. Real-time progress tracking.</p>
       </article>
 
-      <!-- QR / PIN -->
+      <!-- Privacy -->
       <article
-        class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-6 md:p-8 shadow-soft">
-        <div class="badge badge-grad-3 w-12 h-12 grid place-items-center mb-4">
-          <img class="icon8" src="https://img.icons8.com/ios-glyphs/30/qr-code.png" alt="QR icon by Icons8" />
+        class="group rounded-2xl bg-white/5 border border-white/10 p-7 shadow-soft hover:border-accent/40 hover:shadow-glow transition-all duration-300">
+        <div class="badge badge-grad w-14 h-14 grid place-items-center mb-5">
+          <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
         </div>
-        <h4 class="font-semibold">QR + PIN links</h4>
-        <p class="mt-1 text-sm opacity-70">TTL, reuse or force new, limited uses.</p>
+        <h4 class="text-lg font-semibold text-white mb-2">Zero Tracking</h4>
+        <p class="text-sm text-white/60 leading-relaxed">No telemetry, no analytics, no accounts. Your data stays yours, forever.</p>
       </article>
     </div>
   </div>
@@ -397,42 +383,42 @@
 
     <!-- PRICING -->
 <section id="pricing"
-  class="py-24 bg-gradient-to-b from-white to-apple-gray/60 dark:from-[#0B0B0D] dark:to-[#0E0E11]">
+  class="py-24 bg-gradient-to-b from-base to-baseDark">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-3xl mx-auto">
-      <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight">Simple, fair pricing</h2>
-      <p class="mt-3 opacity-70">Start free. Upgrade when you need more.</p>
+      <h2 class="text-4xl md:text-5xl font-bold tracking-tight text-white">Simple, fair pricing</h2>
+      <p class="mt-3 text-white/60">Start free. Upgrade when you need more.</p>
 
       <!-- Billing Toggle: Yearly vs Lifetime -->
       <div
-        class="mt-6 inline-flex items-center justify-center rounded-full p-1 bg-white/70 dark:bg-white/[.06] border border-black/5 dark:border-white/10 shadow-sm">
+        class="mt-6 inline-flex items-center justify-center rounded-full p-1 bg-white/10 border border-white/20 shadow-sm">
         <button id="billing-yearly"
-          class="billing-tab px-4 py-2 text-sm rounded-full transition aria-[pressed=true]:bg-apple-blue aria-[pressed=true]:text-white hover:bg-black/5 dark:hover:bg-white/10"
+          class="billing-tab px-5 py-2.5 text-sm font-medium rounded-full transition aria-[pressed=true]:bg-gradient-to-r aria-[pressed=true]:from-accent aria-[pressed=true]:to-accent2 aria-[pressed=true]:text-white hover:bg-white/5"
           aria-pressed="true" data-plan="yearly" type="button">
           Yearly (one-time)
         </button>
         <button id="billing-lifetime"
-          class="billing-tab px-4 py-2 text-sm rounded-full transition aria-[pressed=true]:bg-apple-blue aria-[pressed=true]:text-white hover:bg-black/5 dark:hover:bg-white/10"
+          class="billing-tab px-5 py-2.5 text-sm font-medium rounded-full transition aria-[pressed=true]:bg-gradient-to-r aria-[pressed=true]:from-accent aria-[pressed=true]:to-accent2 aria-[pressed=true]:text-white hover:bg-white/5"
           aria-pressed="false" data-plan="lifetime" type="button">
           Lifetime
         </button>
       </div>
-      <p id="billing-note" class="mt-2 text-xs opacity-60">
+      <p id="billing-note" class="mt-2 text-xs text-white/50">
         One-time purchase — no auto-renew
       </p>
     </div>
 
-    <div class="mt-12 grid gap-6 md:grid-cols-2 items-stretch justify-center max-w-4xl mx-auto">
-      <!-- Free (unchanged features) -->
+    <div class="mt-12 grid gap-6 md:grid-cols-2 items-stretch justify-center max-w-5xl mx-auto">
+      <!-- Free -->
       <div
-        class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-8 shadow flex flex-col">
+        class="rounded-2xl bg-white/5 border border-white/10 p-8 shadow-soft flex flex-col hover:border-white/20 transition-all duration-300">
         <div class="flex-1">
-          <h3 class="text-xl font-bold flex items-center gap-2">
-            <img class="icon8-lg" src="https://img.icons8.com/ios-glyphs/30/gift.png" alt="Free plan icon by Icons8" />
+          <h3 class="text-xl font-bold flex items-center gap-3 text-white">
+            <svg class="w-7 h-7 text-accent2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path></svg>
             Free
           </h3>
-          <p class="mt-1 text-sm opacity-70">For personal use on LAN</p>
-          <div class="mt-6 text-4xl font-extrabold tracking-tight">€0</div>
+          <p class="mt-2 text-sm text-white/60">For personal use on your local network</p>
+          <div class="mt-6 text-5xl font-bold tracking-tight text-white">€0</div>
           <ul class="mt-6 space-y-2 text-sm">
             <li class="pricing-li"><img src="https://img.icons8.com/ios-glyphs/30/checkmark.png" alt="check" />
               <strong>No device limit</strong>
@@ -451,26 +437,25 @@
           </ul>
         </div>
         <a href="#download"
-          class="mt-8 inline-flex items-center justify-center w-full rounded-2xl border px-4 py-3 hover:bg-black/5 dark:hover:bg-white/5 transition">
+          class="mt-8 inline-flex items-center justify-center w-full rounded-xl border border-white/20 px-5 py-3 hover:bg-white/10 transition-all duration-300 text-white font-medium">
           Get started
         </a>
       </div>
 
       <!-- Pro (Yearly / Lifetime) -->
       <div
-        class="rounded-3xl bg-white/90 dark:bg-white/5 border border-black/5 dark:border-white/10 p-8 shadow flex flex-col"
+        class="rounded-2xl bg-gradient-to-br from-white/[0.08] to-white/[0.04] border border-accent/30 p-8 shadow-glow flex flex-col relative overflow-hidden"
         data-billing="yearly">
-        <div class="inline-block self-start rounded-full bg-apple-blue/10 text-apple-blue text-xs px-2 py-1 mb-3">
-          <img class="inline-block mr-1 align-[-2px] w-3.5 h-3.5"
-            src="https://img.icons8.com/ios-glyphs/30/star--v1.png" alt="star" />
-          Most popular
+        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-accent/20 to-transparent rounded-full blur-3xl"></div>
+        <div class="inline-block self-start rounded-full bg-accent/20 text-accent2 text-xs font-semibold px-3 py-1.5 mb-4 border border-accent/30">
+          ⭐ Most popular
         </div>
-        <div class="flex-1">
-          <h3 class="text-xl font-bold flex items-center gap-2">
-            <img class="icon8-lg" src="https://img.icons8.com/ios-glyphs/30/certificate.png" alt="Pro plan icon" />
+        <div class="flex-1 relative">
+          <h3 class="text-xl font-bold flex items-center gap-3 text-white">
+            <svg class="w-7 h-7 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
             Pro
           </h3>
-          <p class="mt-1 text-sm opacity-70">For power users &amp; indie teams</p>
+          <p class="mt-2 text-sm text-white/60">For power users &amp; teams</p>
 
           <!-- Price (Yearly / Lifetime) -->
           <div class="mt-6">
@@ -510,8 +495,8 @@
 
         <a id="buy-button"
           href="https://airshare.lemonsqueezy.com/buy/0f4cf8dc-425e-447f-b003-794944b7cfe1?media=0&discount=0"
-          class="mt-8 inline-flex items-center justify-center w-full rounded-2xl bg-apple-blue text-white px-4 py-3 shadow hover:shadow-lg transition">
-          Buy Now
+          class="mt-8 inline-flex items-center justify-center w-full rounded-xl bg-gradient-to-r from-accent to-accent2 text-white font-semibold px-5 py-3.5 shadow-glow hover:shadow-glowGreen transition-all duration-300">
+          Buy Pro Now
         </a>
       </div>
     </div>
@@ -559,47 +544,43 @@
 
   <!-- HOW IT WORKS -->
   <section
-    class="py-20 bg-gradient-to-b from-apple-gray/60 to-white dark:from-[#0E0E11] dark:to-[#0B0B0D] scroll-mt-20">
+    class="py-20 bg-gradient-to-b from-baseDark to-base scroll-mt-20">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-3xl mx-auto">
-        <h2 class="text-3xl md:4xl lg:text-4xl font-extrabold tracking-tight">How it works</h2>
-        <p class="mt-3 text-base md:text-lg opacity-70">Three simple steps to start sharing files instantly on your
-          local network.</p>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white">How it works</h2>
+        <p class="mt-4 text-base md:text-lg text-white/60">Three simple steps to start sharing files on your local network.</p>
       </div>
 
-      <div class="mt-12 grid gap-8 md:grid-cols-3">
+      <div class="mt-14 grid gap-8 md:grid-cols-3">
         <div class="text-center">
           <div
-            class="relative mx-auto w-20 h-20 rounded-3xl bg-gradient-to-br from-apple-blue/20 to-ios-purple/20 flex items-center justify-center mb-6">
+            class="relative mx-auto w-24 h-24 rounded-2xl bg-gradient-to-br from-accent/20 to-accent2/20 flex items-center justify-center mb-6 border border-accent/30">
             <div
-              class="w-12 h-12 rounded-2xl bg-apple-blue flex items-center justify-center text-white font-bold text-xl">
+              class="w-14 h-14 rounded-xl bg-gradient-to-br from-accent to-accent2 flex items-center justify-center text-white font-bold text-2xl shadow-glow">
               1</div>
           </div>
-          <h3 class="text-xl font-semibold mb-3">Download & Install</h3>
-          <p class="text-sm opacity-70">Get AirShare for your platform. No configuration needed - it works out of the
-            box.</p>
+          <h3 class="text-xl font-semibold mb-3 text-white">Download & Install</h3>
+          <p class="text-sm text-white/60 leading-relaxed">Get AirShare for your platform. Zero configuration - it works out of the box.</p>
         </div>
         <div class="text-center">
           <div
-            class="relative mx-auto w-20 h-20 rounded-3xl bg-gradient-to-br from-ios-purple/20 to-ios-pink/20 flex items-center justify-center mb-6">
+            class="relative mx-auto w-24 h-24 rounded-2xl bg-gradient-to-br from-accent/20 to-accent2/20 flex items-center justify-center mb-6 border border-accent/30">
             <div
-              class="w-12 h-12 rounded-2xl bg-ios-purple flex items-center justify-center text-white font-bold text-xl">
+              class="w-14 h-14 rounded-xl bg-gradient-to-br from-accent to-accent2 flex items-center justify-center text-white font-bold text-2xl shadow-glow">
               2</div>
           </div>
-          <h3 class="text-xl font-semibold mb-3">Discover Devices</h3>
-          <p class="text-sm opacity-70">AirShare automatically finds other devices on your network using mDNS discovery.
-          </p>
+          <h3 class="text-xl font-semibold mb-3 text-white">Discover Devices</h3>
+          <p class="text-sm text-white/60 leading-relaxed">Devices appear automatically via mDNS discovery. No manual setup required.</p>
         </div>
         <div class="text-center">
           <div
-            class="relative mx-auto w-20 h-20 rounded-3xl bg-gradient-to-br from-ios-pink/20 to-ios-orange/20 flex items-center justify-center mb-6">
+            class="relative mx-auto w-24 h-24 rounded-2xl bg-gradient-to-br from-accent/20 to-accent2/20 flex items-center justify-center mb-6 border border-accent/30">
             <div
-              class="w-12 h-12 rounded-2xl bg-ios-pink flex items-center justify-center text-white font-bold text-xl">3
-            </div>
+              class="w-14 h-14 rounded-xl bg-gradient-to-br from-accent to-accent2 flex items-center justify-center text-white font-bold text-2xl shadow-glow">
+              3</div>
           </div>
-          <h3 class="text-xl font-semibold mb-3">Share Instantly</h3>
-          <p class="text-sm opacity-70">Drag & drop files to any device. QUIC ensures lightning-fast, secure transfers.
-          </p>
+          <h3 class="text-xl font-semibold mb-3 text-white">Share Instantly</h3>
+          <p class="text-sm text-white/60 leading-relaxed">Drag & drop files to any device. QUIC protocol ensures fast, encrypted transfers.</p>
         </div>
       </div>
     </div>
@@ -607,36 +588,32 @@
 
   <!-- CTA / DOWNLOAD -->
   <section id="download" class="py-24 relative overflow-hidden">
-    <div class="absolute inset-0 -z-10 bg-gradient-to-tr from-apple-blue/10 via-ios.purple/10 to-ios.pink/10"></div>
+    <div class="absolute inset-0 -z-10 bg-gradient-to-br from-accent/15 via-accent2/10 to-accent/5"></div>
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight">Ready to share?</h2>
-      <p class="mt-3 text-lg opacity-70 max-w-2xl mx-auto">Download AirShare and start sending files instantly on your
-        LAN.</p>
+      <h2 class="text-4xl md:text-5xl font-bold tracking-tight text-white">Ready to share?</h2>
+      <p class="mt-4 text-lg text-white/70 max-w-2xl mx-auto">Download AirShare and start transferring files instantly on your local network.</p>
       <div class="mt-10 flex flex-wrap gap-4 justify-center">
         <a id="dl-mac"
-          class="dl inline-flex items-center gap-3 rounded-2xl bg-white text-apple-blue px-6 py-3 shadow-glass hover:shadow-glow transition"
+          class="dl inline-flex items-center gap-3 rounded-xl bg-gradient-to-r from-accent to-accent2 text-white font-medium px-7 py-3.5 shadow-glow hover:shadow-glowGreen transition-all duration-300"
           href="#mac">
-          <img src="https://img.icons8.com/ios-filled/24/mac-os.png" alt="macOS icon by Icons8" class="h-5 w-5"
-            loading="lazy" width="20" height="20" />
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
           macOS
         </a>
         <a id="dl-win"
-          class="dl inline-flex items-center gap-3 rounded-2xl bg-white text-apple-blue px-6 py-3 shadow-glass hover:shadow-glow transition"
+          class="dl inline-flex items-center gap-3 rounded-xl bg-white/10 text-white font-medium px-7 py-3.5 border border-white/20 hover:bg-white/15 transition-all duration-300"
           href="#win">
-          <img src="https://img.icons8.com/color/24/windows-10.png" alt="Windows icon by Icons8" class="h-5 w-5"
-            loading="lazy" width="20" height="20" />
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>
           Windows
         </a>
         <a id="dl-linux"
-          class="dl inline-flex items-center gap-3 rounded-2xl bg-white text-apple-blue px-6 py-3 shadow-glass hover:shadow-glow transition"
+          class="dl inline-flex items-center gap-3 rounded-xl bg-white/10 text-white font-medium px-7 py-3.5 border border-white/20 hover:bg-white/15 transition-all duration-300"
           href="#linux">
-          <img src="https://img.icons8.com/color/24/linux--v1.png" alt="Linux icon by Icons8" class="h-5 w-5"
-            loading="lazy" width="20" height="20" />
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.504 0c-.155 0-.315.008-.48.021-4.226.333-3.105 4.807-3.17 6.298-.076 1.092-.3 1.953-1.05 3.02-.885 1.051-2.127 2.75-2.716 4.521-.278.84-.41 1.734-.127 2.538.362 1.03 1.482 1.972 2.512 2.283 1.39.42 2.779-.166 3.925-.742 1.17-.588 2.634-1.177 4.417-1.177 1.783 0 3.247.589 4.417 1.177 1.146.576 2.535 1.162 3.925.742 1.03-.311 2.15-1.253 2.512-2.283.283-.804.151-1.698-.127-2.538-.589-1.771-1.831-3.47-2.715-4.521-.75-1.067-.975-1.928-1.05-3.02-.066-1.491 1.055-5.965-3.17-6.298-.165-.013-.325-.021-.48-.021zm-.005 5.334c.616 0 1.114.498 1.114 1.113 0 .615-.498 1.113-1.114 1.113-.615 0-1.113-.498-1.113-1.113 0-.615.498-1.113 1.113-1.113z"/></svg>
           Linux
         </a>
-        <a class="inline-flex items-center gap-3 rounded-2xl border border-black/10 dark:border-white/20 px-6 py-3 hover:bg-black/5 dark:hover:bg-white/5 transition"
+        <a class="inline-flex items-center gap-3 rounded-xl border border-white/20 text-white px-7 py-3.5 hover:bg-white/10 transition-all duration-300"
           href="https://github.com/airsharehq">
-          <img class="icon8" src="https://img.icons8.com/ios-glyphs/30/github.png" alt="GitHub icon by Icons8" />
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
           GitHub
         </a>
       </div>
@@ -644,37 +621,27 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="py-10 border-t border-black/5 dark:border-white/10">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center text-sm opacity-70">
-      © <span id="year"></span> Jakša Tomović. Made with ❤ for seamless local sharing.
-      <span class="mx-2">•</span><a href="/terms.html" class="underline hover:no-underline">Terms</a>
-      <span class="mx-2">•</span><a href="/privacy.html" class="underline hover:no-underline">Privacy</a>
-      <span class="mx-2">•</span><a href="/refunds.html" class="underline hover:no-underline">Refunds</a>
+  <footer class="py-12 border-t border-white/10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center text-sm text-white/60">
+      © <span id="year"></span> Jakša Tomović. Made with care for seamless local sharing.
+      <span class="mx-2">•</span><a href="/terms.html" class="underline hover:no-underline hover:text-white/80">Terms</a>
+      <span class="mx-2">•</span><a href="/privacy.html" class="underline hover:no-underline hover:text-white/80">Privacy</a>
+      <span class="mx-2">•</span><a href="/refunds.html" class="underline hover:no-underline hover:text-white/80">Refunds</a>
     </div>
 
     <!-- Product Hunt badge -->
-    <div class="mt-6 flex items-center justify-center">
+    <div class="mt-8 flex items-center justify-center">
       <a
         href="https://www.producthunt.com/products/airshare-instant-local-file-sharing?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-airshare&#0045;instant&#0045;local&#0045;file&#0045;sharing"
         target="_blank" rel="noopener noreferrer"
-        class="inline-flex rounded-xl ring-1 ring-black/5 dark:ring-white/10 hover:ring-apple-blue/40 transition shadow-sm bg-white/90 dark:bg-white/[.06] px-3 py-2">
-        <!-- light mode -->
+        class="inline-flex rounded-xl ring-1 ring-white/20 hover:ring-accent/50 transition-all duration-300 shadow-soft bg-white/5 px-4 py-3 hover:bg-white/10">
         <img
-          class="block dark:hidden"
-          src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1018617&theme=light&t=1758489767966"
-          alt="AirShare — Instant Local File Sharing | Product Hunt" width="250" height="54" loading="lazy" />
-        <!-- dark mode -->
-        <img
-          class="hidden dark:block"
           src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1018617&theme=dark&t=1758489767966"
           alt="AirShare — Instant Local File Sharing | Product Hunt" width="250" height="54" loading="lazy" />
       </a>
     </div>
 
-    <p class="text-center text-xs opacity-50 mt-4">Downloads auto-filled from latest GitHub Release.</p>
-    <p class="text-center text-[11px] opacity-60 mt-1">
-      Icons by <a class="underline hover:no-underline" href="https://icons8.com" rel="noopener" target="_blank">Icons8</a>.
-    </p>
+    <p class="text-center text-xs text-white/40 mt-6">Downloads auto-filled from latest GitHub Release.</p>
   </footer>
 
 
