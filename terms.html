@@ -1,113 +1,327 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Terms of Service — AirShare</title>
   <meta name="robots" content="index,follow" />
-  <meta name="description" content="Terms of Service for AirShare." />
+  <meta name="description" content="Terms of Service for AirShare - instant local file sharing" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          colors: { apple: { blue: '#0A84FF', gray: '#F2F2F7', ink: '#1C1C1E' }, ios: { purple: '#5856D6', pink: '#FF2D55', orange: '#FF9500', green: '#34C759' } },
-          fontFamily: { sf: ['-apple-system','BlinkMacSystemFont','SF Pro Display','SF Pro Text','Inter','system-ui','Segoe UI','Roboto','Helvetica Neue','Arial','sans-serif'] }
+          colors: {
+            accent: '#6aa4ff',
+            accent2: '#84ffd2',
+            base: '#0b1220',
+            baseDark: '#0f1826',
+          }
         }
-      }
+      },
+      darkMode: 'class'
     }
   </script>
   <style>
-    @media (prefers-color-scheme: dark) { body { background:#0B0B0D; color: rgba(255,255,255,.9); } }
+    html { color-scheme: dark; }
+    body {
+      background: linear-gradient(to bottom right, #0b1220 0%, #0f1826 50%, #0b1220 100%);
+      min-height: 100vh;
+    }
+    .glass {
+      backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .prose h2 {
+      color: rgb(255, 255, 255);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+    .prose h3 {
+      color: rgb(255, 255, 255);
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .prose p {
+      margin-bottom: 1rem;
+      line-height: 1.7;
+    }
+    .prose ul, .prose ol {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .prose li {
+      margin-bottom: 0.5rem;
+    }
+    .prose a {
+      color: rgb(106, 164, 255);
+      text-decoration: underline;
+    }
+    .prose a:hover {
+      color: rgb(132, 255, 210);
+    }
+    .prose strong {
+      color: rgb(255, 255, 255);
+      font-weight: 600;
+    }
+    .prose em {
+      color: rgb(255, 255, 255, 0.8);
+    }
   </style>
 </head>
-<body class="font-sf text-apple-ink/90">
-  <header class="border-b border-black/5 dark:border-white/10 bg-white/70 dark:bg-white/[.06] backdrop-blur">
-    <div class="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-3">
-        <div class="h-8 w-8 rounded-xl bg-apple-blue grid place-items-center text-white shadow-md">AS</div>
-        <span class="text-[17px] font-semibold tracking-[-0.01em]">AirShare</span>
-      </a>
-      <nav class="text-sm">
-        <a href="/terms.html" class="mr-4 opacity-80 hover:opacity-100">Terms</a>
-        <a href="/privacy.html" class="mr-4 opacity-80 hover:opacity-100">Privacy</a>
-        <a href="/refunds.html" class="opacity-80 hover:opacity-100">Refunds</a>
-      </nav>
-    </div>
+
+<body class="dark text-white/90">
+
+  <!-- NAV -->
+  <header class="sticky top-0 z-40">
+    <nav class="glass border-b border-white/10">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <a class="flex items-center gap-3" href="landing-page.html">
+          <div class="h-9 w-9 rounded-xl bg-gradient-to-br from-accent to-accent2 grid place-items-center text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="h-5 w-5">
+              <line x1="50" y1="20" x2="20" y2="80" stroke="white" stroke-width="6" stroke-linecap="round" />
+              <line x1="50" y1="20" x2="80" y2="80" stroke="white" stroke-width="6" stroke-linecap="round" />
+              <circle cx="50" cy="20" r="8" fill="white" />
+              <circle cx="20" cy="80" r="8" fill="white" />
+              <circle cx="80" cy="80" r="8" fill="white" />
+            </svg>
+          </div>
+          <span class="text-lg font-semibold text-white">AirShare</span>
+        </a>
+        <div class="flex items-center gap-6 text-sm">
+          <a href="landing-page.html" class="text-white/70 hover:text-white transition">Home</a>
+          <a href="privacy.html" class="text-white/70 hover:text-white transition">Privacy</a>
+          <a href="refunds.html" class="text-white/70 hover:text-white transition">Refunds</a>
+        </div>
+      </div>
+    </nav>
   </header>
 
-  <main class="max-w-4xl mx-auto px-4 py-10 md:py-16">
-    <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">Terms of Service</h1>
-    <div class="mt-6 prose prose-neutral max-w-none prose-a:text-apple-blue">
+  <!-- HERO -->
+  <section class="py-16 md:py-20">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-accent/20 to-accent2/20 border border-accent/30 mb-6">
+          <svg class="w-8 h-8 text-accent2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold text-white">Terms of Service</h1>
+        <p class="mt-4 text-lg text-white/60">Effective October 12, 2025</p>
+      </div>
 
-<p>These Terms of Service (“Terms”) govern your access to and use of the AirShare application, website and related services (collectively, “Services”). By installing or using AirShare you agree to these Terms.</p>
+      <!-- Content -->
+      <div class="rounded-2xl bg-white/5 border border-white/10 p-8 md:p-12">
+        <div class="prose text-white/80 max-w-none">
 
-<h2>1. Who we are</h2>
-<p>“AirShare”, “we”, “us” or “our” refers to the AirShare project published at <a href="https://airsharehq.github.io">airsharehq.github.io</a>. Contact: <a href="mailto:info@trayairshare.com">info@trayairshare.com</a>.</p>
+          <p>These Terms of Service ("Terms") govern your access to and use of the AirShare application, website and related services (collectively, "Services"). By installing or using AirShare you agree to these Terms.</p>
 
-<h2>2. License & ownership</h2>
-<p>Subject to these Terms, we grant you a limited, non-exclusive, non-transferable, revocable license to install and use the AirShare software on devices you own or control. We (and/or our licensors) retain all rights, title and interest in the software and the content on our site.</p>
+          <h2>1. Who We Are</h2>
+          <p>
+            "AirShare", "we", "us" or "our" refers to the AirShare project published at 
+            <a href="https://airsharehq.github.io">airsharehq.github.io</a>. 
+            Contact: <a href="mailto:info@trayairshare.com">info@trayairshare.com</a>.
+          </p>
 
-<h3>2.1 License types</h3>
-<ul>
-  <li><strong>Free License</strong>: limited functionality, free of charge.</li>
-  <li><strong>Pro License (One-Time, 1-Year)</strong>: a one-time payment grants access to Pro features for 12 months from the purchase (transaction) date. After expiry, the Software reverts to Free mode unless you purchase a new 1-Year license.</li>
-  <li><strong>Pro License (Lifetime)</strong>: a one-time payment grants access to Pro features for the lifetime of the product. “Lifetime” refers to the duration during which we continue to develop, distribute, and support the Software as a product. See Section 12.</li>
-</ul>
+          <h2>2. License & Ownership</h2>
+          <p>
+            Subject to these Terms, we grant you a limited, non-exclusive, non-transferable, revocable license to install and use the AirShare software on devices you own or control. We (and/or our licensors) retain all rights, title and interest in the software and the content on our site.
+          </p>
 
-<h2>3. Acceptable use</h2>
-<ul>
-  <li>You will not use the Services to infringe intellectual property rights or violate applicable law.</li>
-  <li>You will not reverse engineer, decompile or attempt to access source code except where permitted by law.</li>
-  <li>You will not use the Services to transmit malware, spam, or harmful content.</li>
-</ul>
+          <h3>2.1 License Types</h3>
+          <ul>
+            <li><strong>Free License:</strong> Limited functionality, free of charge.</li>
+            <li><strong>Pro License (One-Time, 1-Year):</strong> A one-time payment grants access to Pro features for 12 months from the purchase (transaction) date. After expiry, the Software reverts to Free mode unless you purchase a new 1-Year license.</li>
+            <li><strong>Pro License (Lifetime):</strong> A one-time payment grants access to Pro features for the lifetime of the product. "Lifetime" refers to the duration during which we continue to develop, distribute, and support the Software as a product. See Section 12.</li>
+          </ul>
 
-<h2>4. Payments</h2>
-<p>Payments are processed by <strong>Lemon Squeezy</strong> (our authorized reseller and Merchant of Record). Pricing and available license types are listed on the site and may change prospectively. Taxes may apply as determined by Lemon Squeezy. One-time licenses do <em>not</em> auto-renew. If we ever offer subscriptions in the future, they would renew until canceled via Lemon Squeezy’s customer portal.</p>
+          <h2>3. Acceptable Use</h2>
+          <ul>
+            <li>You will not use the Services to infringe intellectual property rights or violate applicable law.</li>
+            <li>You will not reverse engineer, decompile or attempt to access source code except where permitted by law.</li>
+            <li>You will not use the Services to transmit malware, spam, or harmful content.</li>
+            <li>You will not use the Services for any commercial purpose without a proper license.</li>
+          </ul>
 
-<h2>5. Peer-to-peer & relays</h2>
-<p>AirShare primarily operates over your local network using peer-to-peer connections. Optional encrypted relay services may be used to connect devices outside your LAN. You are responsible for the content you transfer.</p>
+          <h2>4. Payments</h2>
+          <p>
+            Payments are processed by <strong>Lemon Squeezy</strong> (our authorized reseller and Merchant of Record). Pricing and available license types are listed on the site and may change prospectively. Taxes may apply as determined by Lemon Squeezy. One-time licenses do <em>not</em> auto-renew. If we ever offer subscriptions in the future, they would renew until canceled via Lemon Squeezy's customer portal.
+          </p>
 
-<h2>6. Third-party services</h2>
-<p>AirShare may rely on third-party services (e.g., GitHub Releases for downloads, Lemon Squeezy for billing). Their terms and privacy practices apply when you interact with them.</p>
+          <h2>5. Peer-to-Peer & Local Network</h2>
+          <p>
+            AirShare primarily operates over your local network using peer-to-peer connections. Files are transferred directly between devices on the same network using encrypted QUIC protocol. You are solely responsible for the content you transfer.
+          </p>
 
-<h2>7. Disclaimers</h2>
-<p>THE SERVICES ARE PROVIDED “AS IS” AND “AS AVAILABLE” WITHOUT WARRANTIES OF ANY KIND. To the fullest extent permitted by law, we disclaim all warranties, express or implied, including merchantability, fitness for a particular purpose, and non-infringement.</p>
+          <h2>6. Third-Party Services</h2>
+          <p>
+            AirShare may rely on third-party services (e.g., GitHub Releases for downloads, Lemon Squeezy for billing). Their terms and privacy practices apply when you interact with them. We are not responsible for third-party services.
+          </p>
 
-<h2>8. Limitation of liability</h2>
-<p>To the maximum extent permitted by law, we shall not be liable for any indirect, incidental, special, consequential, exemplary or punitive damages, or any loss of data, profits, or revenues, arising out of or related to your use of the Services.</p>
+          <h2>7. Privacy & Data</h2>
+          <p>
+            AirShare is designed with privacy in mind. We do not collect, store, or transmit your files or usage data to external servers. All file transfers happen locally on your network. See our <a href="privacy.html">Privacy Policy</a> for details.
+          </p>
 
-<h2>9. Termination</h2>
-<p>We may suspend or terminate your access if you materially breach these Terms. You may stop using the Services at any time. Upon termination, the license granted to you ends.</p>
+          <h2>8. Disclaimers</h2>
+          <p>
+            THE SERVICES ARE PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND. To the fullest extent permitted by law, we disclaim all warranties, express or implied, including merchantability, fitness for a particular purpose, and non-infringement.
+          </p>
+          <p>
+            We do not guarantee that the Services will be uninterrupted, secure, or error-free. You use the Services at your own risk.
+          </p>
 
-<h2>10. Changes</h2>
-<p>We may update these Terms from time to time. Changes apply prospectively. We will indicate the “Last updated” date below and, where appropriate, provide additional notice.</p>
+          <h2>9. Limitation of Liability</h2>
+          <p>
+            To the maximum extent permitted by law, we shall not be liable for any indirect, incidental, special, consequential, exemplary or punitive damages, or any loss of data, profits, or revenues, arising out of or related to your use of the Services.
+          </p>
+          <p>
+            In jurisdictions that do not allow the exclusion or limitation of liability for consequential or incidental damages, our liability is limited to the maximum extent permitted by law.
+          </p>
 
-<h2>11. Governing law</h2>
-<p>Unless otherwise required by mandatory local law, these Terms are governed by the laws of Croatia, without regard to conflict-of-laws principles, and courts in Zagreb, Croatia shall have jurisdiction.</p>
+          <h2>10. Termination</h2>
+          <p>
+            We may suspend or terminate your access if you materially breach these Terms. You may stop using the Services at any time. Upon termination, the license granted to you ends immediately.
+          </p>
 
-<h2>12. Lifetime license — product lifetime & discontinuation</h2>
-<p>A Lifetime license grants the right to use Pro features without recurring fees for the <em>lifetime of the product</em>. “Lifetime” refers to the period during which AirShare is offered, maintained, or supported by us. We may, at our sole discretion, modify, deprecate, or discontinue the Software at any time. In such case, previously delivered versions may continue to operate on supported platforms, but no further updates, fixes, compatibility patches or support are guaranteed.</p>
+          <h2>11. Changes to Terms</h2>
+          <p>
+            We may update these Terms from time to time. Changes apply prospectively. We will indicate the "Last updated" date and, where appropriate, provide additional notice. Continued use of the Services after changes constitutes acceptance of the new Terms.
+          </p>
 
-<h2>13. One-time 1-Year license — expiry</h2>
-<p>The 1-Year license is valid for 12 months from the original transaction date (plus any grace period we may announce). After expiry, Pro features are disabled unless you purchase a new 1-Year license. We are not obligated to provide upgrades, maintenance, or compatibility updates beyond the license period.</p>
+          <h2>12. Governing Law</h2>
+          <p>
+            Unless otherwise required by mandatory local law, these Terms are governed by the laws of Croatia, without regard to conflict-of-laws principles, and courts in Zagreb, Croatia shall have exclusive jurisdiction.
+          </p>
 
-<h2>14. Refunds</h2>
-<p><strong>No refunds.</strong> All sales are final. We do not offer refunds for one-time or lifetime licenses, except where required by applicable law.</p>
+          <h2>13. Lifetime License — Product Lifetime & Discontinuation</h2>
+          <p>
+            A Lifetime license grants the right to use Pro features without recurring fees for the <em>lifetime of the product</em>. "Lifetime" refers to the period during which AirShare is offered, maintained, or supported by us.
+          </p>
+          <p>
+            We may, at our sole discretion, modify, deprecate, or discontinue the Software at any time. In such case, previously delivered versions may continue to operate on supported platforms, but no further updates, fixes, compatibility patches or support are guaranteed.
+          </p>
 
-<h2>15. No future compatibility guarantee</h2>
-<p>We do not guarantee that the Software will remain compatible with future OS versions, hardware, or platform changes. This applies to both 1-Year and Lifetime licenses.</p>
+          <h2>14. One-Time 1-Year License — Expiry</h2>
+          <p>
+            The 1-Year license is valid for 12 months from the original transaction date (plus any grace period we may announce). After expiry, Pro features are disabled unless you purchase a new 1-Year license. We are not obligated to provide upgrades, maintenance, or compatibility updates beyond the license period.
+          </p>
 
-<h2>16. Contact</h2>
-<p>For questions about these Terms or licensing, contact us at <a href="mailto:info@trayairshare.com">info@trayairshare.com</a>.</p>
+          <h2>15. Refunds</h2>
+          <p>
+            <strong>No refunds.</strong> All sales are final. We do not offer refunds for one-time or lifetime licenses, except where required by applicable law.
+          </p>
+          <p>
+            We strongly encourage you to try the Free version first to ensure AirShare meets your needs before purchasing a Pro license.
+          </p>
+
+          <h2>16. No Future Compatibility Guarantee</h2>
+          <p>
+            We do not guarantee that the Software will remain compatible with future OS versions, hardware, or platform changes. This applies to both 1-Year and Lifetime licenses. We will make reasonable efforts to maintain compatibility but cannot guarantee it.
+          </p>
+
+          <h2>17. Automatic Updates</h2>
+          <p>
+            AirShare may automatically download and install updates to improve functionality, security, and compatibility. You can disable automatic updates in Settings, but we strongly recommend keeping them enabled for security reasons.
+          </p>
+
+          <h2>18. User Content & Responsibility</h2>
+          <p>
+            You are solely responsible for all content you transfer using AirShare. You represent and warrant that you have all necessary rights to transfer such content and that it does not violate any third-party rights or applicable laws.
+          </p>
+
+          <h2>19. Intellectual Property</h2>
+          <p>
+            All software, documentation, and content we provide are protected by copyright and other intellectual property laws. You may not copy, modify, distribute, sell, or create derivative works based on AirShare without explicit permission.
+          </p>
+
+          <h2>20. Severability</h2>
+          <p>
+            If any provision of these Terms is found to be unenforceable or invalid, that provision will be limited or eliminated to the minimum extent necessary so that these Terms will otherwise remain in full force and effect.
+          </p>
+
+          <h2>21. Contact</h2>
+          <p>
+            For questions about these Terms or licensing, contact us at:
+          </p>
+          <ul>
+            <li>Email: <a href="mailto:info@trayairshare.com">info@trayairshare.com</a></li>
+            <li>GitHub: <a href="https://github.com/airsharehq">github.com/airsharehq</a></li>
+          </ul>
+
+        </div>
+
+        <!-- Last Updated -->
+        <div class="mt-12 pt-8 border-t border-white/10">
+          <p class="text-sm text-white/50">
+            <strong class="text-white">Last updated:</strong> October 12, 2025
+          </p>
+          <p class="text-xs text-white/40 mt-2">
+            Version 1.0 — Initial release of Terms of Service
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Important Notice -->
+      <div class="mt-8 rounded-xl bg-accent/10 border border-accent/30 p-6">
+        <div class="flex items-start gap-4">
+          <div class="flex-shrink-0">
+            <svg class="w-6 h-6 text-accent2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          </div>
+          <div class="text-sm text-white/80">
+            <p class="font-semibold text-white mb-2">Please Read Carefully</p>
+            <p>
+              By using AirShare, you agree to these Terms. If you do not agree, do not install or use the application. For questions or concerns, please contact us before using the Services.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="mt-8 grid gap-4 sm:grid-cols-3">
+        <a href="privacy.html" class="rounded-xl bg-white/5 border border-white/10 p-6 hover:border-accent/30 transition-all text-center">
+          <svg class="w-6 h-6 mx-auto mb-2 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+          <p class="text-sm font-semibold text-white">Privacy Policy</p>
+        </a>
+        <a href="refunds.html" class="rounded-xl bg-white/5 border border-white/10 p-6 hover:border-accent/30 transition-all text-center">
+          <svg class="w-6 h-6 mx-auto mb-2 text-accent2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"></path></svg>
+          <p class="text-sm font-semibold text-white">Refund Policy</p>
+        </a>
+        <a href="faq.html" class="rounded-xl bg-white/5 border border-white/10 p-6 hover:border-accent/30 transition-all text-center">
+          <svg class="w-6 h-6 mx-auto mb-2 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          <p class="text-sm font-semibold text-white">FAQ</p>
+        </a>
+      </div>
 
     </div>
-    <p class="mt-10 text-sm opacity-60">Last updated: 18 Sept 2025</p>
-  </main>
+  </section>
 
-  <footer class="py-10 border-t border-black/5 dark:border-white/10 text-center text-sm opacity-70">
-    © <span id="year"></span> Jakša Tomović. All rights reserved.
-    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <!-- FOOTER -->
+  <footer class="py-12 border-t border-white/10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center text-sm text-white/60">
+      <p>
+        © <span id="year"></span> Jakša Tomović. 
+        <span class="mx-2">•</span>
+        <a href="landing-page.html" class="underline hover:no-underline hover:text-white/80">Home</a>
+        <span class="mx-2">•</span>
+        <a href="faq.html" class="underline hover:no-underline hover:text-white/80">FAQ</a>
+        <span class="mx-2">•</span>
+        <a href="changelog.html" class="underline hover:no-underline hover:text-white/80">Changelog</a>
+        <span class="mx-2">•</span>
+        <a href="licenses.html" class="underline hover:no-underline hover:text-white/80">Licenses</a>
+      </p>
+    </div>
   </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
 </body>
 </html>
+
