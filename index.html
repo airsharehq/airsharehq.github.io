@@ -688,9 +688,12 @@
       const repo = 'airshare-downloads';
 
       const pickers = {
-        mac: (a) => /\.dmg$/i.test(a.name) || /\.pkg$/i.test(a.name),
-        win: (a) => /\.exe$/i.test(a.name) || /\.msi$/i.test(a.name),
-        linux: (a) => /\.AppImage$/i.test(a.name) || /\.tar\.gz$/i.test(a.name) || /\.deb$/i.test(a.name) || /\.rpm$/i.test(a.name),
+        // Prefer .dmg for macOS (installers only, no update artifacts)
+        mac: (a) => /\.dmg$/i.test(a.name) && !/\.tar\.gz$/i.test(a.name),
+        // Prefer .msi for Windows (not .exe, not update artifacts)
+        win: (a) => /\.msi$/i.test(a.name) && !/\.zip$/i.test(a.name) && !/\.nsis$/i.test(a.name),
+        // Prefer .AppImage for Linux (not update artifacts)
+        linux: (a) => /\.AppImage$/i.test(a.name) && !/\.tar\.gz$/i.test(a.name),
         sha: (a) => /^SHA256SUMS.*\.txt$/i.test(a.name)
       };
 
@@ -716,6 +719,7 @@
         const assets = rel.assets || [];
         const versionText = rel.tag_name || '';
 
+        // Find installers (prefer .msi for Windows, .dmg for Mac, .AppImage for Linux)
         const mac = assets.find(pickers.mac);
         const win = assets.find(pickers.win);
         const linux = assets.find(pickers.linux);
