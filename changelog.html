@@ -1,312 +1,239 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AirShare – Changelog</title>
-  <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
-  <meta name="description" content="Changelog for AirShare – All notable changes by version." />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Changelog — AirShare</title>
+  <meta name="description" content="Version history and release notes for AirShare" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            accent: '#6aa4ff',
+            accent2: '#84ffd2',
+            base: '#0b1220',
+            baseDark: '#0f1826',
+          }
+        }
+      },
+      darkMode: 'class'
+    }
+  </script>
+  <style>
+    html { color-scheme: dark; }
+    body {
+      background: linear-gradient(to bottom right, #0b1220 0%, #0f1826 50%, #0b1220 100%);
+      min-height: 100vh;
+    }
+    .glass {
+      backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+  </style>
 </head>
-<body class="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 text-slate-800">
-  <!-- Header -->
-  <header class="sticky top-0 z-10 border-b border-slate-200 bg-white/80 backdrop-blur">
-    <div class="mx-auto max-w-5xl px-4 py-4">
-      <div class="flex items-center justify-between">
-        <h1 class="text-xl font-semibold tracking-tight">AirShare</h1>
-        <span class="rounded-full bg-slate-900 px-3 py-1 text-xs font-medium text-white">CHANGELOG</span>
+
+<body class="dark text-white/90">
+
+  <!-- NAV -->
+  <header class="sticky top-0 z-40">
+    <nav class="glass border-b border-white/10">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <a class="flex items-center gap-3" href="index.html">
+          <div class="h-9 w-9 rounded-xl bg-gradient-to-br from-accent to-accent2 grid place-items-center text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="h-5 w-5">
+              <line x1="50" y1="20" x2="20" y2="80" stroke="white" stroke-width="6" stroke-linecap="round" />
+              <line x1="50" y1="20" x2="80" y2="80" stroke="white" stroke-width="6" stroke-linecap="round" />
+              <circle cx="50" cy="20" r="8" fill="white" />
+              <circle cx="20" cy="80" r="8" fill="white" />
+              <circle cx="80" cy="80" r="8" fill="white" />
+            </svg>
+          </div>
+          <span class="text-lg font-semibold text-white">AirShare</span>
+        </a>
+        <div class="flex items-center gap-6 text-sm">
+          <a href="index.html" class="text-white/70 hover:text-white transition">Home</a>
+          <a href="faq.html" class="text-white/70 hover:text-white transition">FAQ</a>
+          <a href="https://github.com/airsharehq" class="text-white/70 hover:text-white transition">GitHub</a>
+        </div>
       </div>
-    </div>
+    </nav>
   </header>
 
-  <main class="mx-auto max-w-5xl px-4 py-10">
-    <article class="prose prose-slate max-w-none">
-      <h1>Changelog</h1>
-      <p>All notable changes to AirShare will be documented in this file.</p>
+  <!-- HERO -->
+  <section class="py-16 md:py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-bold text-white">Changelog</h1>
+        <p class="mt-4 text-lg text-white/60">
+          Version history and release notes for AirShare
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHANGELOG CONTENT -->
+  <section class="pb-20">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      
+      <!-- v0.1.3 - Latest -->
+      <div class="mb-12 rounded-2xl bg-gradient-to-br from-white/[0.08] to-white/[0.04] border-2 border-accent/30 p-8 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-accent/20 to-transparent rounded-full blur-3xl"></div>
+        <div class="relative">
+          <div class="flex items-start justify-between flex-wrap gap-3 mb-4">
+            <div>
+              <h2 class="text-2xl font-bold text-white flex items-center gap-3">
+                v0.1.3
+                <span class="text-xs font-normal px-3 py-1.5 rounded-full bg-accent/20 text-accent2 border border-accent/30">Latest</span>
+              </h2>
+              <p class="text-sm text-white/60 mt-1">October 12, 2025</p>
+            </div>
+          </div>
+
+          <div class="space-y-6">
+            
+            <!-- Bug Fixes -->
+            <div>
+              <h3 class="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                <svg class="w-5 h-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                Bug Fixes
+              </h3>
+              <ul class="space-y-2 text-sm text-white/70">
+                <li class="flex items-start gap-2">
+                  <span class="text-accent2 mt-0.5">•</span>
+                  <span><strong class="text-white">Critical:</strong> Fixed peer discovery bug where Mac and Windows couldn't see each other due to hostname collision. Now uses unique UUID (app_id) for reliable peer identification.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-accent2 mt-0.5">•</span>
+                  <span><strong class="text-white">UI:</strong> Fixed toast notifications showing 3 times when changing discoverability settings. Added debounce mechanism.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-accent2 mt-0.5">•</span>
+                  <span><strong class="text-white">Updater:</strong> Fixed hardcoded version number in update dialog. Now shows actual current version dynamically.</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Improvements -->
+            <div>
+              <h3 class="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                <svg class="w-5 h-5 text-accent2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                Improvements
+              </h3>
+              <ul class="space-y-2 text-sm text-white/70">
+                <li class="flex items-start gap-2">
+                  <span class="text-accent2 mt-0.5">•</span>
+                  <span><strong class="text-white">Performance:</strong> Removed 72 excessive console/terminal log statements. Cleaner logs, better performance.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-accent2 mt-0.5">•</span>
+                  <span><strong class="text-white">Network:</strong> Improved peer discovery reliability using UUID-based identification instead of hostname comparison.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-accent2 mt-0.5">•</span>
+                  <span><strong class="text-white">Code Quality:</strong> Fixed Rust formatting issues (35 trailing whitespace errors resolved).</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Documentation -->
+            <div>
+              <h3 class="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                Documentation
+              </h3>
+              <ul class="space-y-2 text-sm text-white/70">
+                <li class="flex items-start gap-2">
+                  <span class="text-accent2 mt-0.5">•</span>
+                  <span>All documentation translated to English</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-accent2 mt-0.5">•</span>
+                  <span>Removed redundant documentation files (consolidated into core docs)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-accent2 mt-0.5">•</span>
+                  <span>Added comprehensive GitHub Actions setup guide</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-accent2 mt-0.5">•</span>
+                  <span>Created FAQ, Licenses, and Changelog pages</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- DevOps -->
+            <div>
+              <h3 class="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                <svg class="w-5 h-5 text-accent2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                DevOps
+              </h3>
+              <ul class="space-y-2 text-sm text-white/70">
+                <li class="flex items-start gap-2">
+                  <span class="text-accent2 mt-0.5">•</span>
+                  <span>Setup GitHub Actions for automated multi-platform releases</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-accent2 mt-0.5">•</span>
+                  <span>Configured CI workflow for code quality checks (PR-only)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-accent2 mt-0.5">•</span>
+                  <span>Removed Dependabot (manual version control preferred)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-accent2 mt-0.5">•</span>
+                  <span>Added helper scripts for version bumping and secret setup</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Technical Details -->
+            <div class="mt-6 p-4 rounded-lg bg-white/5 border border-white/10">
+              <p class="text-xs text-white/60">
+                <strong class="text-white">Download:</strong> Available for macOS (Apple Silicon & Intel), Windows, and Linux from 
+                <a href="https://github.com/airsharehq/airshare-downloads/releases/tag/v0.1.3" class="text-accent hover:text-accent2 underline">GitHub Releases</a>
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Future Releases Placeholder -->
+      <div class="text-center py-12">
+        <p class="text-white/60">
+          More updates coming soon! Follow us on 
+          <a href="https://github.com/airsharehq" class="text-accent hover:text-accent2 underline">GitHub</a> 
+          for the latest news.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-12 border-t border-white/10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center text-sm text-white/60">
       <p>
-        The format is based on
-        <a href="https://keepachangelog.com/en/1.0.0/" target="_blank" rel="noreferrer">Keep a Changelog</a>,
-        and this project adheres to
-        <a href="https://semver.org/spec/v2.0.0.html" target="_blank" rel="noreferrer">Semantic Versioning</a>.
+        © <span id="year"></span> Jakša Tomović. 
+        <span class="mx-2">•</span>
+        <a href="index.html" class="underline hover:no-underline hover:text-white/80">Home</a>
+        <span class="mx-2">•</span>
+        <a href="faq.html" class="underline hover:no-underline hover:text-white/80">FAQ</a>
+        <span class="mx-2">•</span>
+        <a href="licenses.html" class="underline hover:no-underline hover:text-white/80">Licenses</a>
       </p>
-
-      <!-- v0.1.1 -->
-      <h2 id="0.1.1">[0.1.1] - 2025-01-15</h2>
-      <h3>Changed</h3>
-      <ul>
-        <li><strong>Modal Close Behavior</strong>: Completely redesigned modal close behavior for consistent user experience across all platforms</li>
-        <li><strong>Windows Modal Handling</strong>: Optimized Windows-specific modal closing to prevent flickering and ghosting</li>
-        <li><strong>Cross-Platform Consistency</strong>: Unified modal close logic across Windows, macOS, and Linux</li>
-        <li><strong>Application Version</strong>: Updated to v0.1.1 for major UX improvements</li>
-      </ul>
-
-      <h3>Fixed</h3>
-      <ul>
-        <li><strong>Modal Flickering</strong>: Eliminated "trznut" (flash) behavior on modal close (X button)</li>
-        <li><strong>Windows Ghost Windows</strong>: Prevented Windows ghost modal artifacts with improved window management</li>
-        <li><strong>Modal Animation</strong>: Removed unnecessary fade animations during close for instant hide behavior</li>
-        <li><strong>Dark Mode Issues</strong>: Standardized light appearance across all platforms and modals</li>
-        <li><strong>Close Handler</strong>: Streamlined close handler logic for all platform modal components</li>
-        <li><strong>Visual Consistency</strong>: Fixed title bar and close button behavior for unified experience</li>
-      </ul>
-
-      <h3>Technical</h3>
-      <ul>
-        <li><strong>BaseDialog Component</strong>: Major refactoring of <code>src/ui/modals/base_dialog.py</code> close logic</li>
-        <li><strong>Platform Detection</strong>: Simplified platform-specific logic for modal closing</li>
-        <li><strong>Animation Removal</strong>: Eliminated transparency-based fade animations on modal close</li>
-        <li><strong>Memory Management</strong>: Enhanced modal cleanup to prevent visual artifacts and focus issues</li>
-        <li><strong>Windows DWM</strong>: Optimized Windows Desktop Window Manager interactions for clean close handling</li>
-      </ul>
-
-      <!-- v0.0.7 -->
-      <h2 id="0.0.7">[0.0.7] - 2025-09-22</h2>
-      <h3>Added</h3>
-      <ul>
-        <li><strong>FontAwesome Icons</strong>: Integrated FontAwesome PNG icons throughout the application</li>
-        <li><strong>Enhanced UI</strong>: Modern icon integration in transfer history, header, and menu components</li>
-        <li><strong>Icon System</strong>: Robust icon loading system with fallback support</li>
-        <li><strong>Changelog Menu</strong>: Added Changelog option in Help menu to open <code>CHANGELOG.md</code> file</li>
-        <li><strong>macOS Dock Fix</strong>: Improved startup behavior to prevent Dock icon flickering</li>
-      </ul>
-      <h3>Changed</h3>
-      <ul>
-        <li><strong>Transfer History</strong>: Fixed-size modal (1200x800) for consistent user experience</li>
-        <li><strong>Header</strong>: QR code icon replaces text in Mobile Share button</li>
-        <li><strong>Footer</strong>: Improved dropdown styling with center-aligned text and reduced width</li>
-        <li><strong>Menu</strong>: Enhanced visual design with icon integration</li>
-        <li><strong>Help System</strong>: Fixed documentation and licenses file paths to open local files</li>
-        <li><strong>Version</strong>: Updated to v0.0.5 across all documentation and application</li>
-      </ul>
-      <h3>Fixed</h3>
-      <ul>
-        <li><strong>File Paths</strong>: Corrected <code>help.html</code>, <code>LICENSES.txt</code>, and <code>CHANGELOG.md</code> file paths in help menu</li>
-        <li><strong>UI Consistency</strong>: Improved cross-platform UI consistency</li>
-        <li><strong>Icon Loading</strong>: Better error handling for missing icon files</li>
-        <li><strong>macOS Startup</strong>: Eliminated Dock icon flicker during application startup</li>
-      </ul>
-
-      <!-- v0.0.3 -->
-      <h2 id="0.0.3">[0.0.3] - 2025-01-13</h2>
-      <h3>Fixed</h3>
-      <ul>
-        <li><strong>Locales Support</strong>: Fixed PyInstaller bundle locale file loading</li>
-        <li><strong>Build Process</strong>: Improved macOS DMG creation with disk space management</li>
-        <li><strong>i18n System</strong>: Added lazy initialization for internationalization manager</li>
-      </ul>
-
-      <!-- v0.0.2 -->
-      <h2 id="0.0.2">[0.0.2] - 2025-01-13</h2>
-      <h3>Added</h3>
-      <ul>
-        <li><strong>QR Code Sharing</strong>: Mobile file sharing via QR code scanning</li>
-        <li><strong>PIN Protection</strong>: Secure PIN-based authentication for shared files</li>
-        <li><strong>TTL Support</strong>: Time-to-live expiration for shared links</li>
-        <li><strong>TCP Server</strong>: Reliable TCP-based file transfer (replacing QUIC/WebTransport)</li>
-        <li><strong>Share Modal</strong>: Simplified drag-and-drop file sharing interface</li>
-        <li><strong>Mobile Web Interface</strong>: Responsive web interface for mobile devices</li>
-        <li><strong>File Upload/Download</strong>: Bidirectional file transfer between desktop and mobile</li>
-        <li><strong>Progress Tracking</strong>: Real-time upload/download progress indicators</li>
-        <li><strong>Auto-download</strong>: Automatic file download when shared file is ready</li>
-      </ul>
-      <h3>Changed</h3>
-      <ul>
-        <li><strong>Protocol Switch</strong>: Migrated from QUIC/WebTransport to TCP/HTTP for better mobile compatibility</li>
-        <li><strong>UI Simplification</strong>: Streamlined Share modal with drag-and-drop only interface</li>
-        <li><strong>Build Process</strong>: Enhanced <code>build.py</code> to prevent <code>.spec</code> file modifications</li>
-        <li><strong>Version Management</strong>: Centralized version management across all components</li>
-      </ul>
-      <h3>Fixed</h3>
-      <ul>
-        <li><strong>Mobile Compatibility</strong>: Fixed mobile browser compatibility issues</li>
-        <li><strong>File Transfer</strong>: Resolved upload/download reliability issues</li>
-        <li><strong>Build System</strong>: Fixed <code>.spec</code> file generation during build process</li>
-        <li><strong>State Synchronization</strong>: Improved synchronization between Flask and TCP servers</li>
-      </ul>
-      <h3>Technical</h3>
-      <ul>
-        <li><strong>TCP Server</strong>: New <code>core/tcp_server.py</code> for reliable file transfer</li>
-        <li><strong>QR Generation</strong>: Enhanced QR code generation with proper error handling</li>
-        <li><strong>PIN Security</strong>: Secure PIN generation and validation system</li>
-        <li><strong>Web Interface</strong>: Modern responsive web interface with theme support</li>
-        <li><strong>Testing</strong>: Comprehensive test suite for all new features</li>
-      </ul>
-
-      <!-- v1.1.0 -->
-      <h2 id="1.1.0">[1.1.0] - 2025-01-12</h2>
-      <h3>Added</h3>
-      <ul>
-        <li><strong>Multilingual Support</strong>: Added support for 6 languages
-          <ul>
-            <li>English (default)</li>
-            <li>Croatian (Hrvatski)</li>
-            <li>German (Deutsch)</li>
-            <li>Italian (Italiano)</li>
-            <li>French (Français)</li>
-            <li>Spanish (Español)</li>
-          </ul>
-        </li>
-        <li><strong>Language Menu</strong>: New View → Language submenu with language selection</li>
-        <li><strong>Persistent Language Settings</strong>: Language preference is saved and restored on restart</li>
-        <li><strong>Language Change Notification</strong>: Info modal when changing language with restart requirement</li>
-        <li><strong>Comprehensive Localization</strong>: All UI elements, status messages, modals, and error messages translated</li>
-        <li><strong>Localized File Dialogs</strong>: File selection dialogs now show in selected language</li>
-        <li><strong>Localized Status Messages</strong>: All transfer and system status messages are translated</li>
-        <li><strong>Localized Error Messages</strong>: All error dialogs and messages are translated</li>
-        <li><strong>Localized Modals</strong>: All confirmation and info dialogs are translated</li>
-      </ul>
-      <h3>Changed</h3>
-      <ul>
-        <li><strong>Menu Structure</strong>: Moved language selection to View menu, removed redundant toggle discovery option</li>
-        <li><strong>Language Switching</strong>: Simplified language change process with clear user feedback</li>
-        <li><strong>UI Consistency</strong>: Improved consistency across all language versions</li>
-        <li><strong>Documentation</strong>: Updated all documentation to reflect multilingual support</li>
-      </ul>
-      <h3>Fixed</h3>
-      <ul>
-        <li><strong>Language Persistence</strong>: Language selection now properly persists across application restarts</li>
-        <li><strong>Menu Updates</strong>: Fixed menu bar refresh issues when changing language</li>
-        <li><strong>Translation Keys</strong>: Added missing translation keys for all supported languages</li>
-        <li><strong>Build Process</strong>: Removed redundant <code>build_local.py</code> script, streamlined build process</li>
-      </ul>
-      <h3>Technical</h3>
-      <ul>
-        <li><strong>Locale Files</strong>: Added complete translation files for all 6 languages</li>
-        <li><strong>i18n System</strong>: Enhanced internationalization system with proper key management</li>
-        <li><strong>Config Management</strong>: Improved configuration system for language preferences</li>
-        <li><strong>Build System</strong>: Updated build scripts to include all locale files</li>
-      </ul>
-
-      <!-- v1.0.0 -->
-      <h2 id="1.0.0">[1.0.0] - 2025-01-12</h2>
-      <h3>Added</h3>
-      <ul>
-        <li>Initial release of AirShare</li>
-        <li>Secure peer-to-peer file sharing over local network</li>
-        <li>Radar-based device discovery interface</li>
-        <li>Drag &amp; drop file transfer support</li>
-        <li>QUIC protocol for fast and secure transfers</li>
-        <li>mDNS service discovery</li>
-        <li>Cross-platform support (Windows, macOS, Linux)</li>
-        <li>Professional menu bar with Help, About, and Preferences</li>
-        <li>Comprehensive help documentation</li>
-        <li>Open source licenses information</li>
-        <li>Keyboard shortcuts for common actions</li>
-        <li>Automatic file organization in Downloads/AirShare</li>
-        <li>Real-time transfer progress indicators</li>
-        <li>Device name customization</li>
-        <li>Discovery toggle functionality</li>
-        <li>Graceful shutdown handling</li>
-        <li>Error handling and user feedback</li>
-        <li>Professional About dialog with version info</li>
-        <li>Privacy policy integration</li>
-        <li>Support contact information</li>
-      </ul>
-      <h3>Technical Details</h3>
-      <ul>
-        <li>Built with Python 3.13</li>
-        <li>Uses CustomTkinter for modern UI</li>
-        <li>QUIC protocol implementation via aioquic</li>
-        <li>mDNS discovery via zeroconf</li>
-        <li>End-to-end encryption for all transfers</li>
-        <li>Cross-platform icon support</li>
-        <li>Thread-safe operations</li>
-        <li>Memory-efficient file handling</li>
-        <li>Automatic certificate management</li>
-      </ul>
-      <h3>Security</h3>
-      <ul>
-        <li>Self-signed certificates for device authentication</li>
-        <li>Encrypted file transfers</li>
-        <li>No external server dependencies</li>
-        <li>Local network only operation</li>
-        <li>No data collection or transmission</li>
-      </ul>
-      <h3>User Experience</h3>
-      <ul>
-        <li>Intuitive radar interface</li>
-        <li>Visual device representation</li>
-        <li>Real-time status updates</li>
-        <li>Comprehensive help system</li>
-        <li>Professional application appearance</li>
-        <li>Consistent cross-platform behavior</li>
-        <li>Keyboard accessibility</li>
-        <li>Error recovery mechanisms</li>
-      </ul>
-      <h3>Documentation</h3>
-      <ul>
-        <li>Complete <code>help.html</code> with step-by-step instructions</li>
-        <li><code>LICENSES.txt</code> with all third-party license information</li>
-        <li><code>CHANGELOG.md</code> for version tracking</li>
-        <li>Inline code documentation</li>
-        <li>User-friendly error messages</li>
-      </ul>
-      <h3>Future Roadmap</h3>
-      <ul>
-        <li>Advanced preferences panel</li>
-        <li>File transfer history</li>
-        <li>Bandwidth limiting options</li>
-        <li>Custom download locations</li>
-        <li>Transfer queue management</li>
-        <li>Device favorites</li>
-        <li>Transfer speed indicators</li>
-        <li>File type filtering</li>
-        <li>Batch operations</li>
-        <li>Mobile companion app</li>
-      </ul>
-
-      <hr />
-
-      <h2>Development Notes</h2>
-
-      <h3>Version Numbering</h3>
-      <ul>
-        <li>Major version: Breaking changes or major feature additions</li>
-        <li>Minor version: New features or significant improvements</li>
-        <li>Patch version: Bug fixes and minor improvements</li>
-      </ul>
-
-      <h3>Release Process</h3>
-      <ol>
-        <li>Update version numbers in <code>constants/app_info.py</code></li>
-        <li>Update <code>CHANGELOG.md</code> with new features/fixes</li>
-        <li>Test on all target platforms</li>
-        <li>Create release build</li>
-        <li>Test installation and basic functionality</li>
-        <li>Publish release</li>
-      </ol>
-
-      <h3>Testing</h3>
-      <ul>
-        <li>Unit tests for core functionality</li>
-        <li>Integration tests for file transfers</li>
-        <li>Cross-platform compatibility testing</li>
-        <li>UI/UX testing on different screen sizes</li>
-        <li>Network connectivity testing</li>
-        <li>Error handling verification</li>
-      </ul>
-
-      <h3>Code Quality</h3>
-      <ul>
-        <li>Type hints where appropriate</li>
-        <li>Comprehensive error handling</li>
-        <li>Thread safety considerations</li>
-        <li>Memory leak prevention</li>
-        <li>Performance optimization</li>
-        <li>Code documentation</li>
-        <li>Consistent formatting</li>
-      </ul>
-    </article>
-
-    <!-- Footer -->
-    <footer class="mt-12 flex items-center justify-between text-sm text-slate-500">
-      <p>© <span id="y"></span> AirShare</p>
-      <a class="underline decoration-dotted underline-offset-4" href="#">Back to top</a>
-    </footer>
-  </main>
+    </div>
+  </footer>
 
   <script>
-    // Simple current year
-    document.getElementById('y').textContent = new Date().getFullYear();
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+
 </body>
 </html>
+
