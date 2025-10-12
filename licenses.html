@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Open Source Licenses — AirShare</title>
+  <meta name="description" content="Third-party software licenses and attributions for AirShare" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            accent: '#6aa4ff',
+            accent2: '#84ffd2',
+            base: '#0b1220',
+            baseDark: '#0f1826',
+          }
+        }
+      },
+      darkMode: 'class'
+    }
+  </script>
+  <style>
+    html { color-scheme: dark; }
+    body {
+      background: linear-gradient(to bottom right, #0b1220 0%, #0f1826 50%, #0b1220 100%);
+      min-height: 100vh;
+    }
+    .glass {
+      backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+  </style>
+</head>
+
+<body class="dark text-white/90">
+
+  <!-- NAV -->
+  <header class="sticky top-0 z-40">
+    <nav class="glass border-b border-white/10">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <a class="flex items-center gap-3" href="index.html">
+          <div class="h-9 w-9 rounded-xl bg-gradient-to-br from-accent to-accent2 grid place-items-center text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="h-5 w-5">
+              <line x1="50" y1="20" x2="20" y2="80" stroke="white" stroke-width="6" stroke-linecap="round" />
+              <line x1="50" y1="20" x2="80" y2="80" stroke="white" stroke-width="6" stroke-linecap="round" />
+              <circle cx="50" cy="20" r="8" fill="white" />
+              <circle cx="20" cy="80" r="8" fill="white" />
+              <circle cx="80" cy="80" r="8" fill="white" />
+            </svg>
+          </div>
+          <span class="text-lg font-semibold text-white">AirShare</span>
+        </a>
+        <div class="flex items-center gap-6 text-sm">
+          <a href="index.html" class="text-white/70 hover:text-white transition">Home</a>
+          <a href="https://github.com/airsharehq" class="text-white/70 hover:text-white transition">GitHub</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="py-16 md:py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-bold text-white">Open Source Licenses</h1>
+        <p class="mt-4 text-lg text-white/60">
+          AirShare is built with amazing open-source software. Here are all the libraries and tools we use, with gratitude to their creators.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LICENSES CONTENT -->
+  <section class="pb-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      
+      <!-- Frontend Libraries -->
+      <div class="mb-16">
+        <h2 class="text-2xl md:text-3xl font-bold text-white mb-8 flex items-center gap-3">
+          <div class="h-10 w-10 rounded-lg bg-gradient-to-br from-accent/20 to-accent2/20 grid place-items-center border border-accent/30">
+            <svg class="w-5 h-5 text-accent2" fill="currentColor" viewBox="0 0 24 24"><path d="M2,3H5.5L12,15L18.5,3H22L12,21L2,3M6.5,3H9.5L12,7.58L14.5,3H17.5L12,13.08L6.5,3Z" /></svg>
+          </div>
+          Frontend Libraries
+        </h2>
+        
+        <div class="grid gap-4 md:grid-cols-2">
+          
+          <!-- Vue.js -->
+          <div class="rounded-xl bg-white/5 border border-white/10 p-6 hover:border-accent/30 transition-all">
+            <h3 class="text-lg font-semibold text-white mb-2">Vue.js</h3>
+            <p class="text-sm text-white/60 mb-3">Progressive JavaScript Framework</p>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="px-2 py-1 rounded bg-accent/20 text-accent2 border border-accent/30">MIT License</span>
+              <a href="https://github.com/vuejs/core" class="px-2 py-1 rounded bg-white/10 text-white/70 hover:text-white transition">GitHub</a>
+            </div>
+          </div>
+
+          <!-- Tauri -->
+          <div class="rounded-xl bg-white/5 border border-white/10 p-6 hover:border-accent/30 transition-all">
+            <h3 class="text-lg font-semibold text-white mb-2">Tauri</h3>
+            <p class="text-sm text-white/60 mb-3">Build smaller, faster, and more secure desktop applications</p>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="px-2 py-1 rounded bg-accent/20 text-accent2 border border-accent/30">MIT/Apache-2.0</span>
+              <a href="https://github.com/tauri-apps/tauri" class="px-2 py-1 rounded bg-white/10 text-white/70 hover:text-white transition">GitHub</a>
+            </div>
+          </div>
+
+          <!-- TypeScript -->
+          <div class="rounded-xl bg-white/5 border border-white/10 p-6 hover:border-accent/30 transition-all">
+            <h3 class="text-lg font-semibold text-white mb-2">TypeScript</h3>
+            <p class="text-sm text-white/60 mb-3">Typed JavaScript at Any Scale</p>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="px-2 py-1 rounded bg-accent/20 text-accent2 border border-accent/30">Apache-2.0</span>
+              <a href="https://github.com/microsoft/TypeScript" class="px-2 py-1 rounded bg-white/10 text-white/70 hover:text-white transition">GitHub</a>
+            </div>
+          </div>
+
+          <!-- Vite -->
+          <div class="rounded-xl bg-white/5 border border-white/10 p-6 hover:border-accent/30 transition-all">
+            <h3 class="text-lg font-semibold text-white mb-2">Vite</h3>
+            <p class="text-sm text-white/60 mb-3">Next Generation Frontend Tooling</p>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="px-2 py-1 rounded bg-accent/20 text-accent2 border border-accent/30">MIT License</span>
+              <a href="https://github.com/vitejs/vite" class="px-2 py-1 rounded bg-white/10 text-white/70 hover:text-white transition">GitHub</a>
+            </div>
+          </div>
+
+          <!-- Pinia -->
+          <div class="rounded-xl bg-white/5 border border-white/10 p-6 hover:border-accent/30 transition-all">
+            <h3 class="text-lg font-semibold text-white mb-2">Pinia</h3>
+            <p class="text-sm text-white/60 mb-3">The Vue Store that you will enjoy using</p>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="px-2 py-1 rounded bg-accent/20 text-accent2 border border-accent/30">MIT License</span>
+              <a href="https://github.com/vuejs/pinia" class="px-2 py-1 rounded bg-white/10 text-white/70 hover:text-white transition">GitHub</a>
+            </div>
+          </div>
+
+          <!-- Vue Router -->
+          <div class="rounded-xl bg-white/5 border border-white/10 p-6 hover:border-accent/30 transition-all">
+            <h3 class="text-lg font-semibold text-white mb-2">Vue Router</h3>
+            <p class="text-sm text-white/60 mb-3">The official Router for Vue.js</p>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="px-2 py-1 rounded bg-accent/20 text-accent2 border border-accent/30">MIT License</span>
+              <a href="https://github.com/vuejs/router" class="px-2 py-1 rounded bg-white/10 text-white/70 hover:text-white transition">GitHub</a>
+            </div>
+          </div>
+
+          <!-- Vue I18n -->
+          <div class="rounded-xl bg-white/5 border border-white/10 p-6 hover:border-accent/30 transition-all">
+            <h3 class="text-lg font-semibold text-white mb-2">Vue I18n</h3>
+            <p class="text-sm text-white/60 mb-3">Internationalization plugin for Vue.js</p>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="px-2 py-1 rounded bg-accent/20 text-accent2 border border-accent/30">MIT License</span>
+              <a href="https://github.com/intlify/vue-i18n-next" class="px-2 py-1 rounded bg-white/10 text-white/70 hover:text-white transition">GitHub</a>
+            </div>
+          </div>
+
+          <!-- Tailwind CSS -->
+          <div class="rounded-xl bg-white/5 border border-white/10 p-6 hover:border-accent/30 transition-all">
+            <h3 class="text-lg font-semibold text-white mb-2">Tailwind CSS</h3>
+            <p class="text-sm text-white/60 mb-3">A utility-first CSS framework</p>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="px-2 py-1 rounded bg-accent/20 text-accent2 border border-accent/30">MIT License</span>
+              <a href="https://github.com/tailwindlabs/tailwindcss" class="px-2 py-1 rounded bg-white/10 text-white/70 hover:text-white transition">GitHub</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Backend Libraries -->
+      <div class="mb-16">
+        <h2 class="text-2xl md:text-3xl font-bold text-white mb-8 flex items-center gap-3">
+          <div class="h-10 w-10 rounded-lg bg-gradient-to-br from-accent/20 to-accent2/20 grid place-items-center border border-accent/30">
+            <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 24 24"><path d="M23.834 8.101a13.912 13.912 0 0 1-13.643 11.72a10.105 10.105 0 0 1-1.994-.12a6.111 6.111 0 0 1-5.082-5.761a5.934 5.934 0 0 1 11.867-.084c.025.983-.401 1.846-1.277 1.871c-.936 0-1.374-.668-1.374-1.567v-2.5a1.531 1.531 0 0 0-1.52-1.533H8.715a3.648 3.648 0 1 0 2.695 6.08l.073-.11l.074.121a2.58 2.58 0 0 0 2.2 1.048a2.909 2.909 0 0 0 2.695-3.04a7.912 7.912 0 0 0-.217-1.933a7.404 7.404 0 0 0-14.64 1.603a7.497 7.497 0 0 0 7.308 7.405s.549.05 1.167.035a15.803 15.803 0 0 0 8.475-2.528c.036-.025.072.025.048.061a12.44 12.44 0 0 1-9.69 3.963a8.744 8.744 0 0 1-8.9-8.972a9.049 9.049 0 0 1 3.635-7.247a8.863 8.863 0 0 1 5.229-1.726h2.813a7.915 7.915 0 0 0 5.839-2.578a.11.11 0 0 1 .059-.034a.112.112 0 0 1 .12.053a.113.113 0 0 1 .015.067a7.934 7.934 0 0 1-1.227 3.549a.107.107 0 0 0-.014.06a.11.11 0 0 0 .073.095a.109.109 0 0 0 .062.004a8.505 8.505 0 0 0 5.913-4.876a.155.155 0 0 1 .055-.053a.15.15 0 0 1 .147 0a.153.153 0 0 1 .054.053A10.779 10.779 0 0 1 23.834 8.1zM8.895 11.628a2.188 2.188 0 1 0 2.188 2.188v-2.042a.158.158 0 0 0-.15-.15Z"/></svg>
+          </div>
+          Backend Libraries (Rust)
+        </h2>
+        
+        <div class="grid gap-4 md:grid-cols-2">
+
+          <!-- Quinn (QUIC) -->
+          <div class="rounded-xl bg-white/5 border border-white/10 p-6 hover:border-accent/30 transition-all">
+            <h3 class="text-lg font-semibold text-white mb-2">Quinn</h3>
+            <p class="text-sm text-white/60 mb-3">Async-friendly QUIC implementation in Rust</p>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="px-2 py-1 rounded bg-accent/20 text-accent2 border border-accent/30">MIT/Apache-2.0</span>
+              <a href="https://github.com/quinn-rs/quinn" class="px-2 py-1 rounded bg-white/10 text-white/70 hover:text-white transition">GitHub</a>
+            </div>
+          </div>
+
+          <!-- mdns-sd -->
+          <div class="rounded-xl bg-white/5 border border-white/10 p-6 hover:border-accent/30 transition-all">
+            <h3 class="text-lg font-semibold text-white mb-2">mdns-sd</h3>
+            <p class="text-sm text-white/60 mb-3">Multicast DNS service discovery</p>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="px-2 py-1 rounded bg-accent/20 text-accent2 border border-accent/30">MIT License</span>
+              <a href="https://github.com/keepsimple1/mdns-sd" class="px-2 py-1 rounded bg-white/10 text-white/70 hover:text-white transition">GitHub</a>
+            </div>
+          </div>
+
+          <!-- Tokio -->
+          <div class="rounded-xl bg-white/5 border border-white/10 p-6 hover:border-accent/30 transition-all">
+            <h3 class="text-lg font-semibold text-white mb-2">Tokio</h3>
+            <p class="text-sm text-white/60 mb-3">Asynchronous runtime for Rust</p>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="px-2 py-1 rounded bg-accent/20 text-accent2 border border-accent/30">MIT License</span>
+              <a href="https://github.com/tokio-rs/tokio" class="px-2 py-1 rounded bg-white/10 text-white/70 hover:text-white transition">GitHub</a>
+            </div>
+          </div>
+
+          <!-- SQLx -->
+          <div class="rounded-xl bg-white/5 border border-white/10 p-6 hover:border-accent/30 transition-all">
+            <h3 class="text-lg font-semibold text-white mb-2">SQLx</h3>
+            <p class="text-sm text-white/60 mb-3">Async SQL toolkit for Rust</p>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="px-2 py-1 rounded bg-accent/20 text-accent2 border border-accent/30">MIT/Apache-2.0</span>
+              <a href="https://github.com/launchbadge/sqlx" class="px-2 py-1 rounded bg-white/10 text-white/70 hover:text-white transition">GitHub</a>
+            </div>
+          </div>
+
+          <!-- Serde -->
+          <div class="rounded-xl bg-white/5 border border-white/10 p-6 hover:border-accent/30 transition-all">
+            <h3 class="text-lg font-semibold text-white mb-2">Serde</h3>
+            <p class="text-sm text-white/60 mb-3">Serialization framework for Rust</p>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="px-2 py-1 rounded bg-accent/20 text-accent2 border border-accent/30">MIT/Apache-2.0</span>
+              <a href="https://github.com/serde-rs/serde" class="px-2 py-1 rounded bg-white/10 text-white/70 hover:text-white transition">GitHub</a>
+            </div>
+          </div>
+
+          <!-- Rustls -->
+          <div class="rounded-xl bg-white/5 border border-white/10 p-6 hover:border-accent/30 transition-all">
+            <h3 class="text-lg font-semibold text-white mb-2">Rustls</h3>
+            <p class="text-sm text-white/60 mb-3">Modern TLS library in Rust</p>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="px-2 py-1 rounded bg-accent/20 text-accent2 border border-accent/30">Apache-2.0</span>
+              <a href="https://github.com/rustls/rustls" class="px-2 py-1 rounded bg-white/10 text-white/70 hover:text-white transition">GitHub</a>
+            </div>
+          </div>
+
+          <!-- Reqwest -->
+          <div class="rounded-xl bg-white/5 border border-white/10 p-6 hover:border-accent/30 transition-all">
+            <h3 class="text-lg font-semibold text-white mb-2">Reqwest</h3>
+            <p class="text-sm text-white/60 mb-3">HTTP client for Rust</p>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="px-2 py-1 rounded bg-accent/20 text-accent2 border border-accent/30">MIT/Apache-2.0</span>
+              <a href="https://github.com/seanmonstar/reqwest" class="px-2 py-1 rounded bg-white/10 text-white/70 hover:text-white transition">GitHub</a>
+            </div>
+          </div>
+
+          <!-- Tracing -->
+          <div class="rounded-xl bg-white/5 border border-white/10 p-6 hover:border-accent/30 transition-all">
+            <h3 class="text-lg font-semibold text-white mb-2">Tracing</h3>
+            <p class="text-sm text-white/60 mb-3">Application-level tracing for Rust</p>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="px-2 py-1 rounded bg-accent/20 text-accent2 border border-accent/30">MIT License</span>
+              <a href="https://github.com/tokio-rs/tracing" class="px-2 py-1 rounded bg-white/10 text-white/70 hover:text-white transition">GitHub</a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- All Other Backend Dependencies - Complete List -->
+        <div class="mt-6">
+          <h3 class="text-lg font-semibold text-white mb-4">Additional Backend Dependencies</h3>
+          <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 text-sm">
+            <div class="p-3 rounded bg-white/5 border border-white/10">
+              <strong class="text-white block mb-1">anyhow</strong>
+              <span class="text-white/50 text-xs">MIT/Apache-2.0</span>
+            </div>
+            <div class="p-3 rounded bg-white/5 border border-white/10">
+              <strong class="text-white block mb-1">camino</strong>
+              <span class="text-white/50 text-xs">MIT/Apache-2.0</span>
+            </div>
+            <div class="p-3 rounded bg-white/5 border border-white/10">
+              <strong class="text-white block mb-1">chrono</strong>
+              <span class="text-white/50 text-xs">MIT/Apache-2.0</span>
+            </div>
+            <div class="p-3 rounded bg-white/5 border border-white/10">
+              <strong class="text-white block mb-1">derive_more</strong>
+              <span class="text-white/50 text-xs">MIT</span>
+            </div>
+            <div class="p-3 rounded bg-white/5 border border-white/10">
+              <strong class="text-white block mb-1">dirs</strong>
+              <span class="text-white/50 text-xs">MIT/Apache-2.0</span>
+            </div>
+            <div class="p-3 rounded bg-white/5 border border-white/10">
+              <strong class="text-white block mb-1">dotenvy</strong>
+              <span class="text-white/50 text-xs">MIT</span>
+            </div>
+            <div class="p-3 rounded bg-white/5 border border-white/10">
+              <strong class="text-white block mb-1">env_logger</strong>
+              <span class="text-white/50 text-xs">MIT/Apache-2.0</span>
+            </div>
+            <div class="p-3 rounded bg-white/5 border border-white/10">
+              <strong class="text-white block mb-1">fs2</strong>
+              <span class="text-white/50 text-xs">MIT/Apache-2.0</span>
+            </div>
+            <div class="p-3 rounded bg-white/5 border border-white/10">
+              <strong class="text-white block mb-1">futures-util</strong>
+              <span class="text-white/50 text-xs">MIT/Apache-2.0</span>
+            </div>
+            <div class="p-3 rounded bg-white/5 border border-white/10">
+              <strong class="text-white block mb-1">hex</strong>
+              <span class="text-white/50 text-xs">MIT/Apache-2.0</span>
+            </div>
+            <div class="p-3 rounded bg-white/5 border border-white/10">
+              <strong class="text-white block mb-1">hostname</strong>
+              <span class="text-white/50 text-xs">MIT</span>
+            </div>
+            <div class="p-3 rounded bg-white/5 border border-white/10">
+              <strong class="text-white block mb-1">if-addrs</strong>
+              <span class="text-white/50 text-xs">MIT/Apache-2.0</span>
+            </div>
+            <div class="p-3 rounded bg-white/5 border border-white/10">
+              <strong class="text-white block mb-1">indexmap</strong>
+              <span class="text-white/50 text-xs">Apache-2.0/MIT</span>
+            </div>
+            <div class="p-3 rounded bg-white/5 border border-white/10">
+              <strong class="text-white block mb-1">local-ip-address</strong>
+              <span class="text-white/50 text-xs">MIT</span>
+            </div>
+            <div class="p-3 rounded bg-white/5 border border-white/10">
+              <strong class="text-white block mb-1">log</strong>
+              <span class="text-white/50 text-xs">MIT/Apache-2.0</span>
+            </div>
+            <div class="p-3 rounded bg-white/5 border border-white/10">
+              <strong class="text-white block mb-1">parking_lot</strong>
+              <span class="text-white/50 text-xs">MIT/Apache-2.0</span>
+            </div>
+            <div class="p-3 rounded bg-white/5 border border-white/10">
+              <strong class="text-white block mb-1">path-clean</strong>
+              <span class="text-white/50 text-xs">MIT/Apache-2.0</span>
+            </div>
+            <div class="p-3 rounded bg-white/5 border border-white/10">
+              <strong class="text-white block mb-1">rand</strong>
+              <span class="text-white/50 text-xs">MIT/Apache-2.0</span>
+            </div>
+            <div class="p-3 rounded bg-white/5 border border-white/10">
+              <strong class="text-white block mb-1">rcgen</strong>
+              <span class="text-white/50 text-xs">MIT/Apache-2.0</span>
+            </div>
+            <div class="p-3 rounded bg-white/5 border border-white/10">
+              <strong class="text-white block mb-1">serde_json</strong>
+              <span class="text-white/50 text-xs">MIT/Apache-2.0</span>
+            </div>
+            <div class="p-3 rounded bg-white/5 border border-white/10">
+              <strong class="text-white block mb-1">serde_plain</strong>
+              <span class="text-white/50 text-xs">MIT/Apache-2.0</span>
+            </div>
+            <div class="p-3 rounded bg-white/5 border border-white/10">
+              <strong class="text-white block mb-1">sha2</strong>
+              <span class="text-white/50 text-xs">MIT/Apache-2.0</span>
+            </div>
+            <div class="p-3 rounded bg-white/5 border border-white/10">
+              <strong class="text-white block mb-1">strum</strong>
+              <span class="text-white/50 text-xs">MIT</span>
+            </div>
+            <div class="p-3 rounded bg-white/5 border border-white/10">
+              <strong class="text-white block mb-1">sysinfo</strong>
+              <span class="text-white/50 text-xs">MIT</span>
+            </div>
+            <div class="p-3 rounded bg-white/5 border border-white/10">
+              <strong class="text-white block mb-1">tokio-util</strong>
+              <span class="text-white/50 text-xs">MIT</span>
+            </div>
+            <div class="p-3 rounded bg-white/5 border border-white/10">
+              <strong class="text-white block mb-1">uuid</strong>
+              <span class="text-white/50 text-xs">MIT/Apache-2.0</span>
+            </div>
+            <div class="p-3 rounded bg-white/5 border border-white/10">
+              <strong class="text-white block mb-1">tracing-subscriber</strong>
+              <span class="text-white/50 text-xs">MIT</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tauri Plugins -->
+      <div class="mb-16">
+        <h2 class="text-2xl md:text-3xl font-bold text-white mb-8 flex items-center gap-3">
+          <div class="h-10 w-10 rounded-lg bg-gradient-to-br from-accent/20 to-accent2/20 grid place-items-center border border-accent/30">
+            <svg class="w-5 h-5 text-accent2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+          </div>
+          Tauri Plugins
+        </h2>
+        
+        <div class="grid gap-4 md:grid-cols-2">
+          <div class="rounded-xl bg-white/5 border border-white/10 p-6">
+            <h3 class="text-lg font-semibold text-white mb-2">tauri-plugin-sql</h3>
+            <p class="text-sm text-white/60 mb-3">SQLite database plugin</p>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="px-2 py-1 rounded bg-accent/20 text-accent2 border border-accent/30">MIT/Apache-2.0</span>
+            </div>
+          </div>
+          <div class="rounded-xl bg-white/5 border border-white/10 p-6">
+            <h3 class="text-lg font-semibold text-white mb-2">tauri-plugin-updater</h3>
+            <p class="text-sm text-white/60 mb-3">Auto-update functionality</p>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="px-2 py-1 rounded bg-accent/20 text-accent2 border border-accent/30">MIT/Apache-2.0</span>
+            </div>
+          </div>
+          <div class="rounded-xl bg-white/5 border border-white/10 p-6">
+            <h3 class="text-lg font-semibold text-white mb-2">tauri-plugin-notification</h3>
+            <p class="text-sm text-white/60 mb-3">Native notifications</p>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="px-2 py-1 rounded bg-accent/20 text-accent2 border border-accent/30">MIT/Apache-2.0</span>
+            </div>
+          </div>
+          <div class="rounded-xl bg-white/5 border border-white/10 p-6">
+            <h3 class="text-lg font-semibold text-white mb-2">tauri-plugin-autostart</h3>
+            <p class="text-sm text-white/60 mb-3">Auto-start on system boot</p>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="px-2 py-1 rounded bg-accent/20 text-accent2 border border-accent/30">MIT/Apache-2.0</span>
+            </div>
+          </div>
+          <div class="rounded-xl bg-white/5 border border-white/10 p-6">
+            <h3 class="text-lg font-semibold text-white mb-2">tauri-plugin-dialog</h3>
+            <p class="text-sm text-white/60 mb-3">Native file dialogs</p>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="px-2 py-1 rounded bg-accent/20 text-accent2 border border-accent/30">MIT/Apache-2.0</span>
+            </div>
+          </div>
+          <div class="rounded-xl bg-white/5 border border-white/10 p-6">
+            <h3 class="text-lg font-semibold text-white mb-2">tauri-plugin-fs-pro</h3>
+            <p class="text-sm text-white/60 mb-3">Enhanced filesystem operations</p>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="px-2 py-1 rounded bg-accent/20 text-accent2 border border-accent/30">MIT</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- License Info -->
+      <div class="rounded-2xl bg-gradient-to-br from-white/[0.08] to-white/[0.04] border border-accent/20 p-8 max-w-3xl mx-auto">
+        <h3 class="text-xl font-bold text-white mb-4">License Information</h3>
+        <div class="space-y-3 text-sm text-white/70 leading-relaxed">
+          <p>
+            <strong class="text-white">AirShare</strong> is licensed under the <strong class="text-accent2">MIT License</strong>.
+          </p>
+          <p>
+            All third-party libraries listed above are used in accordance with their respective licenses. Most are licensed under MIT, Apache-2.0, or dual MIT/Apache-2.0 licenses, which permit commercial and private use.
+          </p>
+          <p>
+            This page contains the complete list of all dependencies used in AirShare. For full license texts of each library, please visit their respective GitHub repositories linked above.
+          </p>
+        </div>
+
+        <div class="mt-6 p-4 rounded-lg bg-white/5 border border-white/10">
+          <p class="text-xs text-white/60">
+            <strong class="text-white">Note:</strong> This list includes direct dependencies. Each library may have additional transitive dependencies with their own licenses. The full dependency tree is available in <code class="px-1.5 py-0.5 rounded bg-black/40 text-accent2">package-lock.json</code> and <code class="px-1.5 py-0.5 rounded bg-black/40 text-accent2">Cargo.lock</code>.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-12 border-t border-white/10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center text-sm text-white/60">
+      <p>
+        © <span id="year"></span> Jakša Tomović. 
+        <span class="mx-2">•</span>
+        <a href="index.html" class="underline hover:no-underline hover:text-white/80">Home</a>
+        <span class="mx-2">•</span>
+        <a href="https://github.com/airsharehq" class="underline hover:no-underline hover:text-white/80">GitHub</a>
+      </p>
+      <p class="mt-3 text-xs text-white/40">
+        We stand on the shoulders of giants. Thank you to all open-source contributors! 🙏
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
+
