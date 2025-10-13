@@ -149,6 +149,67 @@
       width: 18px;
       height: 18px
     }
+
+    /* Apple-style scroll animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(60px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .reveal-scale.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .parallax {
+      transition: transform 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+    }
+
+    /* Stagger delays for child elements */
+    .stagger-delay-1 { transition-delay: 0.1s; }
+    .stagger-delay-2 { transition-delay: 0.2s; }
+    .stagger-delay-3 { transition-delay: 0.3s; }
+    .stagger-delay-4 { transition-delay: 0.4s; }
+    .stagger-delay-5 { transition-delay: 0.5s; }
+    .stagger-delay-6 { transition-delay: 0.6s; }
+
+    /* Gradient text animation */
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .animate-gradient {
+      background-size: 200% 200%;
+      animation: gradientShift 8s ease infinite;
+    }
+
+    /* Floating animation for hero elements */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    /* Smooth scroll behavior */
+    html {
+      scroll-behavior: smooth;
+    }
   </style>
 </head>
 
@@ -172,7 +233,7 @@
         </a>
         <div class="hidden sm:flex items-center gap-6 text-sm">
           <a href="#features" class="text-white/70 hover:text-white transition">Features</a>
-          <a href="#pricing" class="text-white/70 hover:text-white transition">Pricing</a>
+          <a href="pricing.html" class="text-white/70 hover:text-white transition">Pricing</a>
           <a href="#download" class="text-white/70 hover:text-white transition">Download</a>
           <a href="https://github.com/airsharehq/"
             class="inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-1.5 hover:bg-white/10 transition text-white">
@@ -185,13 +246,13 @@
   </header>
 
   <!-- HERO -->
-  <section class="relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-accent/10 via-accent2/10 to-accent/5"></div>
-    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+  <section class="relative overflow-hidden min-h-[90vh] flex items-center" id="hero-section">
+    <div class="absolute inset-0 bg-gradient-to-br from-accent/10 via-accent2/10 to-accent/5 animate-gradient"></div>
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
       <div class="py-16 md:py-24 lg:py-32 grid lg:grid-cols-2 gap-10 md:gap-16 items-center">
-        <div>
-          <h1 class="text-[38px] leading-[1.1] md:text-5xl lg:text-6xl font-bold tracking-tight text-white animate-fadeUp">
-            Share files instantly — <span class="text-gradient-strong">privately</span>
+        <div class="parallax">
+          <h1 class="text-[38px] leading-[1.1] md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-white animate-fadeUp">
+            Share files <span class="block mt-2">instantly —</span> <span class="text-gradient-strong inline-block animate-gradient bg-gradient-to-r from-accent via-accent2 to-accent bg-clip-text text-transparent">privately</span>
           </h1>
           <p class="mt-5 md:mt-6 text-base md:text-xl text-white/70 max-w-prose animate-fadeUp leading-relaxed"
             style="animation-delay:.1s">
@@ -242,7 +303,7 @@
         </div>
 
         <!-- Radar mock - Matching your app design -->
-        <div class="relative lg:justify-self-end">
+        <div class="relative lg:justify-self-end animate-float">
           <div
             class="relative w-[18rem] h-[18rem] md:w-[24rem] md:h-[24rem] lg:w-[30rem] lg:h-[30rem] mx-auto rounded-2xl bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 p-6 md:p-8 shadow-glass">
             <div
@@ -281,7 +342,7 @@
 <section id="features"
   class="py-20 md:py-24 bg-gradient-to-b from-baseDark to-base">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="text-center max-w-3xl mx-auto">
+    <div class="text-center max-w-3xl mx-auto reveal">
       <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-white">What makes it special</h2>
       <p class="mt-4 text-base md:text-lg text-white/60">Everything you need for seamless, secure file sharing on your local network.</p>
     </div>
@@ -290,7 +351,7 @@
       
       <!-- P2P Direct -->
       <article
-        class="group rounded-2xl bg-white/5 border border-white/10 p-7 shadow-soft hover:border-accent/40 hover:shadow-glow transition-all duration-300">
+        class="group rounded-2xl bg-white/5 border border-white/10 p-7 shadow-soft hover:border-accent/40 hover:shadow-glow transition-all duration-300 reveal stagger-delay-1">
         <div class="badge badge-grad w-14 h-14 grid place-items-center mb-5">
           <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
         </div>
@@ -300,7 +361,7 @@
 
       <!-- QUIC Speed -->
       <article
-        class="group rounded-2xl bg-white/5 border border-white/10 p-7 shadow-soft hover:border-accent2/40 hover:shadow-glowGreen transition-all duration-300">
+        class="group rounded-2xl bg-white/5 border border-white/10 p-7 shadow-soft hover:border-accent2/40 hover:shadow-glowGreen transition-all duration-300 reveal stagger-delay-2">
         <div class="badge badge-grad-2 w-14 h-14 grid place-items-center mb-5">
           <svg class="w-6 h-6 text-accent2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
         </div>
@@ -310,7 +371,7 @@
 
       <!-- Security -->
       <article
-        class="group rounded-2xl bg-white/5 border border-white/10 p-7 shadow-soft hover:border-accent/40 hover:shadow-glow transition-all duration-300">
+        class="group rounded-2xl bg-white/5 border border-white/10 p-7 shadow-soft hover:border-accent/40 hover:shadow-glow transition-all duration-300 reveal stagger-delay-3">
         <div class="badge badge-grad-3 w-14 h-14 grid place-items-center mb-5">
           <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
         </div>
@@ -320,7 +381,7 @@
 
       <!-- Auto Discovery -->
       <article
-        class="group rounded-2xl bg-white/5 border border-white/10 p-7 shadow-soft hover:border-accent2/40 hover:shadow-glowGreen transition-all duration-300">
+        class="group rounded-2xl bg-white/5 border border-white/10 p-7 shadow-soft hover:border-accent2/40 hover:shadow-glowGreen transition-all duration-300 reveal stagger-delay-4">
         <div class="badge badge-grad-2 w-14 h-14 grid place-items-center mb-5">
           <svg class="w-6 h-6 text-accent2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
         </div>
@@ -330,7 +391,7 @@
 
       <!-- No Limits -->
       <article
-        class="group rounded-2xl bg-white/5 border border-white/10 p-7 shadow-soft hover:border-accent/40 hover:shadow-glow transition-all duration-300">
+        class="group rounded-2xl bg-white/5 border border-white/10 p-7 shadow-soft hover:border-accent/40 hover:shadow-glow transition-all duration-300 reveal stagger-delay-5">
         <div class="badge badge-grad w-14 h-14 grid place-items-center mb-5">
           <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
         </div>
@@ -340,7 +401,7 @@
 
       <!-- Cross-Platform -->
       <article
-        class="group rounded-2xl bg-white/5 border border-white/10 p-7 shadow-soft hover:border-accent2/40 hover:shadow-glowGreen transition-all duration-300">
+        class="group rounded-2xl bg-white/5 border border-white/10 p-7 shadow-soft hover:border-accent2/40 hover:shadow-glowGreen transition-all duration-300 reveal stagger-delay-6">
         <div class="badge badge-grad-4 w-14 h-14 grid place-items-center mb-5">
           <svg class="w-6 h-6 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
         </div>
@@ -350,7 +411,7 @@
 
       <!-- Transfer History -->
       <article
-        class="group rounded-2xl bg-white/5 border border-white/10 p-7 shadow-soft hover:border-accent/40 hover:shadow-glow transition-all duration-300">
+        class="group rounded-2xl bg-white/5 border border-white/10 p-7 shadow-soft hover:border-accent/40 hover:shadow-glow transition-all duration-300 reveal stagger-delay-1">
         <div class="badge badge-grad-3 w-14 h-14 grid place-items-center mb-5">
           <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
         </div>
@@ -360,7 +421,7 @@
 
       <!-- Drag & Drop -->
       <article
-        class="group rounded-2xl bg-white/5 border border-white/10 p-7 shadow-soft hover:border-accent2/40 hover:shadow-glowGreen transition-all duration-300">
+        class="group rounded-2xl bg-white/5 border border-white/10 p-7 shadow-soft hover:border-accent2/40 hover:shadow-glowGreen transition-all duration-300 reveal stagger-delay-2">
         <div class="badge badge-grad-2 w-14 h-14 grid place-items-center mb-5">
           <svg class="w-6 h-6 text-accent2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path></svg>
         </div>
@@ -370,7 +431,7 @@
 
       <!-- Privacy -->
       <article
-        class="group rounded-2xl bg-white/5 border border-white/10 p-7 shadow-soft hover:border-accent/40 hover:shadow-glow transition-all duration-300">
+        class="group rounded-2xl bg-white/5 border border-white/10 p-7 shadow-soft hover:border-accent/40 hover:shadow-glow transition-all duration-300 reveal stagger-delay-3">
         <div class="badge badge-grad w-14 h-14 grid place-items-center mb-5">
           <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
         </div>
@@ -385,7 +446,7 @@
 <section id="pricing"
   class="py-24 bg-gradient-to-b from-base to-baseDark">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="text-center max-w-3xl mx-auto">
+    <div class="text-center max-w-3xl mx-auto reveal">
       <h2 class="text-4xl md:text-5xl font-bold tracking-tight text-white">Simple, fair pricing</h2>
       <p class="mt-3 text-white/60">Start free. Upgrade when you need more.</p>
 
@@ -411,7 +472,7 @@
     <div class="mt-12 grid gap-6 md:grid-cols-2 items-stretch justify-center max-w-5xl mx-auto">
       <!-- Free -->
       <div
-        class="rounded-2xl bg-white/5 border border-white/10 p-8 shadow-soft flex flex-col hover:border-white/20 transition-all duration-300">
+        class="rounded-2xl bg-white/5 border border-white/10 p-8 shadow-soft flex flex-col hover:border-white/20 transition-all duration-300 reveal-scale stagger-delay-1">
         <div class="flex-1">
           <h3 class="text-xl font-bold flex items-center gap-3 text-white">
             <svg class="w-7 h-7 text-accent2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path></svg>
@@ -442,7 +503,7 @@
 
       <!-- Pro (Yearly / Lifetime) -->
       <div
-        class="rounded-2xl bg-gradient-to-br from-white/[0.08] to-white/[0.04] border border-accent/30 p-8 shadow-glow flex flex-col relative overflow-hidden"
+        class="rounded-2xl bg-gradient-to-br from-white/[0.08] to-white/[0.04] border border-accent/30 p-8 shadow-glow flex flex-col relative overflow-hidden reveal-scale stagger-delay-2"
         data-billing="yearly">
         <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-accent/20 to-transparent rounded-full blur-3xl"></div>
         <div class="inline-block self-start rounded-full bg-accent/20 text-accent2 text-xs font-semibold px-3 py-1.5 mb-4 border border-accent/30">
@@ -487,7 +548,7 @@
             <li class="pricing-li"><img src="https://img.icons8.com/?size=100&id=3061&format=png&color=FFFFFF" alt="check" />
               Transfer history <strong>Unlimited</strong></li>
             <li class="pricing-li"><img src="https://img.icons8.com/?size=100&id=3061&format=png&color=FFFFFF"
-                alt="support" /> All future updates</li>
+                alt="updates" /> All future updates</li>
           </ul>
         </div>
 
@@ -544,13 +605,13 @@
   <section
     class="py-20 bg-gradient-to-b from-baseDark to-base scroll-mt-20">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto">
+      <div class="text-center max-w-3xl mx-auto reveal">
         <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white">How it works</h2>
         <p class="mt-4 text-base md:text-lg text-white/60">Three simple steps to start sharing files on your local network.</p>
       </div>
 
       <div class="mt-14 grid gap-8 md:grid-cols-3">
-        <div class="text-center">
+        <div class="text-center reveal stagger-delay-1">
           <div
             class="relative mx-auto w-24 h-24 rounded-2xl bg-gradient-to-br from-accent/20 to-accent2/20 flex items-center justify-center mb-6 border border-accent/30">
             <div
@@ -560,7 +621,7 @@
           <h3 class="text-xl font-semibold mb-3 text-white">Download & Install</h3>
           <p class="text-sm text-white/60 leading-relaxed">Get AirShare for your platform. Zero configuration - it works out of the box.</p>
         </div>
-        <div class="text-center">
+        <div class="text-center reveal stagger-delay-2">
           <div
             class="relative mx-auto w-24 h-24 rounded-2xl bg-gradient-to-br from-accent/20 to-accent2/20 flex items-center justify-center mb-6 border border-accent/30">
             <div
@@ -570,7 +631,7 @@
           <h3 class="text-xl font-semibold mb-3 text-white">Discover Devices</h3>
           <p class="text-sm text-white/60 leading-relaxed">Devices appear automatically via mDNS discovery. No manual setup required.</p>
         </div>
-        <div class="text-center">
+        <div class="text-center reveal stagger-delay-3">
           <div
             class="relative mx-auto w-24 h-24 rounded-2xl bg-gradient-to-br from-accent/20 to-accent2/20 flex items-center justify-center mb-6 border border-accent/30">
             <div
@@ -587,7 +648,7 @@
   <!-- CTA / DOWNLOAD -->
   <section id="download" class="py-24 relative overflow-hidden">
     <div class="absolute inset-0 -z-10 bg-gradient-to-br from-accent/15 via-accent2/10 to-accent/5"></div>
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center reveal">
       <h2 class="text-4xl md:text-5xl font-bold tracking-tight text-white">Ready to share?</h2>
       <p class="mt-4 text-lg text-white/70 max-w-2xl mx-auto">Download AirShare and start transferring files instantly on your local network.</p>
       <div class="mt-10 flex flex-wrap gap-4 justify-center">
@@ -622,9 +683,13 @@
   <footer class="py-12 border-t border-white/10">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center text-sm text-white/60">
       © <span id="year"></span> Jakša Tomović. Made with care for seamless local sharing.
-      <span class="mx-2">•</span><a href="/terms.html" class="underline hover:no-underline hover:text-white/80">Terms</a>
-      <span class="mx-2">•</span><a href="/privacy.html" class="underline hover:no-underline hover:text-white/80">Privacy</a>
-      <span class="mx-2">•</span><a href="/refunds.html" class="underline hover:no-underline hover:text-white/80">Refunds</a>
+      <span class="mx-2">•</span><a href="faq.html" class="underline hover:no-underline hover:text-white/80">FAQ</a>
+      <span class="mx-2">•</span><a href="changelog.html" class="underline hover:no-underline hover:text-white/80">Changelog</a>
+      <span class="mx-2">•</span><a href="licenses.html" class="underline hover:no-underline hover:text-white/80">Licenses</a>
+      <span class="mx-2">•</span><a href="terms.html" class="underline hover:no-underline hover:text-white/80">Terms</a>
+      <span class="mx-2">•</span><a href="privacy.html" class="underline hover:no-underline hover:text-white/80">Privacy</a>
+      <span class="mx-2">•</span><a href="eula.html" class="underline hover:no-underline hover:text-white/80">EULA</a>
+      <span class="mx-2">•</span><a href="refunds.html" class="underline hover:no-underline hover:text-white/80">Refunds</a>
     </div>
 
     <!-- Product Hunt badge -->
@@ -743,6 +808,71 @@
       }
     })();
   </script>
+
+  <!-- Apple-style Scroll Animations -->
+  <script>
+    (function() {
+      // IntersectionObserver for reveal animations
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+      });
+
+      // Observe all reveal elements
+      document.querySelectorAll('.reveal, .reveal-scale').forEach(el => {
+        revealObserver.observe(el);
+      });
+
+      // Parallax effect on hero
+      let lastScrollY = window.scrollY;
+      let ticking = false;
+
+      function updateParallax() {
+        const scrolled = window.scrollY;
+        const heroSection = document.getElementById('hero-section');
+        
+        if (heroSection) {
+          const parallaxElements = heroSection.querySelectorAll('.parallax');
+          parallaxElements.forEach(el => {
+            const speed = 0.5;
+            const yPos = -(scrolled * speed);
+            el.style.transform = `translateY(${yPos}px)`;
+          });
+        }
+
+        ticking = false;
+      }
+
+      function onScroll() {
+        lastScrollY = window.scrollY;
+        
+        if (!ticking) {
+          window.requestAnimationFrame(updateParallax);
+          ticking = true;
+        }
+      }
+
+      // Throttled scroll listener
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      // Initial reveal for elements already in viewport
+      setTimeout(() => {
+        document.querySelectorAll('.reveal, .reveal-scale').forEach(el => {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight && rect.bottom > 0) {
+            el.classList.add('active');
+          }
+        });
+      }, 100);
+    })();
+  </script>
+
   <script src="https://sponsorapp.io/platform.js?p=619347193c952ce3"></script>
 </body>
 
