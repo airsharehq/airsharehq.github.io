@@ -614,6 +614,7 @@
         <div class="text-center">
           <div class="text-6xl md:text-7xl lg:text-8xl font-black text-gradient-strong bg-gradient-to-r from-accent via-accent2 to-accent bg-clip-text text-transparent animate-gradient" id="download-counter">50+</div>
           <div class="text-lg md:text-xl text-white/60 font-medium">Downloads</div>
+          <p class="text-xs text-white/40 mt-3">Counter updates automatically</p>
         </div>
       </div>
     </div>
@@ -703,6 +704,7 @@
       © <span id="year"></span> Jakša Tomović. Made with care for seamless local sharing.
       <span class="mx-2">•</span><a href="faq.html" class="underline hover:no-underline hover:text-white/80">FAQ</a>
       <span class="mx-2">•</span><a href="changelog.html" class="underline hover:no-underline hover:text-white/80">Changelog</a>
+      <span class="mx-2">•</span><a href="stats.html" class="underline hover:no-underline hover:text-white/80">Stats</a>
       <span class="mx-2">•</span><a href="licenses.html" class="underline hover:no-underline hover:text-white/80">Licenses</a>
       <span class="mx-2">•</span><a href="terms.html" class="underline hover:no-underline hover:text-white/80">Terms</a>
       <span class="mx-2">•</span><a href="privacy.html" class="underline hover:no-underline hover:text-white/80">Privacy</a>
@@ -812,6 +814,11 @@
         setHref('win', win?.browser_download_url, versionText);
         setHref('linux', linux?.browser_download_url, versionText);
 
+        // Track downloads - add click listeners
+        addDownloadTracking('mac', mac?.browser_download_url);
+        addDownloadTracking('win', win?.browser_download_url);
+        addDownloadTracking('linux', linux?.browser_download_url);
+
         if (sha?.browser_download_url) {
           const p = document.createElement('p');
           p.className = 'mt-3 text-xs opacity-60';
@@ -825,6 +832,57 @@
         setHref('linux');
       }
     })();
+
+    // Track download clicks - purely client-side localStorage
+    function trackDownload(platform) {
+      const timestamp = new Date().toISOString();
+      const data = {
+        platform,
+        timestamp,
+        userAgent: navigator.userAgent,
+        referrer: document.referrer || 'direct',
+        url: window.location.href
+      };
+
+      // Store in localStorage
+      const logs = JSON.parse(localStorage.getItem('downloadLogs') || '[]');
+      logs.push(data);
+      localStorage.setItem('downloadLogs', JSON.stringify(logs.slice(-100))); // Keep last 100
+      
+      // Update counter display
+      updateDownloadCounter();
+    }
+
+    // Update download counter display
+    function updateDownloadCounter() {
+      const counterEl = document.getElementById('download-counter');
+      if (!counterEl) return;
+
+      const logs = JSON.parse(localStorage.getItem('downloadLogs') || '[]');
+      const total = logs.length;
+      const displayCount = total > 0 ? 50 + total : 50; // Start from 50+
+      counterEl.textContent = `${displayCount}+`;
+    }
+
+    function addDownloadTracking(platform, url) {
+      if (!url) return;
+      
+      const macIds = ['btn-mac', 'dl-mac'];
+      const winIds = ['btn-win', 'dl-win'];
+      const linuxIds = ['btn-linux', 'dl-linux'];
+      const ids = platform === 'mac' ? macIds : platform === 'win' ? winIds : linuxIds;
+      
+      ids.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.addEventListener('click', () => trackDownload(platform));
+        }
+      });
+    }
+
+    // Initialize counter on page load
+    updateDownloadCounter();
+    window.addEventListener('storage', updateDownloadCounter);
   </script>
 
   <!-- Apple-style Scroll Animations -->

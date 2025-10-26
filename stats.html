@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Download Statistics - AirShare</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background: #0b1220; color: white; }
+  </style>
+</head>
+<body class="p-8">
+  <h1 class="text-4xl font-bold mb-8">Download Statistics</h1>
+  
+  <div class="bg-white/5 rounded-lg p-6 border border-white/10 mb-6">
+    <h2 class="text-2xl font-semibold mb-4">Local Storage Logs</h2>
+    <p class="text-white/60 mb-4">Open browser console (F12) and run:</p>
+    <pre class="bg-black/30 p-4 rounded text-sm"><code>localStorage.getItem('downloadLogs')</code></pre>
+  </div>
+
+  <div id="stats" class="space-y-4"></div>
+
+  <script>
+    const logs = JSON.parse(localStorage.getItem('downloadLogs') || '[]');
+    
+    const statsDiv = document.getElementById('stats');
+    
+    if (logs.length === 0) {
+      statsDiv.innerHTML = '<p class="text-white/60">No downloads tracked yet.</p>';
+    } else {
+      const platformCounts = { mac: 0, win: 0, linux: 0 };
+      logs.forEach(log => {
+        platformCounts[log.platform] = (platformCounts[log.platform] || 0) + 1;
+      });
+      
+      statsDiv.innerHTML = `
+        <div class="grid grid-cols-3 gap-4 mb-8">
+          <div class="bg-white/5 p-4 rounded border border-white/10">
+            <div class="text-3xl font-bold text-blue-400">${platformCounts.mac}</div>
+            <div class="text-white/60">macOS</div>
+          </div>
+          <div class="bg-white/5 p-4 rounded border border-white/10">
+            <div class="text-3xl font-bold text-green-400">${platformCounts.win}</div>
+            <div class="text-white/60">Windows</div>
+          </div>
+          <div class="bg-white/5 p-4 rounded border border-white/10">
+            <div class="text-3xl font-bold text-purple-400">${platformCounts.linux}</div>
+            <div class="text-white/60">Linux</div>
+          </div>
+        </div>
+        
+        <h3 class="text-xl font-semibold mb-4">Recent Downloads</h3>
+        <div class="space-y-2">
+          ${logs.slice(-20).reverse().map(log => `
+            <div class="bg-white/5 p-4 rounded border border-white/10 text-sm">
+              <strong>${log.platform.toUpperCase()}</strong> - ${new Date(log.timestamp).toLocaleString()}<br>
+              <span class="text-white/60">From: ${log.referrer}</span>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>
+
