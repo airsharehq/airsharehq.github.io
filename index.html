@@ -732,39 +732,15 @@
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // OS detection (same logic)
+    // Always show all download buttons in hero section (no OS detection)
     (function () {
-      const ua = navigator.userAgent || '';
-      const isMobile = /iPhone|iPad|iPod|Android/i.test(ua) || window.matchMedia('(max-width: 640px)').matches;
-
-      let os = 'linux';
-      if (/Macintosh|Mac OS X/.test(ua)) os = 'mac';
-      else if (/Windows/.test(ua)) os = 'win';
-
-      const map = { mac: ['btn-mac', 'dl-mac'], win: ['btn-win', 'dl-win'], linux: ['btn-linux', 'dl-linux'] };
       const heroAll = ['btn-mac', 'btn-win', 'btn-linux'];
-
-      if (isMobile) {
-        heroAll.forEach(id => document.getElementById(id)?.classList.remove('hidden', 'highlight'));
-        document.getElementById('show-all-downloads')?.classList.add('hidden');
-      } else {
-        heroAll.forEach(id => document.getElementById(id)?.classList.add('hidden'));
-        (map[os] || []).slice(0, 1).forEach(id => {
-          const el = document.getElementById(id);
-          if (el) { el.classList.remove('hidden'); el.classList.add('highlight'); }
-        });
-        const showAll = document.getElementById('show-all-downloads');
-        if (showAll) {
-          showAll.classList.remove('hidden');
-          showAll.addEventListener('click', (e) => {
-            e.preventDefault();
-            heroAll.forEach(id => document.getElementById(id)?.classList.remove('hidden', 'highlight'));
-            showAll.classList.add('hidden');
-          });
-        }
-      }
+      // Always show all hero download buttons
+      heroAll.forEach(id => document.getElementById(id)?.classList.remove('hidden', 'highlight'));
+      // Hide the "show-all-downloads" link since all buttons are always visible
+      document.getElementById('show-all-downloads')?.classList.add('hidden');
+      // Always show all download buttons in CTA section
       ['dl-mac', 'dl-win', 'dl-linux'].forEach(id => document.getElementById(id)?.classList.remove('hidden'));
-      const cta = map[os]?.[1]; if (cta) document.getElementById(cta)?.classList.add('highlight');
     })();
 
     // Auto-fill latest release links from GitHub
