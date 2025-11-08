@@ -79,7 +79,113 @@
   <section class="pb-20">
     <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
       
-      <!-- v1.0.0 - Latest -->
+      <!-- v1.1.0 - Latest -->
+      <div class="mb-12 rounded-2xl bg-gradient-to-br from-white/[0.08] to-white/[0.04] border-2 border-accent/30 p-8 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-accent/20 to-transparent rounded-full blur-3xl"></div>
+        <div class="relative">
+          <div class="flex items-start justify-between flex-wrap gap-3 mb-4">
+            <div>
+              <h2 class="text-2xl font-bold text-white flex items-center gap-3">
+                v1.1.0
+                <span class="text-xs font-normal px-3 py-1.5 rounded-full bg-accent/20 text-accent2 border border-accent/30">Latest</span>
+              </h2>
+              <p class="text-sm text-white/60 mt-1">November 8, 2025</p>
+            </div>
+          </div>
+
+          <p class="text-lg text-white/90 mb-6 leading-relaxed">
+            🚀 <strong>Changelog Since 1.0.0:</strong> A smoother global sharing experience, richer radar insights, and better integrations front-to-back.
+          </p>
+
+          <div class="space-y-6">
+            <div>
+              <h3 class="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                <svg class="w-5 h-5 text-accent2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c1.657 0 3 1.567 3 3.5S13.657 15 12 15s-3-1.567-3-3.5S10.343 8 12 8zm0 0V4m0 11v5m8-8h-4m-8 0H4"></path></svg>
+                Experience &amp; UI
+              </h3>
+              <ul class="space-y-2 text-sm text-white/70">
+                <li class="flex items-start gap-2">
+                  <span class="text-accent2 mt-0.5">•</span>
+                  <span>Global sharing workflow now runs end-to-end inside the app, from picker launch to clipboard copy, with peer-aware messaging in the modal.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-accent2 mt-0.5">•</span>
+                  <span>Radar highlights global peers you've exchanged tickets with, including scope (Local/Global) and connection detail (Direct/Relay), plus a remove control.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-accent2 mt-0.5">•</span>
+                  <span>Ticket receive form and modal refresh: read-only filename metadata, clearer validation cues, and improved copy-to-clipboard feedback.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-accent2 mt-0.5">•</span>
+                  <span>Context helper prompts, OS tips, and settings panels received additional polish.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 class="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5h16M4 10h16M4 15h16M4 20h7"></path></svg>
+                Global / Iroh Backend
+              </h3>
+              <ul class="space-y-2 text-sm text-white/70">
+                <li class="flex items-start gap-2">
+                  <span class="text-accent mt-0.5">•</span>
+                  <span>New shared <code class="px-1 py-0.5 rounded bg-white/10 text-white/70">IrohService</code> utilities track known global peers, emit <code>iroh:peers_update</code> events, and expose <code>get_iroh_peers</code>/<code>remove_iroh_peer</code>.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-accent mt-0.5">•</span>
+                  <span>Any Iroh share or download now registers the remote node so it appears instantly in radar.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-accent mt-0.5">•</span>
+                  <span>Global peers persist in <code class="px-1 py-0.5 rounded bg-white/10 text-white/70">AppState</code>, avoiding unnecessary re-fetching between operations.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 class="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                <svg class="w-5 h-5 text-accent2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v10m4-6v6m4-3v3"></path></svg>
+                Frontend Integrations
+              </h3>
+              <ul class="space-y-2 text-sm text-white/70">
+                <li class="flex items-start gap-2">
+                  <span class="text-accent2 mt-0.5">•</span>
+                  <span><code class="px-1 py-0.5 rounded bg-white/10 text-white/70">IrohShareModal</code> now responds to launch options for automatic sharing, clipboard copy, preselected files, and peer names.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-accent2 mt-0.5">•</span>
+                  <span>Introduced a global share helper service to drive backend commands and manage JSON share codes; settings UI now relies on it.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-accent2 mt-0.5">•</span>
+                  <span>Radar logic unifies QUIC peers, store peers, and tracked Iroh peers into a single sorted list with flow-aware click handling.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 class="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                <svg class="w-5 h-5 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6l4 2"></path></svg>
+                Miscellaneous
+              </h3>
+              <ul class="space-y-2 text-sm text-white/70">
+                <li class="flex items-start gap-2">
+                  <span class="text-yellow-300 mt-0.5">•</span>
+                  <span>Clipboard helpers, dialogs, and toasts streamlined across the app.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-yellow-300 mt-0.5">•</span>
+                  <span>Minor styling updates including badge colors, filename emphasis, and button treatments, plus translated copy refinements.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- v1.0.0 -->
       <div class="mb-12 rounded-2xl bg-gradient-to-br from-white/[0.08] to-white/[0.04] border-2 border-accent/30 p-8 relative overflow-hidden">
         <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-accent/20 to-transparent rounded-full blur-3xl"></div>
         <div class="relative">
@@ -87,7 +193,6 @@
             <div>
               <h2 class="text-2xl font-bold text-white flex items-center gap-3">
                 v1.0.0
-                <span class="text-xs font-normal px-3 py-1.5 rounded-full bg-accent/20 text-accent2 border border-accent/30">Latest</span>
               </h2>
               <p class="text-sm text-white/60 mt-1">October 12, 2025</p>
             </div>
