@@ -114,7 +114,7 @@
           </button>
         </div>
         <p id="billing-note" class="mt-2 text-xs text-white/50">
-          One-time purchase — no auto-renew
+          One-time purchase — no auto-renew. License is per device.
         </p>
       </div>
 
@@ -137,7 +137,7 @@
             <ul class="mt-8 space-y-3 text-sm">
               <li class="pricing-li">
                 <img src="https://img.icons8.com/?size=100&id=3061&format=png&color=FFFFFF" alt="check" />
-                <strong>No device limit</strong>
+                <strong>Seamless local transfers</strong>
               </li>
               <li class="pricing-li">
                 <img src="https://img.icons8.com/?size=100&id=3061&format=png&color=FFFFFF" alt="check" />
@@ -154,6 +154,10 @@
               <li class="pricing-li">
                 <img src="https://img.icons8.com/?size=100&id=3061&format=png&color=FFFFFF" alt="check" />
                 Transfer history <strong>7 days</strong>
+              </li>
+              <li class="pricing-li">
+                <img src="https://img.icons8.com/?size=100&id=3061&format=png&color=FFFFFF" alt="check" />
+                License <strong>for one device</strong>
               </li>
             </ul>
           </div>
@@ -190,6 +194,7 @@
                   €29 <span class="text-lg font-medium opacity-70">/year</span>
                 </div>
                 <div class="mt-2 text-sm text-white/50">One-time purchase, valid 12 months</div>
+              <div class="mt-1 text-xs text-white/40">License is for a single device.</div>
               </div>
 
               <!-- Lifetime -->
@@ -198,7 +203,30 @@
                   €79 <span class="text-lg font-medium opacity-70">one-time</span>
                 </div>
                 <div class="mt-2 text-sm text-white/50">Lifetime license — no expiry</div>
+              <div class="mt-1 text-xs text-white/40">License is for a single device.</div>
               </div>
+            </div>
+
+            <div class="mt-8">
+              <label for="license-quantity" class="block text-xs font-semibold tracking-wide uppercase text-white/60">
+                Number of licenses
+              </label>
+              <div class="mt-2 flex items-center gap-2">
+                <button type="button" id="license-decrement"
+                  class="h-9 w-9 rounded-lg border border-white/20 bg-white/10 text-white text-lg leading-none hover:bg-white/15 transition"
+                  aria-label="Decrease license quantity">
+                  &minus;
+                </button>
+                <input id="license-quantity" type="number" min="1" value="1"
+                  class="w-16 rounded-lg border border-white/20 bg-black/20 px-3 py-2 text-center text-sm text-white outline-none focus:border-accent focus:ring-2 focus:ring-accent/40"
+                  aria-label="License quantity" />
+                <button type="button" id="license-increment"
+                  class="h-9 w-9 rounded-lg border border-white/20 bg-white/10 text-white text-lg leading-none hover:bg-white/15 transition"
+                  aria-label="Increase license quantity">
+                  +
+                </button>
+              </div>
+              <p class="mt-2 text-xs text-white/40">Purchase one license per device. Checkout updates when you change the quantity.</p>
             </div>
 
             <!-- Features -->
@@ -225,13 +253,17 @@
               </li>
               <li class="pricing-li">
                 <img src="https://img.icons8.com/?size=100&id=3061&format=png&color=FFFFFF" alt="check" />
+                <span><strong>License for one device</strong> — additional devices need their own license</span>
+              </li>
+              <li class="pricing-li">
+                <img src="https://img.icons8.com/?size=100&id=3061&format=png&color=FFFFFF" alt="check" />
                 All future updates
               </li>
             </ul>
           </div>
 
           <a id="buy-button"
-            href="https://checkout.dodopayments.com/buy/pdt_l29sVyGHEy5wOPjxCliil?quantity=1&redirect_url=https://tryairshare.com"
+            href="https://checkout.dodopayments.com/buy/pdt_l29sVyGHEy5wOPjxCliil?redirect_url=https://tryairshare.com"
             class="mt-8 inline-flex items-center justify-center w-full rounded-xl bg-gradient-to-r from-accent to-accent2 text-white font-semibold px-5 py-3.5 shadow-glow hover:shadow-glowGreen transition-all duration-300">
             Buy Pro Now
           </a>
@@ -266,7 +298,10 @@
 
           <div class="rounded-xl bg-white/5 border border-white/10 p-6 hover:border-white/20 transition">
             <h3 class="text-lg font-semibold text-white mb-2">Can I use Pro on multiple devices?</h3>
-            <p class="text-white/60">Yes! One license works on all your devices (Mac, Windows, Linux), but can only be <strong>activated once</strong>. After activation, it works across all your devices. Contact <a href="mailto:info@tryairshare.com" class="text-accent hover:text-accent2 transition">info@tryairshare.com</a> if you need to transfer your license.</p>
+            <div class="text-white/60 space-y-2">
+              <p>Licenses are issued <strong class="text-white">per device</strong>. To activate Pro on another machine, purchase an additional license.</p>
+              <p>Need to move your license to a replacement device? Contact <a href="mailto:info@tryairshare.com" class="text-accent hover:text-accent2 transition underline">info@tryairshare.com</a> and we'll help transfer it.</p>
+            </div>
           </div>
 
           <div class="rounded-xl bg-white/5 border border-white/10 p-6 hover:border-white/20 transition">
@@ -398,13 +433,33 @@
       const proCard = document.querySelector('[data-billing]');
       const note = document.getElementById('billing-note');
       const buyButton = document.getElementById('buy-button');
+      const quantityInput = document.getElementById('license-quantity');
+      const decrementBtn = document.getElementById('license-decrement');
+      const incrementBtn = document.getElementById('license-increment');
 
       const links = {
-        yearly: "https://checkout.dodopayments.com/buy/pdt_l29sVyGHEy5wOPjxCliil?quantity=1&redirect_url=https://tryairshare.com",
-        lifetime: "https://checkout.dodopayments.com/buy/pdt_w1HVpGdCdZxC3C1nChmuS?quantity=1&redirect_url=https://tryairshare.com"
+        yearly: "https://checkout.dodopayments.com/buy/pdt_l29sVyGHEy5wOPjxCliil?redirect_url=https://tryairshare.com",
+        lifetime: "https://checkout.dodopayments.com/buy/pdt_w1HVpGdCdZxC3C1nChmuS?redirect_url=https://tryairshare.com"
       };
 
+      let currentPlan = 'yearly';
+
+      const sanitizeQuantity = (value) => {
+        const parsed = parseInt(value, 10);
+        return Number.isNaN(parsed) ? 1 : Math.max(1, parsed);
+      };
+
+      function updateCheckoutHref() {
+        if (!quantityInput) return;
+        const qty = sanitizeQuantity(quantityInput.value);
+        quantityInput.value = qty;
+        const url = new URL(links[currentPlan]);
+        url.searchParams.set('quantity', String(qty));
+        buyButton.href = url.toString();
+      }
+
       function setPlan(plan) {
+        currentPlan = plan;
         yearlyBtn.setAttribute('aria-pressed', plan === 'yearly');
         lifetimeBtn.setAttribute('aria-pressed', plan === 'lifetime');
         proCard.setAttribute('data-billing', plan);
@@ -414,11 +469,26 @@
         });
 
         note.textContent = plan === 'yearly'
-          ? 'One-time purchase — valid 12 months'
-          : 'One-time purchase — lifetime license (no auto-renew)';
+          ? 'One-time purchase — valid 12 months. License is per device.'
+          : 'One-time purchase — lifetime license (no auto-renew). License is per device.';
 
-        buyButton.href = links[plan];
+        updateCheckoutHref();
       }
+
+      decrementBtn.addEventListener('click', () => {
+        const next = Math.max(1, sanitizeQuantity(quantityInput.value) - 1);
+        quantityInput.value = next;
+        updateCheckoutHref();
+      });
+
+      incrementBtn.addEventListener('click', () => {
+        const next = sanitizeQuantity(quantityInput.value) + 1;
+        quantityInput.value = next;
+        updateCheckoutHref();
+      });
+
+      quantityInput.addEventListener('input', updateCheckoutHref);
+      quantityInput.addEventListener('change', updateCheckoutHref);
 
       yearlyBtn.addEventListener('click', () => setPlan('yearly'));
       lifetimeBtn.addEventListener('click', () => setPlan('lifetime'));
