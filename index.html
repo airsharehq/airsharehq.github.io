@@ -118,6 +118,81 @@
       filter: drop-shadow(0 0 20px rgba(106, 164, 255, .4));
     }
 
+    /* Soft grid + glow background */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: -10%;
+      background: radial-gradient(circle at 20% 20%, rgba(106, 164, 255, 0.12), transparent 35%),
+        radial-gradient(circle at 80% 10%, rgba(132, 255, 210, 0.12), transparent 35%),
+        radial-gradient(circle at 50% 80%, rgba(106, 164, 255, 0.08), transparent 35%);
+      filter: blur(40px);
+      opacity: 0.8;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 80px 80px, 80px 80px;
+      mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.55), transparent 65%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .section-shell {
+      position: relative;
+      isolation: isolate;
+    }
+
+    .section-shell::before {
+      content: "";
+      position: absolute;
+      inset: 10% auto auto 15%;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(106, 164, 255, 0.14), transparent 55%);
+      filter: blur(50px);
+      opacity: 0.6;
+      z-index: -1;
+    }
+
+    .section-shell::after {
+      content: "";
+      position: absolute;
+      inset: auto 12% 12% auto;
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle, rgba(132, 255, 210, 0.14), transparent 55%);
+      filter: blur(50px);
+      opacity: 0.6;
+      z-index: -1;
+    }
+
+    #features article {
+      backdrop-filter: blur(12px);
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    .cta-pill {
+      border-radius: 999px;
+      box-shadow: 0 10px 40px rgba(106, 164, 255, 0.25);
+    }
+
+    .glass-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(12px);
+    }
+
     @media (prefers-reduced-motion: reduce) {
       .animate-sweep,
       .animate-fadeUp,
@@ -246,8 +321,10 @@
   </header>
 
   <!-- HERO -->
-  <section class="relative overflow-hidden min-h-[90vh] flex items-center" id="hero-section">
+  <section class="relative overflow-hidden min-h-[90vh] flex items-center section-shell" id="hero-section">
     <div class="absolute inset-0 bg-gradient-to-br from-accent/10 via-accent2/10 to-accent/5 animate-gradient"></div>
+    <div class="absolute -left-28 -top-24 w-80 h-80 rounded-full bg-accent/20 blur-3xl opacity-70"></div>
+    <div class="absolute right-[-140px] bottom-[-140px] w-[28rem] h-[28rem] rounded-full bg-accent2/20 blur-3xl opacity-60"></div>
     <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
       <div class="py-16 md:py-24 lg:py-32 grid lg:grid-cols-2 gap-10 md:gap-16 items-center">
         <div class="parallax">
@@ -345,7 +422,7 @@
   </section>
 
   <!-- DEMO VIDEO -->
-  <section class="py-20 md:py-32 bg-gradient-to-b from-base to-baseDark relative overflow-hidden">
+  <section class="section-shell py-20 md:py-32 bg-gradient-to-b from-base to-baseDark relative overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-br from-accent/5 via-accent2/5 to-accent/5"></div>
     <div class="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12 reveal">
@@ -359,6 +436,7 @@
             <video 
               id="demo-video"
               class="w-full h-full object-contain"
+              poster="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'><defs><linearGradient id='g' x1='0%' y1='0%' x2='100%' y2='100%'><stop stop-color='%236aa4ff' offset='0%'/><stop stop-color='%2384ffd2' offset='100%'/></linearGradient></defs><rect width='800' height='450' fill='%230b1220'/><rect x='40' y='40' width='720' height='370' rx='24' fill='url(%23g)' opacity='0.25'/><circle cx='400' cy='225' r='80' fill='url(%23g)' opacity='0.75'/><polygon points='370,170 520,225 370,280' fill='white'/></svg>"
               preload="metadata"
               controls
               playsinline>
@@ -387,7 +465,7 @@
 
 <!-- FEATURES -->
 <section id="features"
-  class="py-20 md:py-24 bg-gradient-to-b from-baseDark to-base">
+  class="section-shell py-20 md:py-24 bg-gradient-to-b from-baseDark to-base">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-3xl mx-auto reveal">
       <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-white">What makes it special</h2>
@@ -721,7 +799,7 @@
 </section>
 
   <!-- DOWNLOAD COUNTER -->
-  <section class="py-20 bg-gradient-to-b from-base to-baseDark">
+  <section class="section-shell py-20 bg-gradient-to-b from-base to-baseDark">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
       <div class="reveal">
         <h2 class="text-4xl md:text-5xl font-bold tracking-tight text-white mb-6">Join other users</h2>
@@ -737,8 +815,8 @@
   </section>
 
   <!-- HOW IT WORKS -->
-  <section
-    class="py-20 bg-gradient-to-b from-baseDark to-base scroll-mt-20">
+<section
+  class="section-shell py-20 bg-gradient-to-b from-baseDark to-base scroll-mt-20">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-3xl mx-auto reveal">
         <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white">How it works</h2>
@@ -781,7 +859,7 @@
   </section>
 
   <!-- CTA / DOWNLOAD -->
-  <section id="download" class="py-24 relative overflow-hidden">
+  <section id="download" class="section-shell py-24 relative overflow-hidden">
     <div class="absolute inset-0 -z-10 bg-gradient-to-br from-accent/15 via-accent2/10 to-accent/5"></div>
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center reveal">
       <h2 class="text-4xl md:text-5xl font-bold tracking-tight text-white">Ready to share?</h2>
