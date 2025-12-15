@@ -115,82 +115,11 @@
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 0 20px rgba(106, 164, 255, .4));
     }
 
-    /* Soft grid + glow background */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: -10%;
-      background: radial-gradient(circle at 20% 20%, rgba(106, 164, 255, 0.12), transparent 35%),
-        radial-gradient(circle at 80% 10%, rgba(132, 255, 210, 0.12), transparent 35%),
-        radial-gradient(circle at 50% 80%, rgba(106, 164, 255, 0.08), transparent 35%);
-      filter: blur(40px);
-      opacity: 0.8;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-      background-size: 80px 80px, 80px 80px;
-      mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.55), transparent 65%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
+    /* Minimal section wrapper (for spacing only) */
     .section-shell {
       position: relative;
-      isolation: isolate;
-    }
-
-    .section-shell::before {
-      content: "";
-      position: absolute;
-      inset: 10% auto auto 15%;
-      width: 320px;
-      height: 320px;
-      background: radial-gradient(circle, rgba(106, 164, 255, 0.14), transparent 55%);
-      filter: blur(50px);
-      opacity: 0.6;
-      z-index: -1;
-    }
-
-    .section-shell::after {
-      content: "";
-      position: absolute;
-      inset: auto 12% 12% auto;
-      width: 280px;
-      height: 280px;
-      background: radial-gradient(circle, rgba(132, 255, 210, 0.14), transparent 55%);
-      filter: blur(50px);
-      opacity: 0.6;
-      z-index: -1;
-    }
-
-    #features article {
-      backdrop-filter: blur(12px);
-      background: linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
-    }
-
-    .cta-pill {
-      border-radius: 999px;
-      box-shadow: 0 10px 40px rgba(106, 164, 255, 0.25);
-    }
-
-    .glass-card {
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
-      backdrop-filter: blur(12px);
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -321,10 +250,8 @@
   </header>
 
   <!-- HERO -->
-  <section class="relative overflow-hidden min-h-[90vh] flex items-center section-shell" id="hero-section">
-    <div class="absolute inset-0 bg-gradient-to-br from-accent/10 via-accent2/10 to-accent/5 animate-gradient"></div>
-    <div class="absolute -left-28 -top-24 w-80 h-80 rounded-full bg-accent/20 blur-3xl opacity-70"></div>
-    <div class="absolute right-[-140px] bottom-[-140px] w-[28rem] h-[28rem] rounded-full bg-accent2/20 blur-3xl opacity-60"></div>
+  <section class="relative overflow-hidden min-h-[80vh] flex items-center section-shell" id="hero-section">
+    <div class="absolute inset-0 bg-gradient-to-b from-base via-baseDark to-base"></div>
     <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
       <div class="py-16 md:py-24 lg:py-32 grid lg:grid-cols-2 gap-10 md:gap-16 items-center">
         <div class="parallax">
